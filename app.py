@@ -4,15 +4,6 @@ from flask import *
 #load models/verify.py
 from verify import *
 
-'''
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, render_template, request, session
-
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///C:/Users/Student/Desktop/edutech/db.db3"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-'''
 app=Flask(__name__)
 app.secret_key = "edutechhasasecretS"
 
