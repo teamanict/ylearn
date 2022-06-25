@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, datetime
 from flask import *
 
 # load models/verify.py
@@ -9,15 +9,20 @@ app.secret_key = "edutechhasasecretS"
 
 con = sqlite3.connect('resources/databank/users/db.db3',
                       check_same_thread=False)
+con.row_factory = dict_factory
 cur = con.cursor()
 
 # 1st Merge
 
-@app.route('/')
+app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
+@app.route('/a/<path>')
+def subpath(path):
+    return subPathsOfA(path)
 
+<<<<<<< HEAD
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -49,6 +54,11 @@ def blog():
 @app.route('/teacher')
 def teacher():
     return render_template('teacher.html')
+=======
+@app.route('/<username>')
+def profile(username):
+    return f'{username}\'s profile'
+>>>>>>> a4548e2003905873d543f10a8fb777bb0c782a4f
 
 
 '''@app.route("/")
@@ -69,7 +79,7 @@ def pay():
 
 @app.route('/verify')
 def verify():
-    return verify_trans(request.args.get('transaction_id'))
+    return verify_trans(con, cur, request.args.get('transaction_id'))
 
 
 @app.route("/signup", methods=["POST"])
@@ -91,7 +101,7 @@ def signup():
     cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES'
                 f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
 
-    con.commit()
+    print(con.commit())
     return "success"
 
 #cur.execute(''' ''')
@@ -100,7 +110,9 @@ app.route('/login', methods=['GET', 'POST'])
 def login(username, passkey):
     account_type = request.args.get('as'); username = request.form.get("username"); passkey  =  request.form.get("password")
     login_(account_type=account_type, username=username, passkey=passkey);
-        
+
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True)
+
+

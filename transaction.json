@@ -1,0 +1,37 @@
+{
+    "data": {
+        "account_id": 214907,
+        "amount": 15000,
+        "amount_settled": 14550,
+        "app_fee": 450,
+        "auth_model": "MOBILEMONEY",
+        "charged_amount": 15000,
+        "created_at": "2022-06-22T21:00:06.000Z",
+        "currency": "UGX",
+        "customer": {
+            "created_at": "2022-06-22T20:53:44.000Z",
+            "email": "rose@unsinkableship.com",
+            "id": 1668010,
+            "name": "Parent Customer",
+            "phone_number": "0706656567"
+        },
+        "device_fingerprint": "4c6ad30574001290432ffb7350654dd7",
+        "flw_ref": "flwm3s4m0c1655931606670",
+        "id": 3508278,
+        "ip": "154.72.216.150",
+        "merchant_fee": 0,
+        "meta": {
+            "__CheckoutInitAddress": "http://127.0.0.1:5000/pay",
+            "child_id": "cedrick_j",
+            "consumer_id": "23",
+            "consumer_mac": "92a3-912ba-1192a"
+        },
+        "narration": "Haber",
+        "payment_type": "mobilemoneyug",
+        "processor_response": "Approved",
+        "status": "successful",
+        "tx_ref": "titanic-48981487343MDI0NzMx"
+    },
+    "message": "Transaction fetched successfully",
+    "status": "success"
+}
