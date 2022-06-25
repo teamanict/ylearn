@@ -13,16 +13,11 @@ con.row_factory = dict_factory
 cur = con.cursor()
 
 # 1st Merge
-
-app.route('/')
+@app.route('/')
 def index():
     return render_template("index.html")
 
-@app.route('/a/<path>')
-def subpath(path):
-    return subPathsOfA(path)
 
-<<<<<<< HEAD
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -54,11 +49,11 @@ def blog():
 @app.route('/teacher')
 def teacher():
     return render_template('teacher.html')
-=======
+
 @app.route('/<username>')
 def profile(username):
     return f'{username}\'s profile'
->>>>>>> a4548e2003905873d543f10a8fb777bb0c782a4f
+
 
 
 '''@app.route("/")
