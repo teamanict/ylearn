@@ -14,39 +14,31 @@ cur = con.cursor()
 
 # 1st Merge
 
-@app.route('/')
+app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
+@app.route('/a/<path>')
+def subpath(path):
+    if path == 'pricing':
+        return render_template('pricing.html')
+        #about.html
+    elif path == 'about':
+        return render_template('about.html')
+        #contact.html
+    elif path == 'contact':
+        return render_template('contact.html')
+        #courses.html
+    elif path == 'courses':
+        return render_template('courses.html')
+        #blog.html
+    elif path == 'teacher':
+        return render_template('teacher.html')
+        #login.html
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-
-@app.route('/courses')
-def courses():
-    return render_template('courses.html')
-
-
-@app.route('/pricing')
-def pricing():
-    return render_template('pricing.html')
-
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
-
-
-@app.route('/teacher')
-def teacher():
-    return render_template('teacher.html')
+@app.route('/<username>')
+def profile(username):
+    return f'{username}\'s profile'
 
 
 '''@app.route("/")
