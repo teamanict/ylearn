@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, datetime
 from flask import *
 
 # load models/verify.py
@@ -9,6 +9,7 @@ app.secret_key = "edutechhasasecretS"
 
 con = sqlite3.connect('resources/databank/users/db.db3',
                       check_same_thread=False)
+con.row_factory = dict_factory
 cur = con.cursor()
 
 # 1st Merge
@@ -66,7 +67,7 @@ def pay():
 
 @app.route('/verify')
 def verify():
-    return verify_trans(request.args.get('transaction_id'))
+    return verify_trans(con, cur, request.args.get('transaction_id'))
 
 
 @app.route("/signup", methods=["POST"])
@@ -88,7 +89,7 @@ def signup():
     cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES'
                 f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
 
-    con.commit()
+    print(con.commit())
     return "success"
 
 #cur.execute(''' ''')
@@ -97,7 +98,9 @@ app.route('/login', methods=['GET', 'POST'])
 def login(username, passkey):
     account_type = request.args.get('as'); username = request.form.get("username"); passkey  =  request.form.get("password")
     login_(account_type=account_type, username=username, passkey=passkey);
-        
+
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True)
+
+
