@@ -27,6 +27,9 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@app.route('/loginpage')
+def loginpage():
+    return render_template('pages-register.html')
 
 @app.route('/courses')
 def courses():
@@ -56,7 +59,7 @@ def index():
 
 @app.route("/signupstudent")
 def signupstudent():
-    return render_template("ylearn2/signupstudent.html")
+    return render_template("pages-register.html")
 
 
 @app.route("/pay")
