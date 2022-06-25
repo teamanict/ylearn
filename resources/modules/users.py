@@ -1,6 +1,8 @@
+from flask import *
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
-    if request.method == "GET": return render_template("login.html")
+    if request.method == "GET": 
+        return render_template("pages-login.html")
 
     #Authicate user
     elif request.method == "POST":

@@ -54,12 +54,6 @@ def blog():
 def teacher():
     return render_template('teacher.html')
 
-@app.route('/<username>')
-def profile(username):
-    return f'{username}\'s profile'
-
-
-
 '''@app.route("/")
 def index():
     print(session)
@@ -68,7 +62,7 @@ def index():
 
 @app.route("/signupstudent")
 def signupstudent():
-    return render_template("pages-Signup.html")
+    return render_template("pages-register.html")
 
 
 @app.route("/pay")
@@ -84,21 +78,21 @@ def verify():
 @app.route("/signup", methods=["POST"])
 def signup():
     # Get thew user submitted form data
-    username = request.form.get("username")
-    fullname = request.form.get("yrname")
-    email = request.form.get("email")
-    passkey = request.form.get("psw")
+    username = request.form.get("email")
+    fullname = request.form.get("name")
+  #  email = request.form.get("email")
+    passkey = request.form.get("password")
 
-    classid = request.form.get("class")
-    dob = request.form.get("DOB")
-    gender = request.form.get("gender")
-    parentid = request.form.get("parentid")
+    #classid = request.form.get("class")
+    #dob = request.form.get("DOB")
+    # gender = request.form.get("gender")
+    # parentid = request.form.get("parentid") '''
 
     # store data in database
-    #cur.execute(f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "{email}", "[]", "{passkey}");')
+    cur.execute(f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "fwack.rod", "[]", "{passkey}");')
 
-    cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES'
-                f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
+    # #cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES'
+    #             f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
 
     print(con.commit())
     return "success"
@@ -108,7 +102,7 @@ def signup():
 app.route('/login', methods=['GET', 'POST'])
 def login(username, passkey):
     account_type = request.args.get('as'); username = request.form.get("username"); passkey  =  request.form.get("password")
-    login_(account_type=account_type, username=username, passkey=passkey);
+    return login_(account_type=account_type, username=username, passkey=passkey)
 
 # flask debug mode
 if __name__ == "__main__":
