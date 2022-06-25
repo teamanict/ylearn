@@ -9247,10 +9247,10 @@
     });
 
     var scrollableStyle = resolve('scrollable');
-    var register$2 = function (element) {
+    var Signup$2 = function (element) {
       add$1(element, scrollableStyle);
     };
-    var deregister = function (element) {
+    var deSignup = function (element) {
       remove$3(element, scrollableStyle);
     };
     var scrollable = scrollableStyle;
@@ -9337,12 +9337,12 @@
                 runOnAttached(function (component, _simulatedEvent) {
                   set$5(component.element, 'overflow-y', 'auto');
                   set$5(component.element, '-webkit-overflow-scrolling', 'touch');
-                  register$2(component.element);
+                  Signup$2(component.element);
                 }),
                 runOnDetached(function (component) {
                   remove$2(component.element, 'overflow-y');
                   remove$2(component.element, '-webkit-overflow-scrolling');
-                  deregister(component.element);
+                  deSignup(component.element);
                 })
               ])])
           }
@@ -9446,7 +9446,7 @@
       });
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       var isSelectedFor = function (format) {
         return function () {
           return editor.formatter.match(format);
@@ -9476,7 +9476,7 @@
           isSelected: isSelectedFor(formatName),
           getPreview: getPreview(formatName)
         });
-        editor.formatter.register(formatName, newItem);
+        editor.formatter.Signup(formatName, newItem);
         return newItem;
       };
       var doEnrich = function (items) {
@@ -9581,7 +9581,7 @@
       var forecolor = function () {
         return sketch$8(realm, editor);
       };
-      var styleFormats = register$1(editor);
+      var styleFormats = Signup$1(editor);
       var styleFormatsMenu = function () {
         return ui(editor, styleFormats, function () {
           editor.fire('scrollIntoView');
@@ -10887,7 +10887,7 @@
           tgroupBehaviours: derive$2([config('adhoc-scrollable-toolbar', gSpec.scrollable === true ? [runOnInit(function (component, _simulatedEvent) {
                 set$5(component.element, 'overflow-x', 'auto');
                 markAsHorizontal(component.element);
-                register$2(component.element);
+                Signup$2(component.element);
               })] : [])]),
           components: [Container.sketch({ components: [ToolbarGroup.parts.items({})] })],
           markers: { itemSelector: '.' + resolve('toolbar-group-item') },
@@ -11501,7 +11501,7 @@
     };
     var EventRegistry = function () {
       var registry = {};
-      var registerId = function (extraArgs, id, events) {
+      var SignupId = function (extraArgs, id, events) {
         each(events, function (v, k) {
           var handlers = registry[k] !== undefined ? registry[k] : {};
           handlers[id] = curryArgs(v, extraArgs);
@@ -11529,7 +11529,7 @@
           }, isAboveRoot);
         });
       };
-      var unregisterId = function (id) {
+      var unSignupId = function (id) {
         each(registry, function (handlersById, _eventName) {
           if (has$2(handlersById, id)) {
             delete handlersById[id];
@@ -11537,8 +11537,8 @@
         });
       };
       return {
-        registerId: registerId,
-        unregisterId: unregisterId,
+        SignupId: SignupId,
+        unSignupId: unSignupId,
         filterByType: filterByType,
         find: find
       };
@@ -11556,24 +11556,24 @@
       var failOnDuplicate = function (component, tagId) {
         var conflict = components[tagId];
         if (conflict === component) {
-          unregister(component);
+          unSignup(component);
         } else {
           throw new Error('The tagId "' + tagId + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
         }
       };
-      var register = function (component) {
+      var Signup = function (component) {
         var tagId = readOrTag(component);
         if (hasNonNullableKey(components, tagId)) {
           failOnDuplicate(component, tagId);
         }
         var extraArgs = [component];
-        events.registerId(extraArgs, tagId, component.events);
+        events.SignupId(extraArgs, tagId, component.events);
         components[tagId] = component;
       };
-      var unregister = function (component) {
+      var unSignup = function (component) {
         read(component.element).each(function (tagId) {
           delete components[tagId];
-          events.unregisterId(tagId);
+          events.unSignupId(tagId);
         });
       };
       var filter = function (type) {
@@ -11588,8 +11588,8 @@
       return {
         find: find,
         filter: filter,
-        register: register,
-        unregister: unregister,
+        Signup: Signup,
+        unSignup: unSignup,
         getById: getById
       };
     };
@@ -11669,7 +11669,7 @@
       var addToWorld = function (component) {
         component.connect(systemApi);
         if (!isText(component.element)) {
-          registry.register(component);
+          registry.Signup(component);
           each$1(component.components(), addToWorld);
           systemApi.triggerEvent(systemInit(), component.element, { target: component.element });
         }
@@ -11677,7 +11677,7 @@
       var removeFromWorld = function (component) {
         if (!isText(component.element)) {
           each$1(component.components(), removeFromWorld);
-          registry.unregister(component);
+          registry.unSignup(component);
         }
         component.disconnect();
       };
@@ -12336,7 +12336,7 @@
     };
     var takeoverViewport = function (toolbarHeight, height, viewport) {
       var oldViewportStyle = get$b(viewport, 'style');
-      register$2(viewport);
+      Signup$2(viewport);
       setAll(viewport, {
         position: 'absolute',
         height: height + 'px',
@@ -12347,7 +12347,7 @@
       set$8(viewport, yScrollingData, 'true');
       set$8(viewport, yFixedProperty, 'top');
       var restore = function () {
-        deregister(viewport);
+        deSignup(viewport);
         set$8(viewport, 'style', oldViewportStyle || '');
         remove$6(viewport, yFixedData);
         remove$6(viewport, yScrollingData);
@@ -12584,7 +12584,7 @@
     };
 
     var VIEW_MARGIN = 5;
-    var register = function (toolstrip, socket, container, outerWindow, structure, cWin) {
+    var Signup = function (toolstrip, socket, container, outerWindow, structure, cWin) {
       var scroller = BackgroundActivity(function (y) {
         return moveWindowScroll(toolstrip, socket, y);
       });
@@ -12654,7 +12654,7 @@
           structure.refresh();
         }
       });
-      var onScroll = register(toolstrip, socket, outerBody, outerWindow, structure, cWin);
+      var onScroll = Signup(toolstrip, socket, outerBody, outerWindow, structure, cWin);
       var unfocusedSelection = FakeSelection(cWin, contentElement);
       var refreshSelection = function () {
         if (unfocusedSelection.isActive()) {
@@ -12762,7 +12762,7 @@
         scrollEvents.clear();
         remove$3(platform.container, resolve('fullscreen-maximized'));
         restoreStyles();
-        deregister(platform.toolbar);
+        deSignup(platform.toolbar);
         remove$2(platform.socket, 'overflow');
         remove$2(platform.socket, '-webkit-overflow-scrolling');
         blur$1(platform.editor.getFrame());

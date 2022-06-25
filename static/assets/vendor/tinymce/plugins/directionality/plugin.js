@@ -401,7 +401,7 @@
       }
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceDirectionLTR', function () {
         setDir(editor, 'ltr');
       });
@@ -422,7 +422,7 @@
         };
       };
     };
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addToggleButton('ltr', {
         tooltip: 'Left to right',
         icon: 'ltr',
@@ -443,8 +443,8 @@
 
     function Plugin () {
       global.add('directionality', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
       });
     }
 

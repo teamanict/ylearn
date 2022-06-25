@@ -1005,7 +1005,7 @@
       return { showDialog: showDialog$1 };
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       var showDialog$1 = function () {
         showDialog(editor);
       };
@@ -1322,7 +1322,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mceMedia');
       };
@@ -1345,8 +1345,8 @@
 
     function Plugin () {
       global$9.add('media', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         setup(editor);
         setup$1(editor);
         setup$2(editor);

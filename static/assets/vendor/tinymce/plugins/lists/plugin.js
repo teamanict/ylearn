@@ -2188,12 +2188,12 @@
         return parentList && parentList.nodeName === listName;
       };
     };
-    var registerDialog = function (editor) {
+    var SignupDialog = function (editor) {
       editor.addCommand('mceListProps', function () {
         open(editor);
       });
     };
-    var register$2 = function (editor) {
+    var Signup$2 = function (editor) {
       editor.on('BeforeExecCommand', function (e) {
         var cmd = e.command.toLowerCase();
         if (cmd === 'indent') {
@@ -2214,7 +2214,7 @@
       editor.addCommand('RemoveList', function () {
         flattenListSelection(editor);
       });
-      registerDialog(editor);
+      SignupDialog(editor);
       editor.addCommand('mceListUpdate', function (ui, detail) {
         if (isObject(detail)) {
           updateList(editor, detail);
@@ -2244,7 +2244,7 @@
       setup$1(editor);
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       var exec = function (command) {
         return function () {
           return editor.execCommand(command);
@@ -2272,7 +2272,7 @@
       }
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var listProperties = {
         text: 'List properties...',
         icon: 'ordered-list',
@@ -2298,12 +2298,12 @@
       global$7.add('lists', function (editor) {
         if (editor.hasPlugin('rtc', true) === false) {
           setup(editor);
-          register$2(editor);
+          Signup$2(editor);
         } else {
-          registerDialog(editor);
+          SignupDialog(editor);
         }
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         return get(editor);
       });
     }

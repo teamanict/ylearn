@@ -1164,7 +1164,7 @@
     var isKeyboardPasteEvent = function (e) {
       return global$7.metaKeyPressed(e) && e.keyCode === 86 || e.shiftKey && e.keyCode === 45;
     };
-    var registerEventHandlers = function (editor, pasteBin, pasteFormat) {
+    var SignupEventHandlers = function (editor, pasteBin, pasteFormat) {
       var keyboardPasteEvent = value();
       var keyboardPastePressed = value();
       var keyboardPastePlainTextState;
@@ -1277,8 +1277,8 @@
         }
       });
     };
-    var registerEventsAndFilters = function (editor, pasteBin, pasteFormat) {
-      registerEventHandlers(editor, pasteBin, pasteFormat);
+    var SignupEventsAndFilters = function (editor, pasteBin, pasteFormat) {
+      SignupEventHandlers(editor, pasteBin, pasteFormat);
       var src;
       editor.parser.addNodeFilter('img', function (nodes, name, args) {
         var isPasteInsert = function (args) {
@@ -1423,7 +1423,7 @@
     var Clipboard = function (editor, pasteFormat) {
       var pasteBin = PasteBin(editor);
       editor.on('PreInit', function () {
-        return registerEventsAndFilters(editor, pasteBin, pasteFormat);
+        return SignupEventsAndFilters(editor, pasteBin, pasteFormat);
       });
       return {
         pasteFormat: pasteFormat,
@@ -1453,7 +1453,7 @@
       editor.focus();
     };
 
-    var register$2 = function (editor, clipboard) {
+    var Signup$2 = function (editor, clipboard) {
       editor.addCommand('mceTogglePlainTextPaste', function () {
         togglePlainTextPaste(editor, clipboard);
       });
@@ -1558,7 +1558,7 @@
         }
       };
     };
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.on('cut', cut(editor));
       editor.on('copy', copy(editor));
     };
@@ -1762,7 +1762,7 @@
         };
       };
     };
-    var register = function (editor, clipboard) {
+    var Signup = function (editor, clipboard) {
       var onAction = function () {
         return editor.execCommand('mceTogglePlainTextPaste');
       };
@@ -1788,10 +1788,10 @@
           var pasteFormat = Cell(isPasteAsTextEnabled(editor) ? 'text' : 'html');
           var clipboard = Clipboard(editor, pasteFormat);
           setup(editor);
-          register(editor, clipboard);
-          register$2(editor, clipboard);
+          Signup(editor, clipboard);
+          Signup$2(editor, clipboard);
           setup$1(editor);
-          register$1(editor);
+          Signup$1(editor);
           setup$2(editor, clipboard, draggingInternallyState);
           return get(clipboard);
         }

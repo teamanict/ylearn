@@ -1119,7 +1119,7 @@
       };
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.addCommand('mceLink', function () {
         if (useQuickLink(editor)) {
           editor.fire('contexttoolbar-show', { toolbarKey: 'quicklink' });
@@ -1283,7 +1283,7 @@
         setupContextMenu(editor);
         setupContextToolbars(editor);
         setupGotoLinks(editor);
-        register(editor);
+        Signup(editor);
         setup(editor);
       });
     }

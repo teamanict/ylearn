@@ -34,11 +34,11 @@
       return { addTab: addTab };
     };
 
-    var register$1 = function (editor, dialogOpener) {
+    var Signup$1 = function (editor, dialogOpener) {
       editor.addCommand('mceHelp', dialogOpener);
     };
 
-    var register = function (editor, dialogOpener) {
+    var Signup = function (editor, dialogOpener) {
       editor.ui.registry.addButton('help', {
         icon: 'help',
         tooltip: 'Help',
@@ -840,8 +840,8 @@
         var customTabs = Cell({});
         var api = get$1(customTabs);
         var dialogOpener = init(editor, customTabs);
-        register(editor, dialogOpener);
-        register$1(editor, dialogOpener);
+        Signup(editor, dialogOpener);
+        Signup$1(editor, dialogOpener);
         editor.shortcuts.add('Alt+0', 'Open help dialog', 'mceHelp');
         return api;
       });

@@ -4739,11 +4739,11 @@ class TypedRegistry {
   isForType(type) {
     return Object.prototype.isPrototypeOf.call(this.type.prototype, type.prototype);
   }
-  register(item) {
+  Signup(item) {
     const proto = Object.getPrototypeOf(item);
     let parentScope;
     if (isIChartComponent(proto)) {
-      parentScope = this.register(proto);
+      parentScope = this.Signup(proto);
     }
     const items = this.items;
     const id = item.id;
@@ -4755,7 +4755,7 @@ class TypedRegistry {
       return scope;
     }
     items[id] = item;
-    registerDefaults(item, scope, parentScope);
+    SignupDefaults(item, scope, parentScope);
     if (this.override) {
       defaults.override(item.id, item.overrides);
     }
@@ -4764,7 +4764,7 @@ class TypedRegistry {
   get(id) {
     return this.items[id];
   }
-  unregister(item) {
+  unSignup(item) {
     const items = this.items;
     const id = item.id;
     const scope = this.scope;
@@ -4779,7 +4779,7 @@ class TypedRegistry {
     }
   }
 }
-function registerDefaults(item, scope, parentScope) {
+function SignupDefaults(item, scope, parentScope) {
   const itemDefaults = merge(Object.create(null), [
     parentScope ? defaults.get(parentScope) : {},
     defaults.get(scope),
@@ -4817,22 +4817,22 @@ class Registry {
     this._typedRegistries = [this.controllers, this.scales, this.elements];
   }
   add(...args) {
-    this._each('register', args);
+    this._each('Signup', args);
   }
   remove(...args) {
-    this._each('unregister', args);
+    this._each('unSignup', args);
   }
   addControllers(...args) {
-    this._each('register', args, this.controllers);
+    this._each('Signup', args, this.controllers);
   }
   addElements(...args) {
-    this._each('register', args, this.elements);
+    this._each('Signup', args, this.elements);
   }
   addPlugins(...args) {
-    this._each('register', args, this.plugins);
+    this._each('Signup', args, this.plugins);
   }
   addScales(...args) {
-    this._each('register', args, this.scales);
+    this._each('Signup', args, this.scales);
   }
   getController(id) {
     return this._get(id, this.controllers, 'controller');
@@ -4847,16 +4847,16 @@ class Registry {
     return this._get(id, this.scales, 'scale');
   }
   removeControllers(...args) {
-    this._each('unregister', args, this.controllers);
+    this._each('unSignup', args, this.controllers);
   }
   removeElements(...args) {
-    this._each('unregister', args, this.elements);
+    this._each('unSignup', args, this.elements);
   }
   removePlugins(...args) {
-    this._each('unregister', args, this.plugins);
+    this._each('unSignup', args, this.plugins);
   }
   removeScales(...args) {
-    this._each('unregister', args, this.scales);
+    this._each('unSignup', args, this.scales);
   }
   _each(method, args, typedRegistry) {
     [...args].forEach(arg => {
@@ -4889,7 +4889,7 @@ class Registry {
   _get(id, typedRegistry, type) {
     const item = typedRegistry.get(id);
     if (item === undefined) {
-      throw new Error('"' + id + '" is not a registered ' + type + '.');
+      throw new Error('"' + id + '" is not a Signuped ' + type + '.');
     }
     return item;
   }
@@ -6136,14 +6136,14 @@ Object.defineProperties(Chart, {
     enumerable,
     value: getChart
   },
-  register: {
+  Signup: {
     enumerable,
     value: (...items) => {
       registry.add(...items);
       invalidatePlugins();
     }
   },
-  unregister: {
+  unSignup: {
     enumerable,
     value: (...items) => {
       registry.remove(...items);
@@ -10598,11 +10598,11 @@ TimeScale: TimeScale,
 TimeSeriesScale: TimeSeriesScale
 });
 
-const registerables = [
+const Signupables = [
   controllers,
   elements,
   plugins,
   scales,
 ];
 
-export { Animation, Animations, ArcElement, BarController, BarElement, BasePlatform, BasicPlatform, BubbleController, CategoryScale, Chart, DatasetController, plugin_decimation as Decimation, DomPlatform, DoughnutController, Element, plugin_filler as Filler, Interaction, plugin_legend as Legend, LineController, LineElement, LinearScale, LogarithmicScale, PieController, PointElement, PolarAreaController, RadarController, RadialLinearScale, Scale, ScatterController, plugin_subtitle as SubTitle, Ticks, TimeScale, TimeSeriesScale, plugin_title as Title, plugin_tooltip as Tooltip, adapters as _adapters, _detectPlatform, animator, controllers, elements, layouts, plugins, registerables, registry, scales };
+export { Animation, Animations, ArcElement, BarController, BarElement, BasePlatform, BasicPlatform, BubbleController, CategoryScale, Chart, DatasetController, plugin_decimation as Decimation, DomPlatform, DoughnutController, Element, plugin_filler as Filler, Interaction, plugin_legend as Legend, LineController, LineElement, LinearScale, LogarithmicScale, PieController, PointElement, PolarAreaController, RadarController, RadialLinearScale, Scale, ScatterController, plugin_subtitle as SubTitle, Ticks, TimeScale, TimeSeriesScale, plugin_title as Title, plugin_tooltip as Tooltip, adapters as _adapters, _detectPlatform, animator, controllers, elements, layouts, plugins, Signupables, registry, scales };

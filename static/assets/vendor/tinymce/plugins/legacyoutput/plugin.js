@@ -34,7 +34,7 @@
 
     var overrideFormats = function (editor) {
       var alignElements = 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table', fontSizes = global.explode(getFontSizeStyleValues(editor)), schema = editor.schema;
-      editor.formatter.register({
+      editor.formatter.Signup({
         alignleft: {
           selector: alignElements,
           attributes: { align: 'left' }

@@ -10295,7 +10295,7 @@
       return keys(all);
     };
 
-    var register$b = function (editor) {
+    var Signup$b = function (editor) {
       var popups = editor.ui.registry.getAll().popups;
       var dataset = map$1(popups, function (popup) {
         return createAutocompleter(popup).fold(function (err) {
@@ -12099,7 +12099,7 @@
         editor.nodeChanged();
       });
     };
-    var registerCommands = function (editor) {
+    var SignupCommands = function (editor) {
       editor.addCommand('mceApplyTextcolor', function (format, value) {
         applyFormat(editor, format, value);
       });
@@ -12164,7 +12164,7 @@
       var id = name === 'forecolor' ? 'tox-icon-text-color__color' : 'tox-icon-highlight-bg-color__color';
       splitButtonApi.setIconFill(id, newColor);
     };
-    var registerTextColorButton = function (editor, name, format, tooltip, lastColor) {
+    var SignupTextColorButton = function (editor, name, format, tooltip, lastColor) {
       editor.ui.registry.addSplitButton(name, {
         tooltip: tooltip,
         presets: 'color',
@@ -12206,7 +12206,7 @@
         }
       });
     };
-    var registerTextColorMenuItem = function (editor, name, format, text) {
+    var SignupTextColorMenuItem = function (editor, name, format, text) {
       editor.ui.registry.addNestedMenuItem(name, {
         text: text,
         icon: name === 'forecolor' ? 'text-color' : 'highlight-bg-color',
@@ -12277,14 +12277,14 @@
         });
       };
     };
-    var register$a = function (editor) {
-      registerCommands(editor);
+    var Signup$a = function (editor) {
+      SignupCommands(editor);
       var lastForeColor = Cell(fallbackColor);
       var lastBackColor = Cell(fallbackColor);
-      registerTextColorButton(editor, 'forecolor', 'forecolor', 'Text color', lastForeColor);
-      registerTextColorButton(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
-      registerTextColorMenuItem(editor, 'forecolor', 'forecolor', 'Text color');
-      registerTextColorMenuItem(editor, 'backcolor', 'hilitecolor', 'Background color');
+      SignupTextColorButton(editor, 'forecolor', 'forecolor', 'Text color', lastForeColor);
+      SignupTextColorButton(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
+      SignupTextColorMenuItem(editor, 'forecolor', 'forecolor', 'Text color');
+      SignupTextColorMenuItem(editor, 'backcolor', 'hilitecolor', 'Background color');
     };
 
     var createPartialChoiceMenu = function (value, items, onItemValueHandler, columns, presets, itemResponse, select, providersBackstage) {
@@ -12791,7 +12791,7 @@
       };
     };
 
-    var register$9 = function (editor, sharedBackstage) {
+    var Signup$9 = function (editor, sharedBackstage) {
       var activeAutocompleter = value$1();
       var processingAction = Cell(false);
       var autocompleter = build$1(InlineView.sketch({
@@ -12829,7 +12829,7 @@
         }
       };
       var getAutocompleters = cached(function () {
-        return register$b(editor);
+        return Signup$b(editor);
       });
       var getCombinedItems = function (triggerChar, matches) {
         var columns = findMap(matches, function (m) {
@@ -12933,7 +12933,7 @@
         AutocompleterEditorEvents.setup(autocompleterUiApi, editor);
       }
     };
-    var Autocompleter = { register: register$9 };
+    var Autocompleter = { Signup: Signup$9 };
 
     var closest = function (scope, selector, isRoot) {
       return closest$1(scope, selector, isRoot).isSome();
@@ -13278,7 +13278,7 @@
     };
     var EventRegistry = function () {
       var registry = {};
-      var registerId = function (extraArgs, id, events) {
+      var SignupId = function (extraArgs, id, events) {
         each(events, function (v, k) {
           var handlers = registry[k] !== undefined ? registry[k] : {};
           handlers[id] = curryArgs(v, extraArgs);
@@ -13306,7 +13306,7 @@
           }, isAboveRoot);
         });
       };
-      var unregisterId = function (id) {
+      var unSignupId = function (id) {
         each(registry, function (handlersById, _eventName) {
           if (has$2(handlersById, id)) {
             delete handlersById[id];
@@ -13314,8 +13314,8 @@
         });
       };
       return {
-        registerId: registerId,
-        unregisterId: unregisterId,
+        SignupId: SignupId,
+        unSignupId: unSignupId,
         filterByType: filterByType,
         find: find
       };
@@ -13333,24 +13333,24 @@
       var failOnDuplicate = function (component, tagId) {
         var conflict = components[tagId];
         if (conflict === component) {
-          unregister(component);
+          unSignup(component);
         } else {
           throw new Error('The tagId "' + tagId + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
         }
       };
-      var register = function (component) {
+      var Signup = function (component) {
         var tagId = readOrTag(component);
         if (hasNonNullableKey(components, tagId)) {
           failOnDuplicate(component, tagId);
         }
         var extraArgs = [component];
-        events.registerId(extraArgs, tagId, component.events);
+        events.SignupId(extraArgs, tagId, component.events);
         components[tagId] = component;
       };
-      var unregister = function (component) {
+      var unSignup = function (component) {
         read$1(component.element).each(function (tagId) {
           delete components[tagId];
-          events.unregisterId(tagId);
+          events.unSignupId(tagId);
         });
       };
       var filter = function (type) {
@@ -13365,8 +13365,8 @@
       return {
         find: find,
         filter: filter,
-        register: register,
-        unregister: unregister,
+        Signup: Signup,
+        unSignup: unSignup,
         getById: getById
       };
     };
@@ -13473,7 +13473,7 @@
       var addToWorld = function (component) {
         component.connect(systemApi);
         if (!isText$1(component.element)) {
-          registry.register(component);
+          registry.Signup(component);
           each$1(component.components(), addToWorld);
           systemApi.triggerEvent(systemInit(), component.element, { target: component.element });
         }
@@ -13481,7 +13481,7 @@
       var removeFromWorld = function (component) {
         if (!isText$1(component.element)) {
           each$1(component.components(), removeFromWorld);
-          registry.unregister(component);
+          registry.unSignup(component);
         }
         component.disconnect();
       };
@@ -21760,28 +21760,28 @@
         formats: []
       });
     };
-    var registerCustomFormats = function (editor, userFormats) {
+    var SignupCustomFormats = function (editor, userFormats) {
       var result = mapFormats(userFormats);
-      var registerFormats = function (customFormats) {
+      var SignupFormats = function (customFormats) {
         each$1(customFormats, function (fmt) {
           if (!editor.formatter.has(fmt.name)) {
-            editor.formatter.register(fmt.name, fmt.format);
+            editor.formatter.Signup(fmt.name, fmt.format);
           }
         });
       };
       if (editor.formatter) {
-        registerFormats(result.customFormats);
+        SignupFormats(result.customFormats);
       } else {
         editor.on('init', function () {
-          registerFormats(result.customFormats);
+          SignupFormats(result.customFormats);
         });
       }
       return result.formats;
     };
     var getStyleFormats = function (editor) {
       return getUserStyleFormats(editor).map(function (userFormats) {
-        var registeredUserFormats = registerCustomFormats(editor, userFormats);
-        return isMergeStyleFormats(editor) ? defaultStyleFormats.concat(registeredUserFormats) : registeredUserFormats;
+        var SignupedUserFormats = SignupCustomFormats(editor, userFormats);
+        return isMergeStyleFormats(editor) ? defaultStyleFormats.concat(SignupedUserFormats) : SignupedUserFormats;
       }).getOr(defaultStyleFormats);
     };
 
@@ -21793,7 +21793,7 @@
       };
       return deepMerge(item, formatterSpec);
     };
-    var register$8 = function (editor, formats, isSelectedFor, getPreviewFor) {
+    var Signup$8 = function (editor, formats, isSelectedFor, getPreviewFor) {
       var enrichSupported = function (item) {
         return processBasic(item, isSelectedFor, getPreviewFor);
       };
@@ -21811,7 +21811,7 @@
           getStylePreview: getPreviewFor(formatNameWithPrefix)
         };
         var newItem = deepMerge(item, customSpec);
-        editor.formatter.register(formatName, newItem);
+        editor.formatter.Signup(formatName, newItem);
         return newItem;
       };
       var doEnrich = function (items) {
@@ -21858,12 +21858,12 @@
       var replaceSettings = Cell(false);
       editor.on('PreInit', function (_e) {
         var formats = getStyleFormats(editor);
-        var enriched = register$8(editor, formats, isSelectedFor, getPreviewFor);
+        var enriched = Signup$8(editor, formats, isSelectedFor, getPreviewFor);
         settingsFormats.set(enriched);
         settingsFlattenedFormats.set(bind$3(enriched, flatten));
       });
       editor.on('addStyleModifications', function (e) {
-        var modifications = register$8(editor, e.items, isSelectedFor, getPreviewFor);
+        var modifications = Signup$8(editor, e.items, isSelectedFor, getPreviewFor);
         eventsFormats.set(modifications);
         replaceSettings.set(e.replace);
         eventsFlattenedFormats.set(bind$3(modifications, flatten));
@@ -27372,7 +27372,7 @@
       var inEditorScope = [];
       var formNavigators = {};
       var lookupTable = {};
-      var registerForm = function (key, toolbarSpec) {
+      var SignupForm = function (key, toolbarSpec) {
         var contextForm = getOrDie(createContextForm(toolbarSpec));
         forms[key] = contextForm;
         contextForm.launch.map(function (launch) {
@@ -27390,7 +27390,7 @@
         }
         lookupTable[key] = contextForm;
       };
-      var registerToolbar = function (key, toolbarSpec) {
+      var SignupToolbar = function (key, toolbarSpec) {
         createContextToolbar(toolbarSpec).each(function (contextToolbar) {
           if (toolbarSpec.scope === 'editor') {
             inEditorScope.push(contextToolbar);
@@ -27404,9 +27404,9 @@
       each$1(keys$1, function (key) {
         var toolbarApi = contextToolbars[key];
         if (toolbarApi.type === 'contextform') {
-          registerForm(key, toolbarApi);
+          SignupForm(key, toolbarApi);
         } else if (toolbarApi.type === 'contexttoolbar') {
-          registerToolbar(key, toolbarApi);
+          SignupToolbar(key, toolbarApi);
         }
       });
       return {
@@ -27508,7 +27508,7 @@
     };
 
     var transitionClass = 'tox-pop--transition';
-    var register$7 = function (editor, registryContextToolbars, sink, extras) {
+    var Signup$7 = function (editor, registryContextToolbars, sink, extras) {
       var backstage = extras.backstage;
       var sharedBackstage = backstage.shared;
       var isTouch = detect$1().deviceType.isTouch;
@@ -27708,7 +27708,7 @@
       });
     };
 
-    var register$6 = function (editor) {
+    var Signup$6 = function (editor) {
       var alignToolbarButtons = [
         {
           name: 'alignleft',
@@ -27827,7 +27827,7 @@
       });
     };
 
-    var registerController = function (editor, spec) {
+    var SignupController = function (editor, spec) {
       var getMenuItems = function () {
         var options = spec.getOptions(editor);
         var initial = spec.getCurrent(editor).map(spec.hash);
@@ -27945,14 +27945,14 @@
         };
       });
     };
-    var register$5 = function (editor) {
-      registerController(editor, lineHeightSpec);
+    var Signup$5 = function (editor) {
+      SignupController(editor, lineHeightSpec);
       languageSpec(editor).each(function (spec) {
-        return registerController(editor, spec);
+        return SignupController(editor, spec);
       });
     };
 
-    var register$4 = function (editor, backstage) {
+    var Signup$4 = function (editor, backstage) {
       alignSelectMenu(editor, backstage);
       fontSelectMenu(editor, backstage);
       styleSelectMenu(editor, backstage);
@@ -27965,7 +27965,7 @@
         api.setDisabled(!editor.queryCommandState('outdent'));
       });
     };
-    var registerButtons$2 = function (editor) {
+    var SignupButtons$2 = function (editor) {
       editor.ui.registry.addButton('outdent', {
         tooltip: 'Decrease indent',
         icon: 'outdent',
@@ -27978,8 +27978,8 @@
         onAction: onActionExecCommand(editor, 'indent')
       });
     };
-    var register$3 = function (editor) {
-      registerButtons$2(editor);
+    var Signup$3 = function (editor) {
+      SignupButtons$2(editor);
     };
 
     var onActionToggleFormat = function (editor, fmt) {
@@ -27987,7 +27987,7 @@
         editor.execCommand('mceToggleFormat', false, fmt);
       };
     };
-    var registerFormatButtons = function (editor) {
+    var SignupFormatButtons = function (editor) {
       global$5.each([
         {
           name: 'bold',
@@ -28037,7 +28037,7 @@
         });
       }
     };
-    var registerCommandButtons = function (editor) {
+    var SignupCommandButtons = function (editor) {
       global$5.each([
         {
           name: 'cut',
@@ -28095,7 +28095,7 @@
         });
       });
     };
-    var registerCommandToggleButtons = function (editor) {
+    var SignupCommandToggleButtons = function (editor) {
       global$5.each([{
           name: 'blockquote',
           text: 'Blockquote',
@@ -28110,12 +28110,12 @@
         });
       });
     };
-    var registerButtons$1 = function (editor) {
-      registerFormatButtons(editor);
-      registerCommandButtons(editor);
-      registerCommandToggleButtons(editor);
+    var SignupButtons$1 = function (editor) {
+      SignupFormatButtons(editor);
+      SignupCommandButtons(editor);
+      SignupCommandToggleButtons(editor);
     };
-    var registerMenuItems$2 = function (editor) {
+    var SignupMenuItems$2 = function (editor) {
       global$5.each([
         {
           name: 'bold',
@@ -28215,9 +28215,9 @@
         onAction: onActionToggleFormat(editor, 'code')
       });
     };
-    var register$2 = function (editor) {
-      registerButtons$1(editor);
-      registerMenuItems$2(editor);
+    var Signup$2 = function (editor) {
+      SignupButtons$1(editor);
+      SignupMenuItems$2(editor);
     };
 
     var onSetupUndoRedoState = function (editor, type) {
@@ -28225,7 +28225,7 @@
         api.setDisabled(editor.mode.isReadOnly() || !editor.undoManager[type]());
       });
     };
-    var registerMenuItems$1 = function (editor) {
+    var SignupMenuItems$1 = function (editor) {
       editor.ui.registry.addMenuItem('undo', {
         text: 'Undo',
         icon: 'undo',
@@ -28241,7 +28241,7 @@
         onAction: onActionExecCommand(editor, 'redo')
       });
     };
-    var registerButtons = function (editor) {
+    var SignupButtons = function (editor) {
       editor.ui.registry.addButton('undo', {
         tooltip: 'Undo',
         icon: 'undo',
@@ -28257,9 +28257,9 @@
         onAction: onActionExecCommand(editor, 'redo')
       });
     };
-    var register$1 = function (editor) {
-      registerMenuItems$1(editor);
-      registerButtons(editor);
+    var Signup$1 = function (editor) {
+      SignupMenuItems$1(editor);
+      SignupButtons(editor);
     };
 
     var onSetupVisualAidState = function (editor) {
@@ -28267,34 +28267,34 @@
         api.setActive(editor.hasVisual);
       });
     };
-    var registerMenuItems = function (editor) {
+    var SignupMenuItems = function (editor) {
       editor.ui.registry.addToggleMenuItem('visualaid', {
         text: 'Visual aids',
         onSetup: onSetupVisualAidState(editor),
         onAction: onActionExecCommand(editor, 'mceToggleVisualAid')
       });
     };
-    var registerToolbarButton = function (editor) {
+    var SignupToolbarButton = function (editor) {
       editor.ui.registry.addButton('visualaid', {
         tooltip: 'Visual aids',
         text: 'Visual aids',
         onAction: onActionExecCommand(editor, 'mceToggleVisualAid')
       });
     };
-    var register = function (editor) {
-      registerToolbarButton(editor);
-      registerMenuItems(editor);
+    var Signup = function (editor) {
+      SignupToolbarButton(editor);
+      SignupMenuItems(editor);
     };
 
     var setup$6 = function (editor, backstage) {
-      register$6(editor);
-      register$2(editor);
-      register$4(editor, backstage);
-      register$1(editor);
-      register$a(editor);
-      register(editor);
-      register$3(editor);
-      register$5(editor);
+      Signup$6(editor);
+      Signup$2(editor);
+      Signup$4(editor, backstage);
+      Signup$1(editor);
+      Signup$a(editor);
+      Signup(editor);
+      Signup$3(editor);
+      Signup$5(editor);
     };
 
     var nu = function (x, y) {
@@ -29985,7 +29985,7 @@
         var channels = {
           broadcastAll: uiMothership.broadcast,
           broadcastOn: uiMothership.broadcastOn,
-          register: noop
+          Signup: noop
         };
         return { channels: channels };
       };
@@ -30026,7 +30026,7 @@
           buttons: buttons,
           sidebar: sidebars
         };
-        register$7(editor, contextToolbars, sink, { backstage: backstage });
+        Signup$7(editor, contextToolbars, sink, { backstage: backstage });
         setup$4(editor, sink);
         var elm = editor.getElement();
         var height = setEditorSize();
@@ -32497,7 +32497,7 @@
     function Theme () {
       global$g.add('silver', function (editor) {
         var _a = setup$3(editor), uiMothership = _a.uiMothership, backstage = _a.backstage, renderUI = _a.renderUI, getUi = _a.getUi;
-        Autocompleter.register(editor, backstage.shared);
+        Autocompleter.Signup(editor, backstage.shared);
         var windowMgr = setup({
           editor: editor,
           backstage: backstage

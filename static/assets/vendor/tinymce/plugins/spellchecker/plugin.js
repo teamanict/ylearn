@@ -550,7 +550,7 @@
       };
     };
 
-    var register$1 = function (editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState) {
+    var Signup$1 = function (editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState) {
       editor.addCommand('mceSpellCheck', function () {
         spellcheck(editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState);
       });
@@ -590,7 +590,7 @@
         };
       });
     };
-    var register = function (editor, pluginUrl, startedState, textMatcherState, currentLanguageState, lastSuggestionsState) {
+    var Signup = function (editor, pluginUrl, startedState, textMatcherState, currentLanguageState, lastSuggestionsState) {
       var languageMenuItems = buildMenuItems('Language', getItems(editor));
       var startSpellchecking = function () {
         spellcheck(editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState);
@@ -717,9 +717,9 @@
           var currentLanguageState = Cell(getLanguage(editor));
           var textMatcherState = Cell(null);
           var lastSuggestionsState = Cell(null);
-          register(editor, pluginUrl, startedState, textMatcherState, currentLanguageState, lastSuggestionsState);
+          Signup(editor, pluginUrl, startedState, textMatcherState, currentLanguageState, lastSuggestionsState);
           setup(editor, pluginUrl, lastSuggestionsState, startedState, textMatcherState, currentLanguageState);
-          register$1(editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState);
+          Signup$1(editor, pluginUrl, startedState, textMatcherState, lastSuggestionsState, currentLanguageState);
           return get(editor, startedState, lastSuggestionsState, textMatcherState, currentLanguageState);
         }
       });

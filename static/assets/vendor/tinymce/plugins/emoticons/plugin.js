@@ -567,7 +567,7 @@
       }
     };
 
-    var register$1 = function (editor, database) {
+    var Signup$1 = function (editor, database) {
       editor.addCommand('mceEmoticons', function () {
         return open(editor, database);
       });
@@ -603,7 +603,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mceEmoticons');
       };
@@ -624,8 +624,8 @@
         var databaseUrl = getEmoticonDatabaseUrl(editor, pluginUrl);
         var databaseId = getEmoticonDatabaseId(editor);
         var database = initDatabase(editor, databaseUrl, databaseId);
-        register$1(editor, database);
-        register(editor);
+        Signup$1(editor, database);
+        Signup(editor);
         init(editor, database);
         setup(editor);
       });

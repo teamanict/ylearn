@@ -13,7 +13,7 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.Env');
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mcePrint', function () {
         if (global.browser.isIE()) {
           editor.getDoc().execCommand('print', false, null);
@@ -23,7 +23,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mcePrint');
       };
@@ -41,8 +41,8 @@
 
     function Plugin () {
       global$1.add('print', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         editor.addShortcut('Meta+P', '', 'mcePrint');
       });
     }

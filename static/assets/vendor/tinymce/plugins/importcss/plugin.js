@@ -286,7 +286,7 @@
             var format = convertSelectorToFormat(editor, editor.plugins.importcss, selector, group);
             if (format) {
               var formatName = format.name || global$3.DOM.uniqueId();
-              editor.formatter.register(formatName, format);
+              editor.formatter.Signup(formatName, format);
               return {
                 title: format.title,
                 format: formatName

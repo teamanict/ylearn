@@ -57,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - As of Mozilla Firefox 91, toggling fullscreen mode with `toolbar_sticky` enabled would cause the toolbar to disappear #TINY-7873
 - Fixed URLs not cleaned correctly in some cases in the `link` and `image` plugins #TINY-7998
 - Fixed the `image` and `media` toolbar buttons incorrectly appearing to be in an inactive state in some cases #TINY-3463
-- Fixed the `editor.selection.selectorChanged` API not firing if the selector matched the current selection when registered in some cases #TINY-3463
+- Fixed the `editor.selection.selectorChanged` API not firing if the selector matched the current selection when Signuped in some cases #TINY-3463
 - Inserting content into a `contenteditable="true"` element that was contained within a `contenteditable="false"` element would move the selection to an incorrect location #TINY-7842
 - Dragging and dropping `contenteditable="false"` elements could result in the element being placed in an unexpected location #TINY-7917
 - Pressing the Escape key would not cancel a drag action that started on a `contenteditable="false"` element within the editor #TINY-7917
@@ -165,7 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Applying selector formats would sometimes not apply the format correctly to elements in a list #TINY-7393
 - For formats that specify an attribute or style that should be removed, the formatter `match` API incorrectly returned `false` #TINY-6149
 - The type signature on the `formatter.matchNode` API had the wrong return type (was `boolean` but should have been `Formatter | undefined`) #TINY-6149
-- The `formatter.formatChanged` API would ignore the `similar` parameter if another callback had already been registered for the same format #TINY-7713
+- The `formatter.formatChanged` API would ignore the `similar` parameter if another callback had already been Signuped for the same format #TINY-7713
 - The `formatter.formatChanged` API would sometimes not run the callback the first time the format was removed #TINY-7713
 - Base64 encoded images with spaces or line breaks in the data URI were not displayed correctly. Patch contributed by RoboBurned
 
@@ -589,7 +589,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed and improved the visual appearance of the color input field #TINY-2917
 - Changed fake caret container to use `forced_root_block` when possible #TINY-4190
 - Changed the `requireLangPack` API to wait until the plugin has been loaded before loading the language pack #TINY-3716
-- Changed the formatter so `style_formats` are registered before the initial content is loaded into the editor #TINY-4238
+- Changed the formatter so `style_formats` are Signuped before the initial content is loaded into the editor #TINY-4238
 - Changed media plugin to use https protocol for media urls by default #TINY-4577
 - Changed the parser to treat CDATA nodes as bogus HTML comments to match the HTML parsing spec. A new `preserve_cdata` setting has been added to preserve CDATA nodes if required #TINY-4625
 
@@ -642,7 +642,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed dialog contents disappearing when clicking a checkbox for right-to-left languages #TINY-4518
-- Fixed the `legacyoutput` plugin registering legacy formats after editor initialization, causing legacy content to be stripped on the initial load #TINY-4447
+- Fixed the `legacyoutput` plugin Signuping legacy formats after editor initialization, causing legacy content to be stripped on the initial load #TINY-4447
 - Fixed search and replace not cycling through results when searching using special characters #TINY-4506
 - Fixed the `visualchars` plugin converting HTML-like text to DOM elements in certain cases #TINY-4507
 - Fixed an issue with the `paste` plugin not sanitizing content in some cases #TINY-4510
@@ -746,7 +746,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed media poster value not updating on change #TINY-4013
-- Fixed openlink was not registered as a toolbar button #TINY-4024
+- Fixed openlink was not Signuped as a toolbar button #TINY-4024
 - Fixed failing to initialize if a script tag was used inside a SVG #TINY-4087
 - Fixed double top border showing on toolbar without menubar when toolbar_drawer is enabled #TINY-4118
 - Fixed unable to drag inline dialogs to the bottom of the screen when scrolled #TINY-4154
@@ -1062,7 +1062,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Full documentation for the version 5 features and changes is available at https://www.tiny.cloud/docs/release-notes/
 
 ### Added
-- Added links and registered names with * to denote premium plugins in Plugins tab of Help dialog #TINY-3223
+- Added links and Signuped names with * to denote premium plugins in Plugins tab of Help dialog #TINY-3223
 
 ### Changed
 - Changed Tiny 5 mobile skin to look more uniform with desktop #TINY-2650
@@ -1084,7 +1084,7 @@ Full documentation for the version 5 features and changes is available at https:
 - Added screen reader accessibility for sidebar and statusbar #TINY-2699
 
 ### Changed
-- Changed formatting menus so they are registered and made the align toolbar button use an icon instead of text #TINY-2880
+- Changed formatting menus so they are Signuped and made the align toolbar button use an icon instead of text #TINY-2880
 - Changed checkboxes to use a boolean for its state, instead of a string #TINY-2848
 - Updated the textpattern plugin to properly support nested patterns and to allow running a command with a value for a pattern with a start and an end #TINY-2991
 - Updated Emoticons and Charmap dialogs to be screen reader accessible #TINY-2693
@@ -1857,7 +1857,7 @@ Initial list of features and changes is available at https://tiny.cloud/docs-pre
 - Fixed bug where Edge would paste div elements instead of paragraphs when pasting plain text.
 - Fixed bug where the textpattern plugin wasn't dealing with trailing punctuations correctly.
 - Fixed bug where image editing would some times change the image format from jpg to png.
-- Fixed bug where some UI elements could be inserted into the toolbar even if they where not registered.
+- Fixed bug where some UI elements could be inserted into the toolbar even if they where not Signuped.
 - Fixed bug where it was possible to click the TD instead of the character in the character map and that caused an exception.
 - Fixed bug where the font size/font family dropdowns would sometimes show an incorrect value due to css not being loaded in time.
 - Fixed bug with the media plugin inserting undefined instead of retaining size when media_dimensions was set to false.

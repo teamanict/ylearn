@@ -16,7 +16,7 @@
       editor.execCommand(cmd, false, styleValue === false ? null : { 'list-style-type': styleValue });
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('ApplyUnorderedListStyle', function (ui, value) {
         applyListFormat(editor, 'UL', value['list-style-type']);
       });
@@ -240,7 +240,7 @@
         addButton(editor, id, tooltip, cmd, nodeName);
       }
     };
-    var register = function (editor) {
+    var Signup = function (editor) {
       addControl(editor, 'numlist', 'Numbered list', 'InsertOrderedList', 'OL', getNumberStyles(editor));
       addControl(editor, 'bullist', 'Bullet list', 'InsertUnorderedList', 'UL', getBulletStyles(editor));
     };
@@ -248,8 +248,8 @@
     function Plugin () {
       global$1.add('advlist', function (editor) {
         if (editor.hasPlugin('lists')) {
-          register(editor);
-          register$1(editor);
+          Signup(editor);
+          Signup$1(editor);
         } else {
           console.error('Please use the Lists plugin together with the Advanced List plugin.');
         }

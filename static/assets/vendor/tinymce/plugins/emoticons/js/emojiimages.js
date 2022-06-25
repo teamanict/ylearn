@@ -7477,7 +7477,7 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "symbols"
   },
-  registered: {
+  Signuped: {
     keywords: [ "alphabet", "circle" ],
     char: '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\xae\ufe0f" src="ae.png"/>',
     fitzpatrick_scale: false,

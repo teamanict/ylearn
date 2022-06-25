@@ -104,7 +104,7 @@ var Parchment = {
     create: Registry.create,
     find: Registry.find,
     query: Registry.query,
-    register: Registry.register,
+    Signup: Registry.Signup,
     Container: container_1.default,
     Format: format_1.default,
     Leaf: leaf_1.default,
@@ -231,14 +231,14 @@ function query(query, scope) {
     return null;
 }
 exports.query = query;
-function register() {
+function Signup() {
     var Definitions = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         Definitions[_i] = arguments[_i];
     }
     if (Definitions.length > 1) {
         return Definitions.map(function (d) {
-            return register(d);
+            return Signup(d);
         });
     }
     var Definition = Definitions[0];
@@ -246,7 +246,7 @@ function register() {
         throw new ParchmentError('Invalid definition');
     }
     else if (Definition.blotName === 'abstract') {
-        throw new ParchmentError('Cannot register abstract class');
+        throw new ParchmentError('Cannot Signup abstract class');
     }
     types[Definition.blotName || Definition.attrName] = Definition;
     if (typeof Definition.keyName === 'string') {
@@ -275,7 +275,7 @@ function register() {
     }
     return Definition;
 }
-exports.register = register;
+exports.Signup = Signup;
 
 
 /***/ }),
@@ -1091,13 +1091,13 @@ var Quill = function () {
     key: 'import',
     value: function _import(name) {
       if (this.imports[name] == null) {
-        debug.error('Cannot import ' + name + '. Are you sure it was registered?');
+        debug.error('Cannot import ' + name + '. Are you sure it was Signuped?');
       }
       return this.imports[name];
     }
   }, {
-    key: 'register',
-    value: function register(path, target) {
+    key: 'Signup',
+    value: function Signup(path, target) {
       var _this = this;
 
       var overwrite = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -1105,11 +1105,11 @@ var Quill = function () {
       if (typeof path !== 'string') {
         var name = path.attrName || path.blotName;
         if (typeof name === 'string') {
-          // register(Blot | Attributor, overwrite)
-          this.register('formats/' + name, path, target);
+          // Signup(Blot | Attributor, overwrite)
+          this.Signup('formats/' + name, path, target);
         } else {
           Object.keys(path).forEach(function (key) {
-            _this.register(key, path[key], target);
+            _this.Signup(key, path[key], target);
           });
         }
       } else {
@@ -1118,9 +1118,9 @@ var Quill = function () {
         }
         this.imports[path] = target;
         if ((path.startsWith('blots/') || path.startsWith('formats/')) && target.blotName !== 'abstract') {
-          _parchment2.default.register(target);
-        } else if (path.startsWith('modules') && typeof target.register === 'function') {
-          target.register();
+          _parchment2.default.Signup(target);
+        } else if (path.startsWith('modules') && typeof target.Signup === 'function') {
+          target.Signup();
         }
       }
     }
@@ -1606,7 +1606,7 @@ function expandConfig(container, userConfig) {
   } else {
     userConfig.theme = Quill.import('themes/' + userConfig.theme);
     if (userConfig.theme == null) {
-      throw new Error('Invalid theme ' + userConfig.theme + '. Did you register it?');
+      throw new Error('Invalid theme ' + userConfig.theme + '. Did you Signup it?');
     }
   }
   var themeConfig = (0, _extend2.default)(true, {}, userConfig.theme.DEFAULTS);
@@ -1622,7 +1622,7 @@ function expandConfig(container, userConfig) {
   var moduleConfig = moduleNames.reduce(function (config, name) {
     var moduleClass = Quill.import('modules/' + name);
     if (moduleClass == null) {
-      debug.error('Cannot load ' + name + ' module. Are you sure you registered it?');
+      debug.error('Cannot load ' + name + ' module. Are you sure you Signuped it?');
     } else {
       config[name] = moduleClass.DEFAULTS || {};
     }
@@ -5380,7 +5380,7 @@ var _keyboard2 = _interopRequireDefault(_keyboard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_quill2.default.register({
+_quill2.default.Signup({
   'blots/block': _block2.default,
   'blots/block/embed': _block.BlockEmbed,
   'blots/break': _break2.default,
@@ -5396,7 +5396,7 @@ _quill2.default.register({
   'modules/keyboard': _keyboard2.default
 });
 
-_parchment2.default.register(_block2.default, _break2.default, _cursor2.default, _inline2.default, _scroll2.default, _text2.default);
+_parchment2.default.Signup(_block2.default, _break2.default, _cursor2.default, _inline2.default, _scroll2.default, _text2.default);
 
 exports.default = _quill2.default;
 
@@ -7850,7 +7850,7 @@ function EventEmitter() {
 }
 
 /**
- * Return an array listing the events for which the emitter has registered
+ * Return an array listing the events for which the emitter has Signuped
  * listeners.
  *
  * @returns {Array}
@@ -7875,7 +7875,7 @@ EventEmitter.prototype.eventNames = function eventNames() {
 };
 
 /**
- * Return the listeners registered for a given event.
+ * Return the listeners Signuped for a given event.
  *
  * @param {String|Symbol} event The event name.
  * @param {Boolean} exists Only check if there are listeners.
@@ -7898,7 +7898,7 @@ EventEmitter.prototype.listeners = function listeners(event, exists) {
 };
 
 /**
- * Calls each of the listeners registered for a given event.
+ * Calls each of the listeners Signuped for a given event.
  *
  * @param {String|Symbol} event The event name.
  * @returns {Boolean} `true` if the event had listeners, else `false`.

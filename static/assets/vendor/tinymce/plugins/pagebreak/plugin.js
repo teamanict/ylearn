@@ -60,7 +60,7 @@
       });
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mcePageBreak', function () {
         editor.insertContent(getPlaceholderHtml(shouldSplitBlock(editor)));
       });
@@ -74,7 +74,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mcePageBreak');
       };
@@ -92,8 +92,8 @@
 
     function Plugin () {
       global$1.add('pagebreak', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         setup$1(editor);
         setup(editor);
       });

@@ -65,7 +65,7 @@
       editor.resetContent(h);
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceSave', function () {
         save(editor);
       });
@@ -86,7 +86,7 @@
         };
       };
     };
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addButton('save', {
         icon: 'save',
         tooltip: 'Save',
@@ -110,8 +110,8 @@
 
     function Plugin () {
       global$2.add('save', function (editor) {
-        register(editor);
-        register$1(editor);
+        Signup(editor);
+        Signup$1(editor);
       });
     }
 

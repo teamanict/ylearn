@@ -137,7 +137,7 @@
       });
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceAnchor', function () {
         open(editor);
       });
@@ -166,8 +166,8 @@
       });
     };
 
-    var registerFormats = function (editor) {
-      editor.formatter.register('namedAnchor', {
+    var SignupFormats = function (editor) {
+      editor.formatter.Signup('namedAnchor', {
         inline: 'a',
         selector: namedAnchorSelector,
         remove: 'all',
@@ -180,7 +180,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addToggleButton('anchor', {
         icon: 'bookmark',
         tooltip: 'Anchor',
@@ -203,10 +203,10 @@
     function Plugin () {
       global$2.add('anchor', function (editor) {
         setup(editor);
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         editor.on('PreInit', function () {
-          registerFormats(editor);
+          SignupFormats(editor);
         });
       });
     }

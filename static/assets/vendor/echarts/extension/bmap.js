@@ -390,9 +390,9 @@
     }
   });
 
-  echarts.registerCoordinateSystem('bmap', BMapCoordSys); // Action
+  echarts.SignupCoordinateSystem('bmap', BMapCoordSys); // Action
 
-  echarts.registerAction({
+  echarts.SignupAction({
     type: 'bmapRoam',
     event: 'bmapRoam',
     update: 'updateLayout'

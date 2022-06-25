@@ -358,7 +358,7 @@
       });
     };
 
-    var register$1 = function (editor, api) {
+    var Signup$1 = function (editor, api) {
       editor.addCommand('mceWordCount', function () {
         return open(editor, api);
       });
@@ -391,7 +391,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mceWordCount');
       };
@@ -413,8 +413,8 @@
       }
       global$2.add('wordcount', function (editor) {
         var api = get(editor);
-        register$1(editor, api);
-        register(editor);
+        Signup$1(editor, api);
+        Signup(editor);
         setup(editor, api, delay);
         return api;
       });

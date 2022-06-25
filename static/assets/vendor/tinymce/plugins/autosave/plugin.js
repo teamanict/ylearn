@@ -174,7 +174,7 @@
         };
       };
     };
-    var register = function (editor) {
+    var Signup = function (editor) {
       startStoreDraft(editor);
       editor.ui.registry.addButton('restoredraft', {
         tooltip: 'Restore last draft',
@@ -197,7 +197,7 @@
     function Plugin () {
       global$4.add('autosave', function (editor) {
         setup(editor);
-        register(editor);
+        Signup(editor);
         editor.on('init', function () {
           if (shouldRestoreWhenEmpty(editor) && editor.dom.isEmpty(editor.getBody())) {
             restoreDraft(editor);

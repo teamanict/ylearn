@@ -92,13 +92,13 @@
       dataApi.focus('close');
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mcePreview', function () {
         open(editor);
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mcePreview');
       };
@@ -116,8 +116,8 @@
 
     function Plugin () {
       global$2.add('preview', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
       });
     }
 

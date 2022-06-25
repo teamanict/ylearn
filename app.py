@@ -13,10 +13,14 @@ con.row_factory = dict_factory
 cur = con.cursor()
 
 # 1st Merge
+
 @app.route('/')
 def index():
     return render_template("index.html")
 
+@app.route('/a/<path>')
+def subpath(path):
+    return subPathsOfA(path)
 
 @app.route('/about')
 def about():
@@ -29,7 +33,7 @@ def contact():
 
 @app.route('/loginpage')
 def loginpage():
-    return render_template('pages-register.html')
+    return render_template('pages-Signup.html')
 
 @app.route('/courses')
 def courses():
@@ -64,7 +68,7 @@ def index():
 
 @app.route("/signupstudent")
 def signupstudent():
-    return render_template("pages-register.html")
+    return render_template("pages-Signup.html")
 
 
 @app.route("/pay")

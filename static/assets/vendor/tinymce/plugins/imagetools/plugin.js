@@ -1399,7 +1399,7 @@
       };
     };
 
-    var register$2 = function (editor, imageUploadTimerState) {
+    var Signup$2 = function (editor, imageUploadTimerState) {
       global$4.each({
         mceImageRotateLeft: rotate(editor, imageUploadTimerState, -90),
         mceImageRotateRight: rotate(editor, imageUploadTimerState, 90),
@@ -1426,7 +1426,7 @@
       });
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       var changeHandlers = [];
       var cmd = function (command) {
         return function () {
@@ -1504,7 +1504,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addContextToolbar('imagetools', {
         items: getToolbarItems(editor),
         predicate: function (elem) {
@@ -1519,9 +1519,9 @@
       global$5.add('imagetools', function (editor) {
         var imageUploadTimerState = Cell(0);
         var lastSelectedImageState = Cell(null);
-        register$2(editor, imageUploadTimerState);
-        register$1(editor);
-        register(editor);
+        Signup$2(editor, imageUploadTimerState);
+        Signup$1(editor);
+        Signup(editor);
         setup(editor, imageUploadTimerState, lastSelectedImageState);
       });
     }

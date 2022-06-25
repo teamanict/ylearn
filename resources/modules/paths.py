@@ -1,3 +1,4 @@
+from flask import *
 def subPathsOfA(path):
     if path == 'pricing':
         return render_template('pricing.html')

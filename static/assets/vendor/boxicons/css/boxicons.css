@@ -2801,7 +2801,7 @@
   .bx-refresh:before {
     content: "\ebd9";
   }
-  .bx-registered:before {
+  .bx-Signuped:before {
     content: "\ebda";
   }
   .bx-rename:before {
@@ -4868,7 +4868,7 @@
   .bxs-rectangle:before {
     content: "\ee8a";
   }
-  .bxs-registered:before {
+  .bxs-Signuped:before {
     content: "\ee8b";
   }
   .bxs-rename:before {

@@ -1605,7 +1605,7 @@ interface AnnotatorSettings {
     persistent?: boolean;
 }
 interface Annotator {
-    register: (name: string, settings: AnnotatorSettings) => void;
+    Signup: (name: string, settings: AnnotatorSettings) => void;
     annotate: (name: string, data: DecoratorData) => void;
     annotationChanged: (name: string, f: AnnotationListenerApi) => void;
     remove: (name: string) => void;
@@ -2354,8 +2354,8 @@ interface FormatRegistry {
         (): Record<string, Format[]>;
     };
     has: (name: string) => boolean;
-    register: (name: string | Formats, format?: Format[] | Format) => void;
-    unregister: (name: string) => Formats;
+    Signup: (name: string | Formats, format?: Format[] | Format) => void;
+    unSignup: (name: string) => Formats;
 }
 interface Formatter extends FormatRegistry {
     apply: (name: string, vars?: FormatVars, node?: Node | RangeLikeObject) => void;
@@ -2375,7 +2375,7 @@ interface EditorMode {
     isReadOnly: () => boolean;
     set: (mode: string) => void;
     get: () => string;
-    register: (mode: string, api: EditorModeApi) => void;
+    Signup: (mode: string, api: EditorModeApi) => void;
 }
 interface EditorModeApi {
     activate: () => void;

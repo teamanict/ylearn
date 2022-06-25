@@ -541,7 +541,7 @@
         open(editor, templates);
       };
     };
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceInsertTemplate', curry(insertTemplate, editor));
       editor.addCommand('mceTemplate', createTemplateList(editor, showDialog(editor)));
     };
@@ -562,7 +562,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('mceTemplate');
       };
@@ -580,8 +580,8 @@
 
     function Plugin () {
       global$4.add('template', function (editor) {
-        register(editor);
-        register$1(editor);
+        Signup(editor);
+        Signup$1(editor);
         setup(editor);
       });
     }

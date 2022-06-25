@@ -36,7 +36,7 @@
       fireVisualBlocks(editor, enabledState.get());
     };
 
-    var register$1 = function (editor, pluginUrl, enabledState) {
+    var Signup$1 = function (editor, pluginUrl, enabledState) {
       editor.addCommand('mceVisualBlocks', function () {
         toggleVisualBlocks(editor, pluginUrl, enabledState);
       });
@@ -71,7 +71,7 @@
         };
       };
     };
-    var register = function (editor, enabledState) {
+    var Signup = function (editor, enabledState) {
       var onAction = function () {
         return editor.execCommand('mceVisualBlocks');
       };
@@ -92,8 +92,8 @@
     function Plugin () {
       global.add('visualblocks', function (editor, pluginUrl) {
         var enabledState = Cell(false);
-        register$1(editor, pluginUrl, enabledState);
-        register(editor, enabledState);
+        Signup$1(editor, pluginUrl, enabledState);
+        Signup(editor, enabledState);
         setup(editor, pluginUrl, enabledState);
       });
     }

@@ -445,7 +445,7 @@
       editor.selection.moveToBookmark(bookmark);
     };
 
-    var register$1 = function (editor, toggleState) {
+    var Signup$1 = function (editor, toggleState) {
       editor.addCommand('mceVisualChars', function () {
         toggleVisualChars(editor, toggleState);
       });
@@ -492,7 +492,7 @@
         };
       };
     };
-    var register = function (editor, toggleState) {
+    var Signup = function (editor, toggleState) {
       var onAction = function () {
         return editor.execCommand('mceVisualChars');
       };
@@ -513,8 +513,8 @@
     function Plugin () {
       global$1.add('visualchars', function (editor) {
         var toggleState = Cell(isEnabledByDefault(editor));
-        register$1(editor, toggleState);
-        register(editor, toggleState);
+        Signup$1(editor, toggleState);
+        Signup(editor, toggleState);
         setup(editor, toggleState);
         setup$1(editor, toggleState);
         return get$2(toggleState);

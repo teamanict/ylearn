@@ -1291,7 +1291,7 @@
       }
     };
 
-    var register$1 = function (editor, fullscreenState) {
+    var Signup$1 = function (editor, fullscreenState) {
       editor.addCommand('mceFullScreen', function () {
         toggleFullscreen(editor, fullscreenState);
       });
@@ -1309,7 +1309,7 @@
         };
       };
     };
-    var register = function (editor, fullscreenState) {
+    var Signup = function (editor, fullscreenState) {
       var onAction = function () {
         return editor.execCommand('mceFullScreen');
       };
@@ -1334,8 +1334,8 @@
         if (editor.inline) {
           return get$5(fullscreenState);
         }
-        register$1(editor, fullscreenState);
-        register(editor, fullscreenState);
+        Signup$1(editor, fullscreenState);
+        Signup(editor, fullscreenState);
         editor.addShortcut('Meta+Shift+F', '', 'mceFullScreen');
         return get$5(fullscreenState);
       });

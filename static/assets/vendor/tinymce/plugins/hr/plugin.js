@@ -11,13 +11,13 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('InsertHorizontalRule', function () {
         editor.execCommand('mceInsertContent', false, '<hr />');
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var onAction = function () {
         return editor.execCommand('InsertHorizontalRule');
       };
@@ -35,8 +35,8 @@
 
     function Plugin () {
       global.add('hr', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
       });
     }
 

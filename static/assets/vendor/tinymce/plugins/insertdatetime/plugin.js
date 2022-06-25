@@ -95,7 +95,7 @@
       }
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceInsertDate', function (_ui, value) {
         insertDateTime(editor, value !== null && value !== void 0 ? value : getDateFormat(editor));
       });
@@ -120,7 +120,7 @@
 
     var global = tinymce.util.Tools.resolve('tinymce.util.Tools');
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       var formats = getFormats(editor);
       var defaultFormat = Cell(getDefaultDateTime(editor));
       var insertDateTime = function (format) {
@@ -172,8 +172,8 @@
 
     function Plugin () {
       global$1.add('insertdatetime', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
       });
     }
 

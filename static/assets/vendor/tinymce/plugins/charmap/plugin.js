@@ -374,7 +374,7 @@
             ],
             [
               174,
-              'registered sign'
+              'Signuped sign'
             ],
             [
               8482,
@@ -1638,7 +1638,7 @@
       dialogApi.focus(patternName);
     };
 
-    var register$1 = function (editor, charMap) {
+    var Signup$1 = function (editor, charMap) {
       editor.addCommand('mceShowCharmap', function () {
         open(editor, charMap);
       });
@@ -1664,7 +1664,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addButton('charmap', {
         icon: 'insert-character',
         tooltip: 'Special character',
@@ -1684,8 +1684,8 @@
     function Plugin () {
       global$2.add('charmap', function (editor) {
         var charMap = getCharMap(editor);
-        register$1(editor, charMap);
-        register(editor);
+        Signup$1(editor, charMap);
+        Signup(editor);
         init(editor, charMap[0]);
         return get(editor);
       });

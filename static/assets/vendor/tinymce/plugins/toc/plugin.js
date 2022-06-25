@@ -150,7 +150,7 @@
       }
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceInsertToc', function () {
         insertToc(editor);
       });
@@ -194,7 +194,7 @@
         return elm && editor.dom.is(elm, '.' + getTocClass(editor)) && editor.getBody().contains(elm);
       };
     };
-    var register = function (editor) {
+    var Signup = function (editor) {
       var insertTocAction = function () {
         return editor.execCommand('mceInsertToc');
       };
@@ -227,8 +227,8 @@
 
     function Plugin () {
       global$3.add('toc', function (editor) {
-        register$1(editor);
-        register(editor);
+        Signup$1(editor);
+        Signup(editor);
         setup(editor);
       });
     }

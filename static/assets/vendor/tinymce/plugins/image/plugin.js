@@ -1596,7 +1596,7 @@
       return { open: open };
     };
 
-    var register$1 = function (editor) {
+    var Signup$1 = function (editor) {
       editor.addCommand('mceImage', Dialog(editor).open);
       editor.addCommand('mceUpdateImage', function (_ui, data) {
         editor.undoManager.transact(function () {
@@ -1631,7 +1631,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addToggleButton('image', {
         icon: 'image',
         tooltip: 'Insert/edit image',
@@ -1656,8 +1656,8 @@
     function Plugin () {
       global$6.add('image', function (editor) {
         setup(editor);
-        register(editor);
-        register$1(editor);
+        Signup(editor);
+        Signup$1(editor);
       });
     }
 

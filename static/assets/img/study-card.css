@@ -397,7 +397,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-course-categories,
 #fh5co-counter,
 #fh5co-course,
-#fh5co-register,
+#fh5co-Signup,
 #fh5co-pricing,
 #fh5co-testimonial,
 #fh5co-blog,
@@ -412,7 +412,7 @@ h1, h2, h3, h4, h5, h6, figure {
   #fh5co-course-categories,
   #fh5co-counter,
   #fh5co-course,
-  #fh5co-register,
+  #fh5co-Signup,
   #fh5co-pricing,
   #fh5co-testimonial,
   #fh5co-blog,
@@ -928,13 +928,13 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff !important;
 }
 
-#fh5co-register {
+#fh5co-Signup {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
 }
-#fh5co-register .overlay {
+#fh5co-Signup .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -943,10 +943,10 @@ h1, h2, h3, h4, h5, h6, figure {
   content: '';
   background: rgba(0, 0, 0, 0.5);
 }
-#fh5co-register h2, #fh5co-register h3, #fh5co-register p {
+#fh5co-Signup h2, #fh5co-Signup h3, #fh5co-Signup p {
   color: #fff;
 }
-#fh5co-register .btn-reg {
+#fh5co-Signup .btn-reg {
   background: transparent;
   border: 2px solid #fff;
   font-size: 12px;

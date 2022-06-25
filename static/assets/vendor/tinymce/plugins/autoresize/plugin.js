@@ -160,7 +160,7 @@
       }
     };
 
-    var register = function (editor, oldSize) {
+    var Signup = function (editor, oldSize) {
       editor.addCommand('mceAutoResize', function () {
         resize(editor, oldSize);
       });
@@ -173,7 +173,7 @@
         }
         if (!editor.inline) {
           var oldSize = Cell(0);
-          register(editor, oldSize);
+          Signup(editor, oldSize);
           setup(editor, oldSize);
         }
       });

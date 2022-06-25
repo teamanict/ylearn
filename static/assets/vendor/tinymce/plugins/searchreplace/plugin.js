@@ -1119,7 +1119,7 @@
       dialogApi.set(editor.windowManager.open(spec, { inline: 'toolbar' }));
     };
 
-    var register$1 = function (editor, currentSearchState) {
+    var Signup$1 = function (editor, currentSearchState) {
       editor.addCommand('SearchReplace', function () {
         open(editor, currentSearchState);
       });
@@ -1130,7 +1130,7 @@
         open(editor, currentSearchState);
       };
     };
-    var register = function (editor, currentSearchState) {
+    var Signup = function (editor, currentSearchState) {
       editor.ui.registry.addMenuItem('searchreplace', {
         text: 'Find and replace...',
         shortcut: 'Meta+F',
@@ -1155,8 +1155,8 @@
           wholeWord: false,
           inSelection: false
         });
-        register$1(editor, currentSearchState);
-        register(editor, currentSearchState);
+        Signup$1(editor, currentSearchState);
+        Signup(editor, currentSearchState);
         return get(editor, currentSearchState);
       });
     }

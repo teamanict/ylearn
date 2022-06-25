@@ -3605,7 +3605,7 @@
         return element.dom.innerText;
       }).join('');
     };
-    var registerEvents = function (editor, selections, actions) {
+    var SignupEvents = function (editor, selections, actions) {
       editor.on('BeforeGetContent', function (e) {
         var multiCellContext = function (cells) {
           e.preventDefault();
@@ -8618,7 +8618,7 @@
     var getSelectionStartCell = function (editor) {
       return getSelectionCell(getSelectionStart(editor), getIsRoot(editor));
     };
-    var registerCommands = function (editor, actions, cellSelection, selections, clipboard) {
+    var SignupCommands = function (editor, actions, cellSelection, selections, clipboard) {
       var isRoot = getIsRoot(editor);
       var eraseTable = function () {
         return getSelectionStartCellOrCaption(editor).each(function (cellOrCaption) {
@@ -8879,7 +8879,7 @@
       });
     };
 
-    var registerQueryCommands = function (editor, actions, selections) {
+    var SignupQueryCommands = function (editor, actions, selections) {
       var isRoot = getIsRoot(editor);
       var lookupOnSelection = function (action) {
         return getSelectionCell(getSelectionStart(editor)).bind(function (cell) {
@@ -8940,8 +8940,8 @@
       tablecellborderstyle: __assign({ styles: { borderStyle: '%value' } }, cellBase),
       tablecellborderwidth: __assign({ styles: { borderWidth: '%value' } }, cellBase)
     };
-    var registerFormats = function (editor) {
-      editor.formatter.register(cellFormats);
+    var SignupFormats = function (editor) {
+      editor.formatter.Signup(cellFormats);
     };
 
     var adt$5 = Adt.generate([
@@ -11480,16 +11480,16 @@
       var cellSelection = CellSelection(editor, resizeHandler.lazyResize, selectionTargets);
       var actions = TableActions(editor, cellSelection, resizeHandler.lazyWire);
       var clipboard = Clipboard();
-      registerCommands(editor, actions, cellSelection, selections, clipboard);
-      registerQueryCommands(editor, actions, selections);
-      registerEvents(editor, selections, actions);
+      SignupCommands(editor, actions, cellSelection, selections, clipboard);
+      SignupQueryCommands(editor, actions, selections);
+      SignupEvents(editor, selections, actions);
       addMenuItems(editor, selections, selectionTargets, clipboard);
       addButtons(editor, selections, selectionTargets, clipboard);
       addToolbars(editor);
       editor.on('PreInit', function () {
         editor.serializer.addTempAttr(ephemera.firstSelected);
         editor.serializer.addTempAttr(ephemera.lastSelected);
-        registerFormats(editor);
+        SignupFormats(editor);
       });
       if (hasTabNavigation(editor)) {
         editor.on('keydown', function (e) {

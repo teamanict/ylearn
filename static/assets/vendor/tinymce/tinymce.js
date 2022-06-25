@@ -8116,7 +8116,7 @@
 
     var create$7 = function () {
       var annotations = {};
-      var register = function (name, settings) {
+      var Signup = function (name, settings) {
         annotations[name] = {
           name: name,
           settings: settings
@@ -8128,7 +8128,7 @@
         });
       };
       return {
-        register: register,
+        Signup: Signup,
         lookup: lookup
       };
     };
@@ -10895,8 +10895,8 @@
       setup$m(editor, registry);
       var changes = setup$n(editor);
       return {
-        register: function (name, settings) {
-          registry.register(name, settings);
+        Signup: function (name, settings) {
+          registry.Signup(name, settings);
         },
         annotate: function (name, data) {
           registry.lookup(name).each(function (settings) {
@@ -12226,7 +12226,7 @@
     var isManualNodeChange = function (e) {
       return e.type === 'nodechange' && e.selectionChange;
     };
-    var registerPageMouseUp = function (editor, throttledStore) {
+    var SignupPageMouseUp = function (editor, throttledStore) {
       var mouseUpPage = function () {
         throttledStore.throttle();
       };
@@ -12235,22 +12235,22 @@
         DOMUtils.DOM.unbind(document, 'mouseup', mouseUpPage);
       });
     };
-    var registerFocusOut = function (editor) {
+    var SignupFocusOut = function (editor) {
       editor.on('focusout', function () {
         store(editor);
       });
     };
-    var registerMouseUp = function (editor, throttledStore) {
+    var SignupMouseUp = function (editor, throttledStore) {
       editor.on('mouseup touchend', function (_e) {
         throttledStore.throttle();
       });
     };
-    var registerEditorEvents = function (editor, throttledStore) {
+    var SignupEditorEvents = function (editor, throttledStore) {
       var browser = detect().browser;
       if (browser.isIE()) {
-        registerFocusOut(editor);
+        SignupFocusOut(editor);
       } else {
-        registerMouseUp(editor, throttledStore);
+        SignupMouseUp(editor, throttledStore);
       }
       editor.on('keyup NodeChange', function (e) {
         if (!isManualNodeChange(e)) {
@@ -12258,15 +12258,15 @@
         }
       });
     };
-    var register$3 = function (editor) {
+    var Signup$3 = function (editor) {
       var throttledStore = first(function () {
         store(editor);
       }, 0);
       editor.on('init', function () {
         if (editor.inline) {
-          registerPageMouseUp(editor, throttledStore);
+          SignupPageMouseUp(editor, throttledStore);
         }
-        registerEditorEvents(editor, throttledStore);
+        SignupEditorEvents(editor, throttledStore);
       });
       editor.on('remove', function () {
         throttledStore.cancel();
@@ -12305,9 +12305,9 @@
         return document.body;
       }
     };
-    var registerEvents$1 = function (editorManager, e) {
+    var SignupEvents$1 = function (editorManager, e) {
       var editor = e.editor;
-      register$3(editor);
+      Signup$3(editor);
       editor.on('focusin', function () {
         var focusedEditor = editorManager.focusedEditor;
         if (focusedEditor !== editor) {
@@ -12346,7 +12346,7 @@
         DOM$8.bind(document, 'focusin', documentFocusInHandler);
       }
     };
-    var unregisterDocumentEvents = function (editorManager, e) {
+    var unSignupDocumentEvents = function (editorManager, e) {
       if (editorManager.focusedEditor === e.editor) {
         editorManager.focusedEditor = null;
       }
@@ -12356,8 +12356,8 @@
       }
     };
     var setup$l = function (editorManager) {
-      editorManager.on('AddEditor', curry(registerEvents$1, editorManager));
-      editorManager.on('RemoveEditor', curry(unregisterDocumentEvents, editorManager));
+      editorManager.on('AddEditor', curry(SignupEvents$1, editorManager));
+      editorManager.on('RemoveEditor', curry(unSignupDocumentEvents, editorManager));
     };
 
     var getContentEditableHost = function (editor, node) {
@@ -16742,10 +16742,10 @@
     var hasVars = function (value) {
       return has$2(value, 'vars');
     };
-    var setup$j = function (registeredFormatListeners, editor) {
-      registeredFormatListeners.set({});
+    var setup$j = function (SignupedFormatListeners, editor) {
+      SignupedFormatListeners.set({});
       editor.on('NodeChange', function (e) {
-        updateAndFireChangeCallbacks(editor, e.element, registeredFormatListeners.get());
+        updateAndFireChangeCallbacks(editor, e.element, SignupedFormatListeners.get());
       });
       editor.on('FormatApply FormatRemove', function (e) {
         var element = Optional.from(e.node).map(function (nodeOrRange) {
@@ -16755,7 +16755,7 @@
         }).getOrThunk(function () {
           return fallbackElement(editor);
         });
-        updateAndFireChangeCallbacks(editor, element, registeredFormatListeners.get());
+        updateAndFireChangeCallbacks(editor, element, SignupedFormatListeners.get());
       });
     };
     var fallbackElement = function (editor) {
@@ -16785,9 +16785,9 @@
         return isElement$5(node) && !isBogus$2(node);
       });
     };
-    var updateAndFireChangeCallbacks = function (editor, elm, registeredCallbacks) {
+    var updateAndFireChangeCallbacks = function (editor, elm, SignupedCallbacks) {
       var parents = getParents(editor, elm);
-      each$j(registeredCallbacks, function (data, format) {
+      each$j(SignupedCallbacks, function (data, format) {
         var runIfChanged = function (spec) {
           var match = matchingNode(editor, parents, format, spec.similar, hasVars(spec) ? spec.vars : undefined);
           var isSet = match.isSome();
@@ -16818,8 +16818,8 @@
         each$k(data.withVars, runIfChanged);
       });
     };
-    var addListeners = function (editor, registeredFormatListeners, formats, callback, similar, vars) {
-      var formatChangeItems = registeredFormatListeners.get();
+    var addListeners = function (editor, SignupedFormatListeners, formats, callback, similar, vars) {
+      var formatChangeItems = SignupedFormatListeners.get();
       each$k(formats.split(','), function (format) {
         var group = get$9(formatChangeItems, format).getOrThunk(function () {
           var base = {
@@ -16857,10 +16857,10 @@
           });
         }
       });
-      registeredFormatListeners.set(formatChangeItems);
+      SignupedFormatListeners.set(formatChangeItems);
     };
-    var removeListeners = function (registeredFormatListeners, formats, callback) {
-      var formatChangeItems = registeredFormatListeners.get();
+    var removeListeners = function (SignupedFormatListeners, formats, callback) {
+      var formatChangeItems = SignupedFormatListeners.get();
       each$k(formats.split(','), function (format) {
         return get$9(formatChangeItems, format).each(function (group) {
           formatChangeItems[format] = {
@@ -16880,16 +16880,16 @@
           };
         });
       });
-      registeredFormatListeners.set(formatChangeItems);
+      SignupedFormatListeners.set(formatChangeItems);
     };
-    var formatChangedInternal = function (editor, registeredFormatListeners, formats, callback, similar, vars) {
-      if (registeredFormatListeners.get() === null) {
-        setup$j(registeredFormatListeners, editor);
+    var formatChangedInternal = function (editor, SignupedFormatListeners, formats, callback, similar, vars) {
+      if (SignupedFormatListeners.get() === null) {
+        setup$j(SignupedFormatListeners, editor);
       }
-      addListeners(editor, registeredFormatListeners, formats, callback, similar, vars);
+      addListeners(editor, SignupedFormatListeners, formats, callback, similar, vars);
       return {
         unbind: function () {
-          return removeListeners(registeredFormatListeners, formats, callback);
+          return removeListeners(SignupedFormatListeners, formats, callback);
         }
       };
     };
@@ -17691,8 +17691,8 @@
           toggle: function (name, vars, node) {
             return toggle(editor, name, vars, node);
           },
-          formatChanged: function (registeredFormatListeners, formats, callback, similar, vars) {
-            return formatChangedInternal(editor, registeredFormatListeners, formats, callback, similar, vars);
+          formatChanged: function (SignupedFormatListeners, formats, callback, similar, vars) {
+            return formatChangedInternal(editor, SignupedFormatListeners, formats, callback, similar, vars);
           }
         },
         editor: {
@@ -17924,8 +17924,8 @@
     var toggleFormat = function (editor, name, vars, node) {
       getRtcInstanceWithError(editor).formatter.toggle(name, vars, node);
     };
-    var formatChanged = function (editor, registeredFormatListeners, formats, callback, similar, vars) {
-      return getRtcInstanceWithError(editor).formatter.formatChanged(registeredFormatListeners, formats, callback, similar, vars);
+    var formatChanged = function (editor, SignupedFormatListeners, formats, callback, similar, vars) {
+      return getRtcInstanceWithError(editor).formatter.formatChanged(SignupedFormatListeners, formats, callback, similar, vars);
     };
     var getContent$2 = function (editor, args, format) {
       return getRtcInstanceWithFallback(editor).editor.getContent(args, format);
@@ -18463,7 +18463,7 @@
       }
       addStrikeToSpanFilter(domParser, styles);
     };
-    var register$2 = function (domParser, settings) {
+    var Signup$2 = function (domParser, settings) {
       if (settings.inline_styles) {
         addFilters(domParser, settings);
       }
@@ -18702,7 +18702,7 @@
         return true;
       }
     };
-    var registerBase64ImageFilter = function (parser, settings) {
+    var SignupBase64ImageFilter = function (parser, settings) {
       var blobCache = settings.blob_cache;
       var processImage = function (img) {
         var inputSrc = img.attr('src');
@@ -18730,7 +18730,7 @@
         });
       }
     };
-    var register$1 = function (parser, settings) {
+    var Signup$1 = function (parser, settings) {
       var schema = parser.schema;
       if (settings.remove_trailing_brs) {
         parser.addNodeFilter('br', function (nodes, _, args) {
@@ -18882,7 +18882,7 @@
           }
         });
       }
-      registerBase64ImageFilter(parser, settings);
+      SignupBase64ImageFilter(parser, settings);
     };
 
     var makeMap = Tools.makeMap, each$6 = Tools.each, explode$2 = Tools.explode, extend$4 = Tools.extend;
@@ -19371,12 +19371,12 @@
         filterNode: filterNode,
         parse: parse
       };
-      register$1(exports, settings);
-      register$2(exports, settings);
+      Signup$1(exports, settings);
+      Signup$2(exports, settings);
       return exports;
     };
 
-    var register = function (htmlParser, settings, dom) {
+    var Signup = function (htmlParser, settings, dom) {
       htmlParser.addAttributeFilter('data-mce-tabindex', function (nodes, name) {
         var i = nodes.length;
         while (i--) {
@@ -19602,7 +19602,7 @@
       settings.entity_encoding = settings.entity_encoding || 'named';
       settings.remove_trailing_brs = 'remove_trailing_brs' in settings ? settings.remove_trailing_brs : true;
       var htmlParser = DomParser(settings, schema);
-      register(htmlParser, settings, dom);
+      Signup(htmlParser, settings, dom);
       var serialize = function (node, parserArgs) {
         if (parserArgs === void 0) {
           parserArgs = {};
@@ -20139,7 +20139,7 @@
         });
       };
       var getNotifications = constant(notifications);
-      var registerEvents = function (editor) {
+      var SignupEvents = function (editor) {
         editor.on('SkinLoaded', function () {
           var serviceMessage = getServiceMessage(editor);
           if (serviceMessage) {
@@ -20160,7 +20160,7 @@
           });
         });
       };
-      registerEvents(editor);
+      SignupEvents(editor);
       return {
         open: open,
         close: close,
@@ -21209,11 +21209,11 @@
       var has = function (name) {
         return has$2(formats, name);
       };
-      var register = function (name, format) {
+      var Signup = function (name, format) {
         if (name) {
           if (!isString$1(name)) {
             each$j(name, function (format, name) {
-              register(name, format);
+              Signup(name, format);
             });
           } else {
             if (!isArray$1(format)) {
@@ -21241,19 +21241,19 @@
           }
         }
       };
-      var unregister = function (name) {
+      var unSignup = function (name) {
         if (name && formats[name]) {
           delete formats[name];
         }
         return formats;
       };
-      register(get(editor.dom));
-      register(getFormats(editor));
+      Signup(get(editor.dom));
+      Signup(getFormats(editor));
       return {
         get: get$1,
         has: has,
-        register: register,
-        unregister: unregister
+        Signup: Signup,
+        unSignup: unSignup
       };
     };
 
@@ -21512,8 +21512,8 @@
       return {
         get: formats.get,
         has: formats.has,
-        register: formats.register,
-        unregister: formats.unregister,
+        Signup: formats.Signup,
+        unSignup: formats.unSignup,
         apply: function (name, vars, node) {
           applyFormat(editor, name, vars, node);
         },
@@ -21556,7 +21556,7 @@
         return false;
       }
     };
-    var registerEvents = function (editor, undoManager, locks) {
+    var SignupEvents = function (editor, undoManager, locks) {
       var isFirstTypedCharacter = Cell(false);
       var addNonTypingUndoLevel = function (e) {
         setTyping(undoManager, false, locks);
@@ -21699,7 +21699,7 @@
         }
       };
       if (!isRtc(editor)) {
-        registerEvents(editor, undoManager, locks);
+        SignupEvents(editor, undoManager, locks);
       }
       addKeyboardShortcuts(editor);
       return undoManager;
@@ -25180,7 +25180,7 @@
       });
     };
 
-    var registerKeyboardOverrides = function (editor) {
+    var SignupKeyboardOverrides = function (editor) {
       var caret = setupSelectedState(editor);
       setup$c(editor);
       setup$b(editor, caret);
@@ -25194,7 +25194,7 @@
     };
     var setup$4 = function (editor) {
       if (!isRtc(editor)) {
-        return registerKeyboardOverrides(editor);
+        return SignupKeyboardOverrides(editor);
       } else {
         return Cell(null);
       }
@@ -25756,7 +25756,7 @@
           selection.scrollIntoView(blockCaretContainer);
         }
       };
-      var registerEvents = function () {
+      var SignupEvents = function () {
         editor.on('mouseup', function (e) {
           var range = getRange();
           if (range.collapsed && isXYInContentArea(editor, e.clientX, e.clientY)) {
@@ -26048,7 +26048,7 @@
         fakeCaret.hide();
       };
       if (Env.ceFalse && !isRtc(editor)) {
-        registerEvents();
+        SignupEvents();
       }
       return {
         showCaret: showCaret,
@@ -27911,7 +27911,7 @@
     var isReadOnly = function (editor) {
       return editor.readonly;
     };
-    var registerFilters = function (editor) {
+    var SignupFilters = function (editor) {
       editor.parser.addAttributeFilter('contenteditable', function (nodes) {
         if (isReadOnly(editor)) {
           each$k(nodes, function (node) {
@@ -27929,12 +27929,12 @@
       });
       editor.serializer.addTempAttr(internalContentEditableAttr);
     };
-    var registerReadOnlyContentFilters = function (editor) {
+    var SignupReadOnlyContentFilters = function (editor) {
       if (editor.serializer) {
-        registerFilters(editor);
+        SignupFilters(editor);
       } else {
         editor.on('PreInit', function () {
-          registerFilters(editor);
+          SignupFilters(editor);
         });
       }
     };
@@ -27965,7 +27965,7 @@
         });
       }
     };
-    var registerReadOnlySelectionBlockers = function (editor) {
+    var SignupReadOnlySelectionBlockers = function (editor) {
       editor.on('ShowCaret', function (e) {
         if (isReadOnly(editor)) {
           e.preventDefault();
@@ -28303,7 +28303,7 @@
         });
       }
     };
-    var registerMode = function (availableModes, mode, api) {
+    var SignupMode = function (availableModes, mode, api) {
       var _a;
       if (contains$3(defaultModes, mode)) {
         throw new Error('Cannot override default mode ' + mode);
@@ -28333,8 +28333,8 @@
           editorReadOnly: true
         }
       });
-      registerReadOnlyContentFilters(editor);
-      registerReadOnlySelectionBlockers(editor);
+      SignupReadOnlyContentFilters(editor);
+      SignupReadOnlySelectionBlockers(editor);
       return {
         isReadOnly: function () {
           return isReadOnly(editor);
@@ -28345,8 +28345,8 @@
         get: function () {
           return activeMode.get();
         },
-        register: function (mode, api) {
-          availableModes.set(registerMode(availableModes.get(), mode, api));
+        Signup: function (mode, api) {
+          availableModes.set(SignupMode(availableModes.get(), mode, api));
         }
       };
     };

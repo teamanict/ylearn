@@ -369,7 +369,7 @@
       });
     };
 
-    var register$1 = function (editor, headState) {
+    var Signup$1 = function (editor, headState) {
       editor.addCommand('mceFullPageProperties', function () {
         open(editor, headState);
       });
@@ -513,7 +513,7 @@
       });
     };
 
-    var register = function (editor) {
+    var Signup = function (editor) {
       editor.ui.registry.addButton('fullpage', {
         tooltip: 'Metadata and document properties',
         icon: 'document-properties',
@@ -533,8 +533,8 @@
     function Plugin () {
       global$4.add('fullpage', function (editor) {
         var headState = Cell(''), footState = Cell('');
-        register$1(editor, headState);
-        register(editor);
+        Signup$1(editor, headState);
+        Signup(editor);
         setup(editor, headState, footState);
       });
     }
