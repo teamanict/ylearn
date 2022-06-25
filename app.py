@@ -13,7 +13,6 @@ cur = con.cursor()
 
 # 1st Merge
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
