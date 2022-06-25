@@ -1,2 +1,3 @@
-from users import *
-from verify import *
+from resources.modules.users import *
+from resources.modules.verify import *
+

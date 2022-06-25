@@ -26,5 +26,4 @@ def login_(account_type=None, username=None, passkey=None):
                 
         #Account type not specified
          else:
-            return "Account type not specified"
-   
+            return "Account type not specified" 
