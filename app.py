@@ -12,53 +12,15 @@ con = sqlite3.connect('resources/databank/users/db.db3',
 con.row_factory = dict_factory
 cur = con.cursor()
 
-# 1st Merge
 
 @app.route('/')
 def index():
+    print(session)
     return render_template("index.html")
 
 @app.route('/a/<path>')
 def subpath(path):
     return subPathsOfA(path)
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@app.route('/loginpage')
-def loginpage():
-    return render_template('pages-Signup.html')
-
-@app.route('/courses')
-def courses():
-    return render_template('courses.html')
-
-
-@app.route('/pricing')
-def pricing():
-    return render_template('pricing.html')
-
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
-
-
-@app.route('/teacher')
-def teacher():
-    return render_template('teacher.html')
-
-'''@app.route("/")
-def index():
-    print(session)
-    return render_template('ylearn2/index.html')'''
-
 
 @app.route("/signupstudent")
 def signupstudent():
@@ -75,34 +37,16 @@ def verify():
     return verify_trans(con, cur, request.args.get('transaction_id'))
 
 
-@app.route("/signup", methods=["POST"])
+@app.route("/signup", methods=["GET","POST"])
 def signup():
-    # Get thew user submitted form data
-    username = request.form.get("email")
-    fullname = request.form.get("name")
-  #  email = request.form.get("email")
-    passkey = request.form.get("password")
-
-    #classid = request.form.get("class")
-    #dob = request.form.get("DOB")
-    # gender = request.form.get("gender")
-    # parentid = request.form.get("parentid") '''
-
-    # store data in database
-    cur.execute(f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "fwack.rod", "[]", "{passkey}");')
-
-    # #cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES'
-    #             f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
-
-    print(con.commit())
-    return "success"
+    return signup_(cur=cur, request=request)
 
 #cur.execute(''' ''')
 
-app.route('/login', methods=['GET', 'POST'])
-def login(username, passkey):
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     account_type = request.args.get('as'); username = request.form.get("username"); passkey  =  request.form.get("password")
-    return login_(account_type=account_type, username=username, passkey=passkey)
+    return login_(cur=cur, account_type=account_type, username=username, passkey=passkey)
 
 # flask debug mode
 if __name__ == "__main__":

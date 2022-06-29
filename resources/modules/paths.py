@@ -1,17 +1,18 @@
 from flask import *
 def subPathsOfA(path):
     if path == 'pricing':
-        return render_template('pricing.html')
-        #about.html
+        return send_file("templates/pricing.html")
+    #about.html
     elif path == 'about':
-        return render_template('about.html')
-        #contact.html
+        return send_file('templates/about.html')
+    #contact.html
     elif path == 'contact':
         return render_template('contact.html')
-        #courses.html
+    #courses.html
     elif path == 'courses':
         return render_template('courses.html')
-        #blog.html
+    #blog.html
     elif path == 'teacher':
         return render_template('teacher.html')
         #login.html
+    else: return "SOwi"
