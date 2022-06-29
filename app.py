@@ -1,7 +1,6 @@
 import sqlite3, datetime
 from flask import *
-
-# load models/verify.py
+# Load custom models
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
@@ -10,7 +9,7 @@ app.secret_key = "edutechhasasecretS"
 con = sqlite3.connect('resources/databank/users/db.db3',
                       check_same_thread=False)
 con.row_factory = dict_factory
-cur = con.cursor()
+cur = con.cursor() 
 
 
 @app.route('/')
@@ -40,8 +39,6 @@ def verify():
 @app.route("/signup", methods=["GET","POST"])
 def signup():
     return signup_(cur=cur, request=request)
-
-#cur.execute(''' ''')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
