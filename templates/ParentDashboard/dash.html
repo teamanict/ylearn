@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>YLearn</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!--Favicons -->
+  <link href="assets/img/default.png" rel="icon">
+  <link href="assets/img/default.png" rel="apple-touch-icon">
+
+  <!--Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!--Vendor CSS Files -->
+  <link href="static/dashboard_assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/dashboard_assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <!--Main CSS File -->
+  <link href="static/dashboard_assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="dash.html" class="logo d-flex align-items-center">
+        <img src="assets/img/default.png" alt="Image Not Supported.">
+        <span class="d-none d-lg-block">YLearn</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3"><!--Profile Nav-->
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{session['name']}}</span>
+          </a><!-- End Profile DropDown -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Subscription Status</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Enroll Child.html">
+          <i class="bi bi-plus-square"></i>
+          <span>Enroll Child</span>
+        </a>
+      </li><!-- End enroll page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Market.html">
+          <i class="bi bi-shop"></i>
+          <span>Market Place</span>
+        </a>
+      </li><!-- End enroll page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Subscription.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>Subscription</span>
+        </a>
+      </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="dash.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Child Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card child-card">
+                <div class="card-body">
+                  <h5 class="card-title">SAMPLE CHILD 2</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <img src="/assets/img/duck.jpg" width="100px" alt="Image is not Supported">
+                    </div>
+                    <div class="ps-3">
+                      <h6>Average: 90%</h6>
+                      <span class="text-success small pt-1 fw-bold">Comment:</span> <span class="text-muted small pt-2 ps-1">Good</span>
+                      <button class="btn-pending"></button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End child card -->
+             <!-- Child Card -->
+             <div class="col-xxl-4 col-md-6">
+              <div class="card info-card child-card">
+                <div class="card-body">
+                  <h5 class="card-title">SAMPLE CHILD 2</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <img src="/assets/img/dog.webp" width="100px" alt="Image is not Supported">
+                    </div>
+                    <div class="ps-3">
+                      <h6>Average: 80%</h6>
+                      <span class="text-success small pt-1 fw-bold">Comment:</span> <span class="text-muted small pt-2 ps-1">Quite Good</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End child card -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sample Child 1</h5>
+                <p>End of Term</p>
+                <!-- Small tables -->
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col-sm">#</th>
+                      <th scope="col-sm">Subject</th>
+                      <th scope="col-sm">Marks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mathematics</td>
+                      <td>90%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Science</td>
+                      <td>89%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>English</td>
+                      <td>97%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Social Studies</td>
+                      <td>94%</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End small tables -->
+  
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sample Child 2</h5>
+                <p>End of Term</p>
+                <!-- Small tables -->
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col-sm">#</th>
+                      <th scope="col-sm">Subject</th>
+                      <th scope="col-sm">Marks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mathematics</td>
+                      <td>78%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Science</td>
+                      <td>89%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>English</td>
+                      <td>92%</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Social Studies</td>
+                      <td>84%</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End small tables -->
+  
+              </div>
+            </div>
+            <!--Child Average Performance-->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sample Child 1</h5>
+                  <h6>This Graph shows the Average Performance of Sample Child 1 </h6>
+    
+                  <!-- Bar Chart -->
+                  <canvas id="barChart" style="max-height: 400px;"></canvas>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new Chart(document.querySelector('#barChart'), {
+                        type: 'bar',
+                        data: {
+                          labels: ['B.O.T', 'M.I.T', 'E.O.T'],
+                          datasets: [{
+                            label: 'Average Performance',
+                            data: [90, 87, 92],
+                            backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(255, 159, 64, 0.2)',
+                              'rgba(255, 205, 86, 0.2)'
+                            ],
+                            borderColor: [
+                              'rgb(255, 99, 132)',
+                              'rgb(255, 99, 132)',
+                              'rgb(255, 99, 132)'
+                            ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        }
+                      });
+                    });
+                  </script>
+                  <!-- End Bar CHart -->
+    
+                </div>
+              </div>
+            </div>
+             <!--Child Average Performance-->
+             <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sample Child 2</h5>
+                  <h6>This Graph shows the Average Performance of Sample Child 2</h6>
+    
+                  <!-- Bar Chart -->
+                  <canvas id="barChart2" style="max-height: 400px;"></canvas>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new Chart(document.querySelector('#barChart2'), {
+                        type: 'bar',
+                        data: {
+                          labels: ['B.O.T', 'M.I.T', 'E.O.T'],
+                          datasets: [{
+                            label: 'Average Performance',
+                            data: [78, 96, 80,],
+                            backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(255, 159, 64, 0.2)',
+                              'rgba(255, 205, 86, 0.2)'
+                            ],
+                            borderColor: [
+                              'rgb(255, 99, 132)',
+                              'rgb(255, 99, 132)',
+                              'rgb(255, 99, 132)'
+                            ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        }
+                      });
+                    });
+                  </script>
+                  <!-- End Bar CHart -->
+    
+                </div>
+              </div>
+            </div>
+    
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Class<span>/Overall Performance</span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: 'Sample Child 1',
+                          data: [92, 89, 87, 98, 88, 94, 76, 89, 91, 97, 93, 87],
+                        }, {
+                          name: 'Sample Child 2',
+                          data: [90, 80, 75, 92, 89, 52, 78, 84, 82, 78, 93, 92]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a',],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'months',
+                          categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                        },
+                      }).render();
+                    });
+                  </script>
+                  <!-- End Line Chart -->
+
+                </div>
+              </div>
+
+              </div>
+            </div><!-- End Reports -->
+    </section>
+
+  </main><!-- End #main -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/dashboard_assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="static/dashboard_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/dashboard_assets/vendor/chart.js/chart.min.js"></script>
+  <script src="static/dashboard_assets/vendor/echarts/echarts.min.js"></script>
+  <script src="static/dashboard_assets/vendor/quill/quill.min.js"></script>
+  <script src="static/dashboard_assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="static/dashboard_assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="static/dashboard_assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
