@@ -18,7 +18,11 @@ def subpath(path):
 @app.route('/dashboard')
 def dashboard():
     if 'user' in session:
+<<<<<<< HEAD
         return render_template("ParentDashboard/dash.html")
+=======
+        return render_template("Parentdashboard/dash.html")
+>>>>>>> 32c14ce81bc4cfb74fad3cee0d467de81b694a57
     else:
         return redirect(url_for('login'))
 
