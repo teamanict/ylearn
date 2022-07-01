@@ -36,7 +36,7 @@ def verify():
 
 @app.route("/signup", methods=["GET","POST"])
 def signup():
-    return signup_(cur=cur, request=request)
+    return signup_(request=request)
 
 #cur.execute(''' ''')
 
