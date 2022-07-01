@@ -1,4 +1,5 @@
 from flask import *
+import resources.modules.database as db
 def login(cur=None, account_type=None, username=None, passkey=None):
     #Return login forms
     if request.method == "GET":
@@ -10,22 +11,20 @@ def login(cur=None, account_type=None, username=None, passkey=None):
         #Parent Account
          if account_type == "parent":
             '''SQL LOGIN WITH USERNAME AND PASSWORD THEN FETCH ROWS FROM DATABASE'''
-            cur.execute(f'SELECT * FROM parents WHERE Username="{username}" AND Pass="{passkey}";')
-            user = cur.fetchall()
+            user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
-                print(user)
-                session['username'] = user[0]['Username']
-                session['name'] = user[0]['Name']
-                return render_template("/parent's dashboard/dash.html")
+                # Store Student info in session cookies
+                session['name'] = user[0]['Name']; session['username'] = user[0]['Username']
+                return redirect(url_for('dashboard') + '?for=parent')
             else:
                 return "fail"
         #Student Account
          elif account_type == "student":
-            cur.execute(f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
-            user = cur.fetchall()
+            user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
-                session['user'] = user[0]['Username']
-                return "success"
+                # Store Student info in session cookies
+                session['name'] = user[0]['Name']; session['username'] = user[0]['Username']
+                return redirect(url_for('dashboard') + '?for=student')
             else:
                 return "fail"
                 
@@ -48,8 +47,7 @@ def signup_(cur=None, request=None):
             # Get thew user submitted form data
             username = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
             # Store data in database
-            cur.execute(f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "fwack.rod", "[]", "{passkey}");')
-            print(con.commit())
+            db.runDBQuery(db.users_db, f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "fwack.rod", "[]", "{passkey}");')
             return "Success"
 
         #Student Account
@@ -62,8 +60,7 @@ def signup_(cur=None, request=None):
             # gender = request.form.get("gender")
             # parentid = request.form.get("parentid") 
 
-            cur.execute(f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
-            print(con.commit())
+            db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
             return "Success"
 
         #Account type not specified

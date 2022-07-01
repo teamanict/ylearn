@@ -39,7 +39,7 @@ def pay():
 
 @app.route('/verify')
 def verify():
-    return verify_trans(con, cur, request.args.get('transaction_id'))
+    return verify_trans(request.args.get('transaction_id'))
 
 
 @app.route("/signup", methods=["GET","POST"])

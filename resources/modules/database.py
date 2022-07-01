@@ -1,6 +1,6 @@
 import sqlite3, os
 
-# Dictionary Factory
+# Dictionary Factory to convert sqlite3.Row(tuple) to dictionary
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
@@ -8,11 +8,14 @@ def dict_factory(cursor, row):
     return d
 
 #Sql run query
-def runQuery(dbpath, query):
-    con = sqlite3.connect("C:/Users/Student/Desktop/Ylearn/resources/databank/db.db3")
+def runDBQuery(dbpath, query):
+    newdbpath = os.getcwd()+'/resources/databank/'+dbpath
+    con = sqlite3.connect(newdbpath)
     con.row_factory = dict_factory
     cur = con.cursor()
-    print(query)
     cur.execute(query)
     con.commit
     return cur.fetchall()
+
+#Paths to databases
+users_db = 'users/db.db3'
