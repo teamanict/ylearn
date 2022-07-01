@@ -35,16 +35,16 @@ def login_(account_type=None, username=None, passkey=None):
          else:
             return "Account type not specified" 
 
-def signup_(cur=None, request=None):
+def signup_(request=None):
     #Return signup forms
     if request.method == "GET": 
         return render_template("pages-register.html")
 
     #Signup user
     elif request.method == "POST":
-
+        account_type = request.form['as']
         #Parent Account
-         if account_type == "parent":
+        if account_type == "parent":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
             # Get thew user submitted form data
@@ -54,26 +54,28 @@ def signup_(cur=None, request=None):
             return "Success"
 
         #Student Account
-         elif account_type == "student":
+        elif account_type == "student":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
             # Get the form submitted data
-             classid = request.form.get("class")
-            # #dob = request.form.get("DOB")#
-            # gender = request.form.get("gender")
-            # parentid = request.form.get("parentid") 
-
-            db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
-            return "Success"
+             classid = request.form.get("class");
+             username = request.form.get("username"); 
+             passkey = request.form.get("password"); 
+             gender=request.form.get('gender')
+             dob = request.form.get("dob")
+             parentid = session[username] 
+             
+             db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
+             return "Success"
 
         #Account type not specified
-         else:
+        else:
             return "Account type not specified"
 
 # Student login from Parent's Dashboard
 def studentLogin_(request):
     # Get children registered under parent account
-    childrenUnderParent = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Username="{session.['username']}";''')[0]['Children']
+    childrenUnderParent = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Username="{session['username']}";''')[0]['Children']
     childrenUnderParent = json.loads(childrenUnderParent)
      
     # Find if child is registered under parent
