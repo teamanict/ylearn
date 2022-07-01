@@ -14,8 +14,19 @@ def subPathsOfA(path):
     #blog.html
     elif path == 'teacher':
         return render_template('Landing Website/teacher.html')
-        #login.html
-    # Signout
+    # Userprofile
+    elif path == 'userprofile':
+        return render_template('ParentDashboard/users-profile.html')
+    # Enroll child
+    elif path == 'enrollchild':
+        return render_template('ParentDashboard/Enroll child.html')
+    # Contact form
+    elif path == 'contactform':
+        return render_template('ParentDashboard/pages-contact.html')
+    # Subscription 
+    elif path == 'subscription':
+        return render_template('ParentDashboard/Subscription.html')
+        
     elif path == 'signout':
         session.clear()
         return redirect(url_for('index'))
