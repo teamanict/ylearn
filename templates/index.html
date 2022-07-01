@@ -3,242 +3,104 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>
-    YLearn
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="We give a better foundation for Education by providing quality Primary Education" />
-  <meta name="keywords" content="Primary Education, Quality, Education, Learn, Uganda, Namilyango College, Educate" />
-  <meta name="author" content="Namilyango College" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet" />
+  <title>YLearn</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
 
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="/static/animate.css" />
-  <!-- Icomoon Icon Fonts-->
-  <link rel="stylesheet" href="/static/icomoon.css" />
-  <!-- Bootstrap  -->
-  <link rel="stylesheet" href='/static/bootstrap.css' />
+  <!-- Favicon
+    <link href="img/favicon.ico" rel="icon" /> -->
 
-  <!-- Magnific Popup -->
-  <link rel="stylesheet" href='/static/magnific-popup.css' />
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet" />
 
-  <!-- Owl Carousel  -->
-  <link rel="stylesheet" href='{{url_for("static", filename="owl.carousel.min.css")}}' />
-  <link rel="stylesheet" href='{{url_for("static", filename="owl.theme.default.min.css")}}' />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Flexslider  -->
-  <link rel="stylesheet" href='{{url_for("static", filename="flexslider.css")}}' />
+  <!-- Flaticon Font -->
+  <link href="/static/lib/flaticon/font/flaticon.css" rel="stylesheet" />
 
-  <!-- Pricing -->
-  <link rel="stylesheet" href='{{url_for("static", filename="pricing.css")}}' />
+  <!-- Libraries Stylesheet -->
+  <link href="/static/lib/owlcarousel//static/dashboard_assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="/static/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
 
-  <!-- Theme style  -->
-  <link rel="stylesheet" href='{{url_for("static", filename="style.css")}}' />
-
-  <!-- Modernizr JS -->
-  <script src='{{url_for("static", filename="modernizr-2.6.2.min.js")}}'></script>
-  <script src='{{url_for("static", filename="respond.min.js")}}'></script>
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="/static/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="fh5co-loader"></div>
-
-  <div style="overflow: hidden;" id="page">
-    <nav class="fh5co-nav" role="navigation">
-      <div class="top">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 text-right">
-              <p class="site"><a href="https://namilyangocollege.sc.ug/">namilyangocollege.sc.ug/</a></p>
-              <p class="num">Call: +256 752975027</p>
-              <!-- <ul class="fh5co-social">
-                  <li>
-                    <a href="#"><i class="icon-facebook2"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="icon-twitter2"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="icon-dribbble2"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="icon-github"></i></a>
-                  </li>
-                </ul> -->
-            </div>
-          </div>
+  <!-- Navbar Start -->
+  <div class="container-fluid bg-light position-relative shadow">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+      <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px">
+        <i class="flaticon-043-teddy-bear"></i>
+        <span class="text-primary">YLearn</span>
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav font-weight-bold mx-auto py-0">
+          <a href="/" class="nav-item nav-link active">Home</a>
+          <a href="/a/about" class="nav-item nav-link">About</a>
+          <a href="/a/teacher" class="nav-item nav-link">Teachers</a>
+          <a href="/a/contact" class="nav-item nav-link">Contact</a>
         </div>
+        <a href="/login?as=parent" class="btn btn-primary px-4">Login</a>
+        <a href="/signup?as=parent" class="btn btn-primary px-4">Register As Parent</a>
       </div>
-      <div>
-        <div class="row">
-
-          <div class="col-xs-10 text-left menu-1">
-            <div id="fh5co-logo">
-              <a href="/"><span>YLearn</span></a>
-            </div>
-            <ul class="text-right">
-              <li><a class="active" href="/">Home</a></li>
-              <li><a href="/a/teacher">Teacher</a></li>
-              <li><a href="/a/about">About</a></li>
-              <li><a href="/a/pricing">Pricing</a></li>
-              <li><a href="/a/contact">Contact</a></li>
-              <button style="border-radius: 10px; " class="btn-primary">
-                <a style='color: white;' href="/login"><span>Login</span></a>
-              </button>
-              <button style="border-radius: 10px; " class="btn-primary">
-                <a style='color: white;' href="/signupstudent"><span>Signup As Parent</span></a>
-              </button>
-            </ul><br>
-          </div>
-        </div>
-      </div>
+    </nav>
   </div>
-  </nav>
+  <!-- Navbar End -->
 
-  <aside id="fh5co-hero">
-    <div class="flexslider">
-      <ul class="slides">
-        <li
-          style="background-image: url(https://images.squarespace-cdn.com/content/v1/584ae135440243178f9f5c9b/1481536995771-9I91PLJQRNGH55OL9BEC/IMG_2605.jpg?format=1500w)">
-          <div class="overlay-gradient"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>
-                    The Roots of Education are Bitter, But the Fruit is
-                    Sweet
-                  </h1>
-                  <h2>
-                    Brought to you by
-                    <a href="https://namilyangocollege.sc.ug/" target="_blank">Namilyango College</a>
-                  </h2>
-                  <p>
-                    <a class="btn btn-primary btn-lg" href="#">Start Learning Now!</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          style="background-image: url(https://assets.weforum.org/article/image/large_xgbsUVfGHT6nMT3nwDI8edw3CbTdYJnxF1yI6o32Ey4.jpg_large)">
-          <div class="overlay-gradient"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>
-                    The Great Aim of Education is not Knowledge, But Action
-                  </h1>
-                  <h2>
-                    Brought to you by
-                    <a href="https://namilyangocollege.sc.ug/" target="_blank">Namilyango College</a>
-                  </h2>
-                  <p>
-                    <a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(https://www.africanvibes.com/wp-content/uploads/2021/05/images-2.jpeg)">
-          <div class="overlay-gradient"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                <div class="slider-text-inner">
-                  <h1>We Help You to Learn New Things</h1>
-                  <h2>
-                    Brought to you by
-                    <a href="https://namilyangocollege.sc.ug/" target="_blank">Namilyango College</a>
-                  </h2>
-                  <p>
-                    <a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </aside>
-
-  <br> <br>
-
-  <div id="fh5co-counter" class="fh5co-counters" style="background: royalblue;" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row">
-            <div class="col-md-3 col-sm-6 text-center animate-box">
-              <span class="icon"><i class="icon-world"></i></span>
-              <span class="fh5co-counter js-counter" data-from="0" data-to="0" data-speed="5000"
-                data-refresh-interval="50"></span>
-              <span class="fh5co-counter-label">Foreign Followers</span>
-            </div>
-            <div class="col-md-3 col-sm-6 text-center animate-box">
-              <span class="icon"><i class="icon-study"></i></span>
-              <span class="fh5co-counter js-counter" data-from="0" data-to="0" data-speed="5000"
-                data-refresh-interval="50"></span>
-              <span class="fh5co-counter-label">Students Enrolled</span>
-            </div>
-            <div class="col-md-3 col-sm-6 text-center animate-box">
-              <span class="icon"><i class="icon-bulb"></i></span>
-              <span class="fh5co-counter js-counter" data-from="0" data-to="0" data-speed="5000"
-                data-refresh-interval="50"></span>
-              <span class="fh5co-counter-label">Classes Complete</span>
-            </div>
-            <div class="col-md-3 col-sm-6 text-center animate-box">
-              <span class="icon"><i class="icon-head"></i></span>
-              <span class="fh5co-counter js-counter" data-from="0" data-to="0" data-speed="5000"
-                data-refresh-interval="50"></span>
-              <span class="fh5co-counter-label">Certified Teachers</span>
-            </div>
-          </div>
-        </div>
+  <!-- Header Start -->
+  <br>
+  <div class="container-fluid bg-primary px-10 px-md-5 mb-5">
+    <div class="row align-items-center px-3">
+      <div class="col-lg-6 text-center text-lg-left">
+        <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
+        <h1 class="display-3 font-weight-bold text-white">
+          New Approach to Kids Education
+        </h1>
+        <p class="text-white mb-4">
+          We look at making education possible for Everyone everywhere in the country by making it mobile.
+          Primary Education is one of the foundations of a child's education and therefore must have Quality which we
+          provide.
+        </p>
+        <a href="//a/about" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
       </div>
+      <div class="col-lg-6 text-center text-lg-right">
+        <img class="img-fluid mt-5" src="/static/img/childwithtablet.png" alt="" />
+      </div><br><br>
     </div>
   </div>
+  <!-- Header End -->
 
-  <div id="fh5co-course">
-    <div class="container">
-      <div class="row animate-box">
-        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-          <h2>What Our Platform Offers</h2>
-          <p>
-            We look at making the best quality primary Education available to any one who needs it.
-          </p>
-        </div>
-      </div>
+  <!-- Facilities Start -->
+  <div class="container-fluid pt-5">
+    <div class="container pb-3">
       <div class="row">
-        <div class="col-md-6 animate-box">
-          <div class="course">
-            <a href="#" class="course-img"
-              style="background-image: url(https://png.pngtree.com/png-clipart/20210310/ourlarge/pngtree-math-clipart-cartoon-math-symbols-png-image_2995993.jpg)">
-            </a>
-            <div class="desc">
-              <h3><a href="#">Mathematics</a></h3>
-              <p>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-bg border-top rounded mb-4"
+            style="padding: 30px; height: 315px; box-shadow: 0px 0px 8px black;">
+            <img src="/static/img/mathematics.png" height="100px" width="auto" alt="">
+            <div class="pl-4">
+              <h4>Mathematics or Numeracy</h4>
+              <p class="m-0">
                 Mathematics is an essential in a child's life and that is why the YLearn platform offers the best
                 mathematics studies to the pupils enrolled in on the platform.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 animate-box">
-          <div class="course">
-            <a href="#" class="course-img"
-              style="background-image: url(https://media.istockphoto.com/vectors/children-having-fun-with-earth-vector-id1178800764?k=20&m=1178800764&s=612x612&w=0&h=WwcQQGYkh6W4p9tGGX3n8OW4zMQPN_0EwiateGstkzQ=)">
-            </a>
-            <div class="desc">
-              <h3><a href="#">Social Studies</a></h3>
-              <p>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-bg border-top rounded mb-4"
+            style="padding: 30px; height: 315px; box-shadow: 0px 0px 8px black;">
+            <img src="/static/img/world-book-day.png" height="75px" width="auto" alt="">
+            <div class="pl-4">
+              <h4>Social Studies</h4>
+              <p class="m-0">
                 With our mode of teaching and well qualified teachers,
                 A pupil will be able to apply the social studies they learn in
                 real life situations such as studying different environments on their own.
@@ -246,265 +108,427 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 animate-box">
-          <div class="course">
-            <a href="#" class="course-img"
-              style="background-image: url(https://media.istockphoto.com/vectors/little-students-doing-chemical-experiment-vector-id1179433703?k=20&m=1179433703&s=612x612&w=0&h=IAN6INs1gRDSbb5ZgfdxcRPL0m_tjf-mzaeYUy16-lU=)">
-            </a>
-            <div class="desc">
-              <h3><a href="#">Science and Technology</a></h3>
-              <p>
-                Dignissimos asperiores vitae velit veniam totam fuga
-                molestias accusamus alias autem provident. Odit ab aliquam
-                dolor eius molestias accusamus alias autem provident. Odit
-                ab aliquam dolor eius.
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-bg border-top rounded mb-4"
+            style="padding: 30px; height: 315px; box-shadow: 0px 0px 8px black;">
+            <img src="/static/img/paper-crafts.png" height="100px" width="auto" alt="">
+            <div class="pl-4">
+              <h4>Arts and Crafts</h4>
+              <p class="m-0">
+                Art makes life more colorful and make the word more peaceful and interesting. Therefore our platform
+                provides art studies and for the future generation to continue on the phenomenon of art.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 animate-box">
-          <div class="course">
-
-            <div class="desc">
-              <h3><a href="#">Languages</a></h3>
-              <p>
-                Dignissimos asperiores vitae velit veniam totam fuga
-                molestias accusamus alias autem provident. Odit ab aliquam
-                dolor eius molestias accusamus alias autem provident. Odit
-                ab aliquam dolor eius.
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-bg border-top rounded mb-4"
+            style="padding: 30px; height: 315px; box-shadow: 0px 0px 8px black;">
+            <img src="/static/img/innovation.png" height="100px" width="auto" alt="">
+            <div class="pl-4">
+              <h4>Sciences and Technology</h4>
+              <p class="m-0">
+                Art makes life more colorful and make the word more peaceful and interesting. Therefore our platform
+                provides art studies and for the future generation to continue on the phenomenon of art.
               </p>
             </div>
-            <a href="#" class="course-img"
-              style="background-image: url(https://previews.123rf.com/images/masastarus/masastarus1912/masastarus191200020/135441871-group-of-cartoon-kids-talking-in-different-languages-vector-isoated-illustration.jpg)">
-            </a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="fh5co-testimonial" style="background-image: url(images/school.jpg)">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row animate-box">
-        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-          <h2><span>Testimonials</span></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row animate-box">
-            <div class="owl-carousel owl-carousel-fullwidth">
-              <div class="item">
-                <div class="testimony-slide active text-center">
-                  <div class="user" style="background-image: url(images/person1.jpg)"></div>
-                  <span>Mary Walker<br /><small>Students</small></span>
-                  <blockquote>
-                    <p>
-                      &ldquo;Far far away, behind the word mountains, far
-                      from the countries Vokalia and Consonantia, there live
-                      the blind texts. Separated they live in Bookmarksgrove
-                      right at the coast of the Semantics, a large language
-                      ocean.&rdquo;
-                    </p>
-                  </blockquote>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-slide active text-center">
-                  <div class="user" style="background-image: url(images/person2.jpg)"></div>
-                  <span>Mike Smith<br /><small>Students</small></span>
-                  <blockquote>
-                    <p>
-                      &ldquo;Separated they live in Bookmarksgrove right at
-                      the coast of the Semantics, a large language
-                      ocean.&rdquo;
-                    </p>
-                  </blockquote>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-slide active text-center">
-                  <div class="user" style="background-image: url(images/person3.jpg)"></div>
-                  <span>Rita Jones<br /><small>Teacher</small></span>
-                  <blockquote>
-                    <p>
-                      &ldquo;Far from the countries Vokalia and Consonantia,
-                      there live the blind texts. Separated they live in
-                      Bookmarksgrove right at the coast of the Semantics, a
-                      large language ocean.&rdquo;
-                    </p>
-                  </blockquote>
-                </div>
-              </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-bg border-top rounded mb-4"
+            style="padding: 30px; height: 315px; box-shadow: 0px 0px 8px black;">
+            <img src="/static/img/languages.png" height="100px" width="auto" alt="">
+            <div class="pl-4">
+              <h4>Language</h4>
+              <p class="m-0">
+                Art makes life more colorful and make the word more peaceful and interesting. Therefore our platform
+                provides art studies and for the future generation to continue on the phenomenon of art.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="fh5co-pricing" class="fh5co-bg-section">
+  <!-- Facilities Start -->
+
+  <!-- About Start -->
+  <div class="container-fluid py-5">
     <div class="container">
-      <div class="row animate-box">
-        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-          <h2>Plan &amp; Pricing</h2>
-          <p>
-            Dignissimos asperiores vitae velit veniam totam fuga molestias
-            accusamus alias autem provident. Odit ab aliquam dolor eius.
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <img class="img-fluid rounded mb-5 mb-lg-0" src="/static/img/profile.png" alt="" />
+        </div>
+        <div class="col-lg-7">
+          <p class="section-title pr-5">
+            <span class="pr-2">Learn About Us</span>
           </p>
+          <h1 class="mb-4">Best School For Your Kids</h1>
+          <p>
+            Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
+            dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+            Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+            dolor
+          </p>
+          <div class="row pt-2 pb-4">
+            <div class="col-6 col-md-4">
+              <img class="img-fluid rounded" src="/static/img/TabAfrica.jpg" alt="Image Not Support" />
+            </div>
+            <div class="col-6 col-md-8">
+              <ul class="list-inline m-0">
+                <li class="py-2 border-top border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i>Labore eos amet
+                  dolor amet diam
+                </li>
+                <li class="py-2 border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i>Etsea et sit
+                  dolor amet ipsum
+                </li>
+                <li class="py-2 border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i>Diam dolor diam
+                  elitripsum vero.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a href="" class="btn btn-primary mt-2 py-2 px-4">Learn More</a>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- About End -->
+
+  <!-- Class Start -->
+  <div class="container-fluid pt-5">
+    <div class="container">
+      <div class="text-center pb-2">
+        <p class="section-title px-5">
+          <span class="px-2">Popular Classes</span>
+        </p>
+        <h1 class="mb-4">Classes for Your Kids</h1>
       </div>
       <div class="row">
-        <div class="pricing pricing--rabten">
-          <div class="col-md-4 animate-box">
-            <div class="pricing__item">
-              <div class="wrap-price">
-                <!-- <div class="icon icon-user2"></div> -->
-                <h3 class="pricing__title">Basic</h3>
-                <!-- <p class="pricing__sentence">Single user license</p> -->
-              </div>
-              <div class="pricing__price">
-                <span class="pricing__anim pricing__anim--1">
-                  <span class="pricing__currency">Shs.</span>20000
-                </span>
-                <span class="pricing__anim pricing__anim--2">
-                  <span class="pricing__period">per Semester</span>
-                </span>
-              </div>
-              <div class="wrap-price">
-                <ul class="pricing__feature-list">
-                  <li class="pricing__feature">Equivalent to 3 months</li>
-                  <li class="pricing__feature">Limited Content</li>
-                  <li class="pricing__feature">100 Lessons</li>
-                  <li class="pricing__feature">No Live Teacher Sessions</li>
-                  <li class="pricing__feature">No practice activities</li>
-                  <li class="pricing__feature">No Ebook</li>
-                  <li class="pricing__feature">Limited Signuped User</li>
-                </ul>
-                <button class="pricing__action">Choose plan</button>
-              </div>
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-lg-5" src="/static/img/Teacher.jpg" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Primary Three</h4>
+              <p class="card-text">
+                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
+                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
             </div>
           </div>
-          <div class="col-md-4 animate-box">
-            <div class="pricing__item">
-              <div class="wrap-price">
-                <!-- <div class="icon icon-store"></div> -->
-                <h3 class="pricing__title">Medium</h3>
-                <!-- <p class="pricing__sentence">Up to 5 users</p> -->
-              </div>
-              <div class="pricing__price">
-                <span class="pricing__anim pricing__anim--1">
-                  <span class="pricing__currency">Shs.</span>50000
-                </span>
-                <span class="pricing__anim pricing__anim--2">
-                  <span class="pricing__period">per Semester</span>
-                </span>
-              </div>
-              <div class="wrap-price">
-                <ul class="pricing__feature-list">
-                  <li class="pricing__feature">Equivalent to 3 Months</li>
-                  <li class="pricing__feature">Limited Content</li>
-                  <li class="pricing__feature">300+ Lessons</li>
-                  <li class="pricing__feature">No Live Teacher Sessions</li>
-                  <li class="pricing__feature">View Only Ebook</li>
-                  <li class="pricing__feature">Activities</li>
-                  <li class="pricing__feature">
-                    Unlimited Signuped User
-                  </li>
-                </ul>
-                <button class="pricing__action">Choose plan</button>
-              </div>
+        </div>
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-1" src="/static/img/English.avif" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Language Learning</h4>
+              <p class="card-text">
+                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
+                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
             </div>
           </div>
-          <div class="col-md-4 animate-box">
-            <div class="pricing__item">
-              <div class="wrap-price">
-                <!-- <div class="icon icon-home2"></div> -->
-                <h3 class="pricing__title">Max</h3>
-                <!-- <p class="pricing__sentence">Unlimited users</p> -->
+        </div>
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-2" src="/static/img/Science teach.jpg" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Basic Science</h4>
+              <p class="card-text">
+                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
+                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <div class="row border-bottom">
+                <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
               </div>
-              <div class="pricing__price">
-                <span class="pricing__anim pricing__anim--1">
-                  <span class="pricing__currency">Shs.</span>100000
-                </span>
-                <span class="pricing__anim pricing__anim--2">
-                  <span class="pricing__period">per Semester</span>
-                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Class End -->
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-5 mb-lg-0">
+            <p class="section-title pr-5">
+              <span class="pr-2">Contact Us</span>
+            </p>
+            <h1 class="mb-4">Tell Us Something</h1>
+            <p>
+              Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
+              dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+              Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+              dolor
+            </p>
+            <ul class="list-inline m-0">
+              <li class="py-2">
+                <i class="fa fa-check text-success mr-3"></i>Labore eos amet
+                dolor amet diam
+              </li>
+              <li class="py-2">
+                <i class="fa fa-check text-success mr-3"></i>Etsea et sit dolor
+                amet ipsum
+              </li>
+              <li class="py-2">
+                <i class="fa fa-check text-success mr-3"></i>Diam dolor diam
+                elitripsum vero.
+              </li>
+            </ul>
+            <a href="" class="btn btn-primary mt-4 py-2 px-4">Contact</a>
+          </div>
+          <div class="col-lg-5">
+            <div class="card border-0">
+              <div class="card-header bg-secondary text-center p-4">
+                <h1 class="text-white m-0">Contact Us</h1>
               </div>
-              <div class="wrap-price">
-                <ul class="pricing__feature-list">
-                  <li class="pricing__feature">Equivalent to 3 months</li>
-                  <li class="pricing__feature">Unlimited All Courses</li>
-                  <li class="pricing__feature">
-                    7000+ Lessons &amp; Growing
-                  </li>
-                  <li class="pricing__feature">Free Supporter</li>
-                  <li class="pricing__feature">Free Ebook Downloads</li>
-                  <li class="pricing__feature">Access to Activities</li>
-                  <li class="pricing__feature">
-                    Unlimited Signuped User
-                  </li>
-                </ul>
-                <button class="pricing__action">Choose plan</button>
+              <div class="card-body rounded-bottom bg-primary p-5">
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control border-0 p-4" placeholder="Your Email"
+                      required="required" />
+                  </div>
+                  <div class="form-group">
+                    <textarea name="message" id="message" cols="30" rows="10" required placeholder="Message"></textarea>
+                  </div>
+                  <div>
+                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-  <footer id="fh5co-footer" role="contentinfo" style="background-image: url(images/img_bg_4.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row row-pb-md">
-        <div class="col-md-3 fh5co-widget">
-          <h3>About Primary Education</h3>
-          <p>One of the biggest problems we face in Uganda is accessability of Primary Education where you find
-            9,629,931 pupils are enrolled in primary but only about 6 million manage to finish. So as an organisation we
-            should make the services of education accessible from any where as long as you have n internet connection.
-            And plus the education is at low costs where you would pay 1 million shillings you can just pay a tenth of
-            it.</p>
-        </div>
+    <!-- Registration End -->
 
-        <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
-          <h3>Join us</h3>
-          <ul class="fh5co-footer-links">
-            <li><a href="#">Become a Teacher</a></li>
-          </ul>
+    <!-- Team Start -->
+    <div class="container-fluid pt-5">
+      <div class="container">
+        <div class="text-center pb-2">
+          <p class="section-title px-5">
+            <span class="px-2">Our Teachers</span>
+          </p>
+          <h1 class="mb-4">Meet Our Teachers</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+              <img class="img-fluid w-100 h-100" src="/static/img/Science teacher.jpg" alt="" />
+              <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <h4>Julia Smith</h4>
+            <i>Science Teacher</i>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-5" style="border-radius: 100%">
+              <img class="img-fluid w-100" src="/static/img/English Teacher.jpg" alt="" />
+              <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <h4>Nakabwe Mary</h4>
+            <i>Language Teacher</i>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+              <img class="img-fluid w-100" src="/static/img/music.png" alt="" />
+              <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <h4>Mollie Ross</h4>
+            <i>Dance Teacher</i>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+              <img class="img-fluid w-100" src="/static/img/math.jpg" alt="" />
+              <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <h4>Donald John</h4>
+            <i>Mathematics Teacher</i>
+          </div>
         </div>
       </div>
     </div>
-  </footer>
-  </div>
+    <!-- Team End -->
 
-  <div class="gototop js-top">
-    <a href="#header" class="js-gotop"><i class="icon-arrow-up"></i></a>
-  </div>
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+      <div class="container p-0">
+        <div class="text-center pb-2">
+          <p class="section-title px-5">
+            <span class="px-2">Testimonial</span>
+          </p>
+          <h1 class="mb-4">What Parents Say!</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+          <div class="testimonial-item px-3">
+            <div class="bg-light shadow-sm rounded mb-4 p-4">
+              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
+              eirmod clita lorem. Dolor tempor ipsum clita
+            </div>
+          </div>
+          <div class="testimonial-item px-3">
+            <div class="bg-light shadow-sm rounded mb-4 p-4">
+              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
+              eirmod clita lorem. Dolor tempor ipsum clita
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Testimonial End -->
 
-  <!-- jQuery -->
-  <script src='/static/jquery.min.js'></script>
-  <!-- jQuery Easing -->
-  <script src=/static/jquery.easing.1.3.js'></script>
-  <!-- Bootstrap -->
-  <script src='/static/bootstrap.min.js'></script>
-  <!-- Waypoints -->
-  <script src='/static/jquery.waypoints.min.js'></script>
-  <!-- Stellar Parallax -->
-  <script src='/static/jquery.stellar.min.js'></script>
-  <!-- Carousel -->
-  <script src='{{url_for("static", filename="owl.carousel.min.js")}}'></script>
-  <!-- Flexslider -->
-  <script src='{{url_for("static", filename="jquery.flexslider-min.js")}}'></script>
-  <!-- countTo -->
-  <script src='{{url_for("static", filename="jquery.countTo.js")}}'></script>
-  <!-- Magnific Popup -->
-  <script src='{{url_for("static", filename="jquery.magnific-popup.min.js")}}'></script>
-  <script src='{{url_for("static", filename="magnific-popup-options.js")}}'></script>
-  <!-- Count Down -->
-  <script src='{{url_for("static", filename="simplyCountdown.js")}}'></script>
-  <!-- Main -->
-  <script src='{{url_for("static", filename="main.js")}}'></script>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+      <div class="row pt-5">
+        <div class="col-lg-3 col-md-6 mb-5">
+          <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
+            style="font-size: 40px; line-height: 40px">
+            <i class="flaticon-043-teddy-bear"></i>
+            <span class="text-white">YLearn</span>
+          </a>
+          <p>
+            Labore dolor amet ipsum ea, erat sit ipsum duo eos. Volup amet ea
+            dolor et magna dolor, elitr rebum duo est sed diam elitr. Stet elitr
+            stet diam duo eos rebum ipsum diam ipsum elitr.
+          </p>
+          <div class="d-flex justify-content-start mt-4">
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
+              href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
+              href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
+              href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
+              href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+          <h3 class="text-primary mb-4">Get In Touch</h3>
+          <div class="d-flex">
+            <h4 class="fa fa-map-marker-alt text-primary"></h4>
+            <div class="pl-3">
+              <h5 class="text-white">Address</h5>
+              <p>Seeta, Namilyango Hill</p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <h4 class="fa fa-envelope text-primary"></h4>
+            <div class="pl-3">
+              <h5 class="text-white">Email</h5>
+              <p>namicoll@starcom.com.ug</p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <h4 class="fa fa-phone-alt text-primary"></h4>
+            <div class="pl-3">
+              <h5 class="text-white">Phone</h5>
+              <p>+256 75 2975027</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+          <h3 class="text-primary mb-4">Quick Links</h3>
+          <div class="d-flex flex-column justify-content-start">
+            <a class="text-white mb-2" href="/"
+              ><i class="fa fa-angle-right mr-2"></i>Home</a
+            >
+            <a class="text-white mb-2" href="/a/about"
+              ><i class="fa fa-angle-right mr-2"></i>About Us</a
+            >
+            <a class="text-white mb-2" href="/a/teacher"
+              ><i class="fa fa-angle-right mr-2"></i>Our Teachers</a
+            >
+            <a class="text-white" href="/a/contact"
+              ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
+            >
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+          <h3 class="text-primary mb-4">Newsletter</h3>
+          <form action="">
+            <div class="form-group">
+              <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control border-0 py-4" placeholder="Your Email" required="required" />
+            </div>
+            <div>
+              <button class="btn btn-primary btn-block border-0 py-3" type="submit">
+                Submit Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/static/lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
 </body>
 
 </html>
