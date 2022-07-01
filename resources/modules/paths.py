@@ -15,4 +15,8 @@ def subPathsOfA(path):
     elif path == 'teacher':
         return render_template('Landing Website/teacher.html')
         #login.html
+    # Signout
+    elif path == 'signout':
+        session.clear()
+        return redirect(url_for('index'))
     else: return "SOwi"

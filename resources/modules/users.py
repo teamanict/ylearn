@@ -14,10 +14,10 @@ def login_(account_type=None, username=None, passkey=None):
         #Parent Account
          if account_type == "parent":
             '''SQL LOGIN WITH USERNAME AND PASSWORD THEN FETCH ROWS FROM DATABASE'''
-            user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Username="{username}" AND Pass="{passkey}";')
+            user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Email="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Email']
                 return redirect(url_for('dashboard') + '?for=parent')
             else:
                 return "fail"
