@@ -1,6 +1,9 @@
+#%%
 from flask import *
 import resources.modules.database as db
-def login(cur=None, account_type=None, username=None, passkey=None):
+#%%
+
+def login_(account_type=None, username=None, passkey=None):
     #Return login forms
     if request.method == "GET":
         return render_template("/landing website/pages-login.html")
@@ -14,7 +17,7 @@ def login(cur=None, account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['username'] = user[0]['Username']
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']
                 return redirect(url_for('dashboard') + '?for=parent')
             else:
                 return "fail"
@@ -23,11 +26,11 @@ def login(cur=None, account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['username'] = user[0]['Username']
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']
                 return redirect(url_for('dashboard') + '?for=student')
             else:
                 return "fail"
-                
+
         #Account type not specified
          else:
             return "Account type not specified" 
@@ -45,17 +48,17 @@ def signup_(cur=None, request=None):
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
             # Get thew user submitted form data
-            username = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
+            email = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
             # Store data in database
-            db.runDBQuery(db.users_db, f'INSERT INTO parents ("Username", "Name", "Email", "Children", "Pass") VALUES ("{username}","{fullname}", "fwack.rod", "[]", "{passkey}");')
+            db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')
             return "Success"
 
         #Student Account
          elif account_type == "student":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
-            # Get thew user submitted form data
-            #classid = request.form.get("class")
+            # Get the form submitted data
+             classid = request.form.get("class")
             # #dob = request.form.get("DOB")#
             # gender = request.form.get("gender")
             # parentid = request.form.get("parentid") 
@@ -66,4 +69,35 @@ def signup_(cur=None, request=None):
         #Account type not specified
          else:
             return "Account type not specified"
+
+# Student login from Parent's Dashboard
+def studentLogin_(request):
+    # Get children registered under parent account
+    childrenUnderParent = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Username="{session.['username']}";''')[0]['Children']
+    childrenUnderParent = json.loads(childrenUnderParent)
+     
+    # Find if child is registered under parent
+    if request.args.get('studentID') in childrenUnderParent:
+        # Store Student info in session cookies
+        session['user'] = request.args.get('studentId')
+        session['Name'] = db.runDBQuery(db.users_db, f'''SELECT Name FROM children WHERE Username="{session['user']}";''')[0]['Name']
+        return redirect(url_for('dashboard') + '?for=student')
+    else:
+        return "Error while logging in your child. Try agin in a while."
+
+
+def sendMessage_(method, sender, receiver, message):
+    if method == 'send':
+        # Store Message in database
+        sql_query = f'INSERT INTO chats (sender, receiver, message) VALUES ("{sender}", "{receiver}", "{message}");'
+        db.runDBQuery(db.users_db, sql_query)
+        return "Success"
+
+    elif method == 'get':
+        # Get Messages/Chat History from database
+        sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
+        return db.runDBQuery(db.users_db, sql_query)
+
+    
+
 

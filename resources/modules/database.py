@@ -14,7 +14,7 @@ def runDBQuery(dbpath, query):
     con.row_factory = dict_factory
     cur = con.cursor()
     cur.execute(query)
-    con.commit
+    con.commit()
     return cur.fetchall()
 
 #Paths to databases
