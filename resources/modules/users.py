@@ -70,12 +70,15 @@ def signup_(request=None):
              # Add Child to Database
                 db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent", "LastPayment") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}","2000-01-01");')
               
-             # Add ch "2022-02-01ild to parent's registered list
-                newChildList = getChildrenIds().append(username)
+             # Add child to parent's registered list
+                newChildList = getChildrenIds()
+                newChildList.append(username)
+                print(newChildList)
                 newChildList = json.dumps(newChildList)
+                
 
              # Store new child list in sql
-                db.runDBQuery(db.users_db, f'UPDATE parents SET Children="{newChildList}" WHERE Email="{parentid}";')
+                db.runDBQuery(db.users_db, f'''UPDATE parents SET Children='{newChildList}' WHERE Email="{parentid}";''')
                
                 return redirect('/a/subscription')
             else: 
