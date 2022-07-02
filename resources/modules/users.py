@@ -67,10 +67,18 @@ def signup_(request=None):
             parentid = session.get('user')
 
             if parentid != None:
-               db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}");')
-               return redirect('/a/subscription')
+             # Add Child to Database
+                db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}");')
+              
+             # Add child to parent's registered list
+                newChildList = getChildrenIds().append(username)
+
+             # Store new child list in sql
+                db.runDBQuery(db.users_db, f'UPDATE parents SET Children="{newChildList}" WHERE Email="{parentid}";')
+               
+                return redirect('/a/subscription')
             else: 
-               return redirect('/login?as=parent')
+                return redirect('/login?as=parent')
 
         #Account type not specified
         else:
