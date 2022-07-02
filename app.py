@@ -18,7 +18,8 @@ def subpath(path):
 @app.route('/dashboard')
 def dashboard():
     if 'user' in session:
-        return render_template("ParentDashboard/dash.html")
+        children = getAllChildren(session.get('user'))
+        return render_template("ParentDashboard/dash.html", children=children)
     else:
         return redirect(url_for('login'))
 
@@ -56,11 +57,13 @@ def sendMessage():
 def studentLogin():
     return studentLogin_(request)
 
+@app.route('/changepassword')
+def changePassword():
+    return changePassword_(request.args.get('oldpass'), request.args.get('newpass'))
 
 
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True)
-    app.run(host="0.0.0.0")
 
 

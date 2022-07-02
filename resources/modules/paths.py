@@ -25,7 +25,8 @@ def subPathsOfA(path):
         return render_template('ParentDashboard/pages-contact.html')
     # Subscription 
     elif path == 'subscription':
-        return render_template('ParentDashboard/Subscription.html')
+        children = getAllChildren(session.get('user'))
+        return render_template('ParentDashboard/Subscription.html', children=children)
         
     elif path == 'signout':
         session.clear()

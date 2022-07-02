@@ -25,9 +25,9 @@ def addPayment(child_id, amount):
 def isSubscribed(child_id):
     #Get date of subscription from mysql children Lastpayment column
     lastpayment = db.runDBQuery(db.users_db,f'SELECT LastPayment FROM children WHERE username="{child_id}";')
-
+    
     #Convert date to datetime object
-    lastpayment = lastpayment['LastPayment']
+    lastpayment = lastpayment[0]['LastPayment']
     lastpayment = datetime.datetime.strptime(lastpayment, '%Y-%m-%d')
 
     if lastpayment is None:
@@ -42,6 +42,14 @@ def isSubscribed(child_id):
             #Month has not passed, subscription is active
             return True
 
+def getSubscriptionExpiryDate(child_id):
+    # Add 30 days to last payment date
+    lastpayment = db.runDBQuery(db.users_db,f'SELECT LastPayment FROM children WHERE username="{child_id}";')
+    lastpayment = lastpayment[0]['LastPayment']
+    lastpayment = datetime.datetime.strptime(lastpayment, '%Y-%m-%d')
+    expirydate = lastpayment + datetime.timedelta(days=30)
+    expirydate = datetime.datetime.strftime(expirydate, '%Y-%m-%d')
+    return expirydate
 
 
 

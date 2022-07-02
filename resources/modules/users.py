@@ -1,5 +1,6 @@
 from flask import *
 import resources.modules.database as db
+from resources.modules.verify import *
 
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
@@ -49,22 +50,27 @@ def signup_(request=None):
             email = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
             # Store data in database
             db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')
-            return "Success"
+            return redirect(url_for('login') + '?for=parent')
 
         #Student Account
         elif account_type == "student":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
-
-            # Get the form submitted data
-             classid = request.form.get("class");
-             username = request.form.get("username"); 
-             passkey = request.form.get("password"); 
-             gender=request.form.get('gender')
-             dob = request.form.get("dob")
-             parentid = session[username] 
              
-             db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{fullname}", "{classid}", "DOB", "{gender}", "{parentid}");')
-             return "Success"
+            # Get the form submitted data
+            classid = request.form.get("class")
+            username = request.form.get("username")
+            passkey = request.form.get("password")
+            gender=request.form.get('gender')
+            dob = request.form.get("dob")
+            name = request.form.get('name')
+
+            parentid = session.get('user')
+
+            if parentid != None:
+               db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}");')
+               return redirect('/a/subscription')
+            else: 
+               return redirect('/login?as=parent')
 
         #Account type not specified
         else:
@@ -73,8 +79,7 @@ def signup_(request=None):
 # Student login from Parent's Dashboard
 def studentLogin_(request):
     # Get children registered under parent account
-    childrenUnderParent = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Username="{session['username']}";''')[0]['Children']
-    childrenUnderParent = json.loads(childrenUnderParent)
+    childrenUnderParent = getAllChildren()
      
     # Find if child is registered under parent
     if request.args.get('studentID') in childrenUnderParent:
@@ -103,3 +108,34 @@ def sendMessage_(method, sender, receiver, message):
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
         messages = db.runDBQuery(db.users_db, sql_query)
         return json.dumps(messages)
+
+def changePassword_(old_pass, new_pass):
+    # Check if old password is correct
+    if db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Pass="{old_pass}" AND Email="{session["user"]}";')[0]['Pass'] == old_pass:
+        # Change password
+        db.runDBQuery(db.users_db, f'UPDATE parents SET Pass="{new_pass}" WHERE Email="{session["user"]}";')
+        return "Success"
+    else:
+        return "Error"
+
+def getChildrenIds():
+    # Get children registered under parent account
+    childrenIds = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Email="{session['user']}";''')[0]['Children']
+    childrenIds = json.loads(childrenIds)
+    return childrenIds
+
+def getChild(child_id):
+    # Get child info from database
+    child = db.runDBQuery(db.users_db, f'''SELECT * FROM children WHERE Username="{child_id}";''')
+    print(child)
+    return child[0]
+
+def getAllChildren(parent_id):
+    # Get children registered under parent account
+    children = []
+    childrenIds = getChildrenIds()
+    for child_id in childrenIds:
+        child = getChild(child_id); 
+        child['IsSubscribed'] = isSubscribed(child_id); child['ExpiryDate'] = getSubscriptionExpiryDate(child_id)
+        children.append(child)
+    return children
