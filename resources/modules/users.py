@@ -1,7 +1,6 @@
-#%%
 from flask import *
 import resources.modules.database as db
-#%%
+
 
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
@@ -38,11 +37,11 @@ def login_(account_type=None, username=None, passkey=None):
 def signup_(request=None):
     #Return signup forms
     if request.method == "GET": 
-        return render_template("pages-register.html")
+        return render_template("Landing Website/pages-register.html")
 
     #Signup user
     elif request.method == "POST":
-        account_type = request.form['as']
+        account_type = request.args.get('as')
         #Parent Account
         if account_type == "parent":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
