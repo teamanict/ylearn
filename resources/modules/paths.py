@@ -1,4 +1,6 @@
 from flask import *
+from resources.modules.ylearnmodules import *
+
 def subPathsOfA(path):
     if path == 'pricing':
         return send_file("templates/Landing Website/pricing.html")

@@ -1,4 +1,4 @@
-function makePayment() {
+function makePayment(childUsername, parentName) {
   FlutterwaveCheckout({
     public_key: "FLWPUBK_TEST-5535627c18371b8185b4169bcc2c121a-X",
     tx_ref: "ylearn-pay-" + Date.now(),
@@ -9,17 +9,17 @@ function makePayment() {
     meta: {
       consumer_id: 23,
       consumer_mac: "92a3-912-912-912",
-      child_id: "cedrick_j",
+      child_id: childUsername,
     },
     customer: {
       email: "rose@unsinkableship.com",
       phone_number: "256787483409",
-      name: "",
+      name: parentName,
     },
     customizations: {
       title: "YLearn",
       description: "Subscribe for your child",
-      logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+      logo: "https://drive.google.com/u/0/uc?id=12v4dikGvz64OxyrIy9aHW_Dh8MDOoLNZ&export=download",
     },
   });
 }

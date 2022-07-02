@@ -1,4 +1,4 @@
-import requests, json, datetime
+import requests, json, datetime, flask
 import resources.modules.database as db
 flutterwave_key = 'FLWSECK_TEST-0381a6db2cb5e7656a65cf0b6d95a8b1-X'
 
@@ -10,16 +10,17 @@ def verify_trans(id):
     transaction = json.loads(response.text)
 
     #Verify transaction data
-    amount=transaction['data']['amount']; child_id=transaction['data']['meta']['child_id'];
-    if transaction['data']['status'] == 'successful' and amount >= 15000 and transaction['data']['meta']['__CheckoutInitAddress'] == 'http://127.0.0.1:5000/pay':
-        return addPayment(child_id, amount);
+    amount=transaction['data']['amount']; child_id=transaction['data']['meta']['child_id']
+    if transaction['data']['status'] == 'successful' and amount >= 15000:
+        return addPayment(child_id, amount)
     else:
         return f'Error while verifying transaction. </br> Please contact support immediately with this id: </br>{id}</br> 1'
  
 def addPayment(child_id, amount):
     #Insert current date into mysql children lastpayment column
     db.runDBQuery(db.users_db,f'UPDATE children SET lastpayment = CURRENT_DATE WHERE username = "{child_id}";')
-    return f'Payment successful. </br> Thank you for your payment of UGX{amount}'
+    #return f'Payment successful. </br> Thank you for your payment of UGX{amount}'
+    return flask.redirect("/a/subscription")
     #else: return f'Error while adding payment. </br> Please contact support immediately with this id: </br>{child_id} 2</br>'
 
 def isSubscribed(child_id):
