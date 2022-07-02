@@ -298,7 +298,12 @@
 
         <div class="chat-input">
           <form action="/sendMessage?method=send&sender={{sender}}&receiver={{receiver}}">
-            <input type="text" id="chat-input" placeholder="Send a message...">
+          <!-- Request kwags -->
+            <input name="method" type="hidden" value="send">
+            <input name="sender" type="hidden" value="{{sender}}">
+            <input name="receiver" type="hidden" value="{{receiver}}">
+          <!-- End of Request kwags -->
+            <input type="text" id="chat-input" name="message" placeholder="Send a message...">
             <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
           </form>
         </div>
