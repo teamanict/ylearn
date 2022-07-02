@@ -279,19 +279,15 @@
         
         </div>
 
-        <script type="text/javascript">
-           displayMessages('ced@c.com', 'taremwa29@gmail.com')
-        </script>
-
         <div class="chat-input">
-          <form action="/sendMessage?method=send&sender={{sender}}&receiver={{receiver}}">
+          <form id='messageInput' action="/sendMessage?method=send&sender={{sender}}&receiver={{receiver}}">
             <!-- Request kwags -->
             <input name="method" type="hidden" value="send">
             <input name="sender" type="hidden" value="{{sender}}">
             <input name="receiver" type="hidden" value="{{receiver}}">
             <!-- End of Request kwags -->
             <input type="text" id="chat-input" name="message" placeholder="Send a message...">
-            <p onclick="location.href=location.href" class="chat-submit" id="chat-submit"><i
+            <p onclick="sendMessage()" class="chat-submit" id="chat-submit"><i
                 class="material-icons">send</i></p>
           </form>
         </div>
@@ -302,7 +298,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="/static/js/chat_script.js"></script>
-
+    
+    <script type="text/javascript">
+      displayMessages('ced@c.com', 'taremwa29@gmail.com')
+    </script>
 
 
 </body>
