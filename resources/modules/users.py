@@ -98,7 +98,8 @@ def sendMessage_(method, sender, receiver, message):
     elif method == 'get':
         # Get Messages/Chat History from database
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
-        return db.runDBQuery(db.users_db, sql_query)
+        messages = db.runDBQuery(db.users_db, sql_query)
+        return render_template('Chat/index.html', messages=messages, sender=sender, receiver=receiver)
 
     
 
