@@ -1,9 +1,5 @@
 from flask import *
 import resources.modules.database as db
-<<<<<<< HEAD
-=======
-
->>>>>>> 208c37ce788492dc947231401ee74e6786d45d59
 
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
