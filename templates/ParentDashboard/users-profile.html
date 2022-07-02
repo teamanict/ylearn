@@ -31,7 +31,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="dash.html" class="logo d-flex align-items-center">
+      <a href="/dashboard?as=parents" class="logo d-flex align-items-center">
         <img src="/static/dashboard_assets/img/default.png" alt="Image Not Supported." />
         <span class="d-none d-lg-block">YLearn</span>
       </a>
@@ -49,7 +49,7 @@
             data-bs-toggle="dropdown"
           >
             <span class="d-none d-md-block dropdown-toggle ps-2"
-              >Username</span
+              >{{session['name']}}</span
             > </a
           ><!-- End Profile DropDown -->
 
@@ -59,7 +59,7 @@
             <li>
               <a
                 class="dropdown-item d-flex align-items-center"
-                href="users-profile.html"
+                href="/a/userprofile"
               >
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
@@ -72,7 +72,7 @@
             <li>
               <a
                 class="dropdown-item d-flex align-items-center"
-                href="subscription.html"
+                href="/a/subscription"
               >
                 <i class="bi bi-gear"></i>
                 <span>Subscription Status</span>
@@ -96,7 +96,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/a/signout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -117,31 +117,31 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="dash.html">
+      <a class="nav-link collapsed" href="/dashboard?as=parents">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
     </li><!-- End Dashboard Nav -->
     <li class="nav-item">
-      <a class="nav-link " href="users-profile.html">
+      <a class="nav-link " href="/a/userprofile">
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
     </li><!-- End Profile Page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-contact.html">
+      <a class="nav-link collapsed" href="/a/contactform">
         <i class="bi bi-envelope"></i>
         <span>Contact</span>
       </a>
     </li><!-- End Contact Page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="Enroll Child.html">
+      <a class="nav-link collapsed" href="/a/enrollchild">
         <i class="bi bi-plus-square"></i>
         <span>Enroll Child</span>
       </a>
     </li><!-- End enroll page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="Subscription.html">
+      <a class="nav-link collapsed" href="/a/subscription">
         <i class="bi bi-file-earmark"></i>
         <span>Subscription</span>
       </a>
@@ -157,7 +157,7 @@
       <h1>Profile</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dash.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/dashboard?as=parents">Home</a></li>
           <li class="breadcrumb-item active">Profile</li>
         </ol>
       </nav>
