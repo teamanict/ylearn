@@ -93,9 +93,13 @@ def sendMessage_(method, sender, receiver, message):
         db.runDBQuery(db.users_db, sql_query)
         return "Success"
 
+    elif method == 'show':
+        # Show Messages/Chat History from database
+         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
+         messages = db.runDBQuery(db.users_db, sql_query)
+         return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
     elif method == 'get':
         # Get Messages/Chat History from database
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
         messages = db.runDBQuery(db.users_db, sql_query)
-        return render_template('Chat/index.html', messages=messages, sender=sender, receiver=receiver)
-
+        return json.dumps(messages)
