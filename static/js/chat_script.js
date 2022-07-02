@@ -1,5 +1,13 @@
-$(function() {
-  var INDEX = 0; 
+async function displayMessages(sender, receiver) {
+  var messages = await fetch(`http://127.0.0.1:5000/sendMessage?sender=${sender}&receiver=${receiver}&method=get`)
+  messages = await messages.json()
+  for(message of messages) {
+    console.log(message)
+    generate_message(message.message, 'user');
+  }
+}
+
+  var INDEX = 0;
   $("#chat-submit").click(function(e) {
     e.preventDefault();
     var msg = $("#chat-input").val(); 
@@ -17,12 +25,12 @@ $(function() {
           value: 'new'
         }
       ];
-    setTimeout(function() {      
+    /*setTimeout(function() {      
       generate_message(msg, 'user');  
-    }, 1000)
+    }, 1000) */
     
   })
-  
+
   function generate_message(msg, type) {
     INDEX++;
     var str="";
@@ -97,24 +105,3 @@ $(function() {
   })
   
 })
-
-/*
-
-          <!-- For loop logic of jinja template -->
-          {% for message in messages %}
-
-          {% if message['sender'] == sender %}
-          <div id="cm-msg-{{loop.index}}" class="chat-msg self" style="">
-            <div class="cm-msg-text">{{message['message']}}</div>
-          </div>
-
-          {% elif message['sender'] == receiver %}
-          <div id="cm-msg-{{loop.index}}" class="chat-msg user" style="">
-            <div class="cm-msg-text">{{message['message']}}</div>
-          </div>
-          {% endif %}
-
-          {% endfor %}
-          <!--End of Chat Messages -->
-
-*/
