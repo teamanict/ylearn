@@ -18,19 +18,35 @@ def subPathsOfA(path):
         return render_template('Landing Website/teacher.html')
     # Userprofile
     elif path == 'userprofile':
-        return render_template('ParentDashboard/users-profile.html')
+        if 'user' in session:
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/users-profile.html", children=children)
+        else:
+            return redirect(url_for('login'))
     # Enroll child
     elif path == 'enrollchild':
-        return render_template('ParentDashboard/Enroll child.html')
+        if 'user' in session:
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/Enroll Child.html", children=children)
+        else:
+            return redirect(url_for('login'))
     # Contact form
     elif path == 'contactform':
-        return render_template('ParentDashboard/pages-contact.html')
-    # Subscription 
+        if 'user' in session:
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/pages-contact.html", children=children)
+        else:
+            return redirect(url_for('login'))
+    # Subscription
     elif path == 'subscription':
-        children = getAllChildren(session.get('user'))
-        return render_template('ParentDashboard/Subscription.html', children=children)
-        
+        if 'user' in session:
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/Subscription.html", children=children)
+        else:
+            return redirect(url_for('login'))
+
     elif path == 'signout':
         session.clear()
         return redirect(url_for('index'))
-    else: return "SOwi"
+    else: 
+        return render_template('/ParentDashboard/pages-error-404.html')
