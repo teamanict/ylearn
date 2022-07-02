@@ -277,22 +277,6 @@
         <!-- Start of Chat Messages -->
         <div class="chat-logs">
 
-          <!-- For loop logic of jinja template -->
-          {% for message in messages %}
-
-          {% if message['sender'] == sender %}
-          <div id="cm-msg-{{loop.index}}" class="chat-msg self" style="">
-            <div class="cm-msg-text">{{message['message']}}</div>
-          </div>
-
-          {% elif message['sender'] == receiver %}
-          <div id="cm-msg-{{loop.index}}" class="chat-msg user" style="">
-            <div class="cm-msg-text">{{message['message']}}</div>
-          </div>
-          {% endif %}
-
-          {% endfor %}
-          <!--End of Chat Messages -->
 
         </div>
 
@@ -304,12 +288,36 @@
             <input name="receiver" type="hidden" value="{{receiver}}">
           <!-- End of Request kwags -->
             <input type="text" id="chat-input" name="message" placeholder="Send a message...">
-            <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+            <button onclick=loadMessage() class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
           </form>
         </div>
       </div>
 
+    <script>
+    function loadMessage() {
+      messages = fetch('/sendMessage?sender={{sender}}&receiver={{receiver}}&method=get').then(response => response.json()).then(data => {
+        messages = {{messages}};
+        console.log(messages);
+        for (let i = 0; i < messages.length; i++) {
+          let message = messages[i];
+          let msg = document.createElement('div');
+          msg.className = 'chat-msg-'+i;
+          if (message['sender'] == '{{sender}}') {
+            msg.className += ' self';
+          } else {
+            msg.className += ' user';
+          }
+          msg.innerHTML = `
+          <div class="cm-msg-text">
+            <p>${message['message']}</p>
+          </div>
+          `;
+          document.getElementById('chat-logs').appendChild(msg);
+        }
+      });
 
+    }
+    </script>
 
 
     </div>

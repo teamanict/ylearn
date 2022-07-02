@@ -97,3 +97,24 @@ $(function() {
   })
   
 })
+
+/*
+
+          <!-- For loop logic of jinja template -->
+          {% for message in messages %}
+
+          {% if message['sender'] == sender %}
+          <div id="cm-msg-{{loop.index}}" class="chat-msg self" style="">
+            <div class="cm-msg-text">{{message['message']}}</div>
+          </div>
+
+          {% elif message['sender'] == receiver %}
+          <div id="cm-msg-{{loop.index}}" class="chat-msg user" style="">
+            <div class="cm-msg-text">{{message['message']}}</div>
+          </div>
+          {% endif %}
+
+          {% endfor %}
+          <!--End of Chat Messages -->
+
+*/
