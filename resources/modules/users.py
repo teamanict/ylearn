@@ -15,7 +15,7 @@ def login_(account_type=None, username=None, passkey=None):
             '''SQL LOGIN WITH USERNAME AND PASSWORD THEN FETCH ROWS FROM DATABASE'''
             user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Email="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
-                # Store Student info in session cookies
+                # Store Parent info in session cookies
                 session['name'] = user[0]['Name']; session['user'] = user[0]['Email']
                 return redirect(url_for('dashboard') + '?for=parent')
             else:
@@ -68,10 +68,11 @@ def signup_(request=None):
 
             if parentid != None:
              # Add Child to Database
-                db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}");')
+                db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent", "LastPayment") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}","2000-01-01");')
               
-             # Add child to parent's registered list
+             # Add ch "2022-02-01ild to parent's registered list
                 newChildList = getChildrenIds().append(username)
+                newChildList = json.dumps(newChildList)
 
              # Store new child list in sql
                 db.runDBQuery(db.users_db, f'UPDATE parents SET Children="{newChildList}" WHERE Email="{parentid}";')
@@ -128,22 +129,23 @@ def changePassword_(old_pass, new_pass):
 
 def getChildrenIds():
     # Get children registered under parent account
-    childrenIds = db.runDBQuery(db.users_db, f'''SELECT children FROM parents WHERE Email="{session['user']}";''')[0]['Children']
+    childrenIds = db.runDBQuery(db.users_db, f'''SELECT Children FROM parents WHERE Email="{session['user']}";''')[0]['Children']
     childrenIds = json.loads(childrenIds)
     return childrenIds
 
 def getChild(child_id):
     # Get child info from database
     child = db.runDBQuery(db.users_db, f'''SELECT * FROM children WHERE Username="{child_id}";''')
-    print(child)
     return child[0]
 
 def getAllChildren(parent_id):
     # Get children registered under parent account
     children = []
     childrenIds = getChildrenIds()
+    print(childrenIds)
     for child_id in childrenIds:
-        child = getChild(child_id); 
+        print("Childt ID", child_id)
+        child = getChild(child_id)
         child['IsSubscribed'] = isSubscribed(child_id); child['ExpiryDate'] = getSubscriptionExpiryDate(child_id)
         children.append(child)
     return children
