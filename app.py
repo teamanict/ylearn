@@ -1,9 +1,11 @@
 import sqlite3, datetime
 from flask import *
+from flask_cors import CORS
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
 app.secret_key = "edutechhasasecretS"
+CORS(app)
 
 
 @app.route('/')
@@ -51,7 +53,7 @@ def login():
 
 @app.route('/sendMessage')
 def sendMessage():
-    return sendMessage_(request.args.get('method'), request.args.get('sender'), request.args.get('receiver'), request.args.get('message'))
+    return sendMessage_(request.args.get('method'), session['user'], request.args.get('receiver'), request.args.get('message'))
 
 @app.route('/studentlogin')
 def studentLogin():
@@ -61,9 +63,14 @@ def studentLogin():
 def changePassword():
     return changePassword_(request.args.get('oldpass'), request.args.get('newpass'))
 
+@app.route('/chat')
+def chat():
+    print(session['user'])
+    return chat_(session['user'], request.args.get('receiver'), request.args.get('page'))
 
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True)
+    app.host = '0.0.0.0'
 
 

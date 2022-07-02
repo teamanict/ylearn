@@ -1,5 +1,5 @@
 async function displayMessages(sender, receiver) {
-  var messages = await fetch(`http://127.0.0.1:5000/sendMessage?sender=${sender}&receiver=${receiver}&method=get`)
+  var messages = await fetch(`http://172.16.0.220:5000/sendMessage?sender=${sender}&receiver=${receiver}&method=get`)
   messages = await messages.json()
   for (message of messages) {
     if (message.sender == sender) {
@@ -21,7 +21,7 @@ async function sendMessage(form) {
     receiver: receiver,
     message: message
   }
-  var response = await fetch(`http://127.0.0.1:5000/sendMessage?sender=${sender}&receiver=${receiver}&message=${message}&method=send`)
+  var response = await fetch(`http://172.16.0.220:5000/sendMessage?sender=${sender}&receiver=${receiver}&message=${message}&method=send`)
   console.log(response)
 
 }

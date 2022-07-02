@@ -1,5 +1,5 @@
 from flask import *
-from resources.modules.ylearnmodules import *
+from resources.modules.users import *
 
 def subPathsOfA(path):
     if path == 'pricing':

@@ -57,12 +57,12 @@ def signup_(request=None):
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
              
             # Get the form submitted data
-            classid = request.form.get("class")
-            username = request.form.get("username")
-            passkey = request.form.get("password")
             gender=request.form.get('gender')
             dob = request.form.get("dob")
             name = request.form.get('name')
+            classid = request.form.get("class")
+            username = request.form.get("username")
+            passkey = request.form.get("password")
 
             parentid = session.get('user')
 
@@ -110,11 +110,6 @@ def sendMessage_(method, sender, receiver, message):
         db.runDBQuery(db.users_db, sql_query)
         return "Success"
 
-    elif method == 'show':
-        # Show Messages/Chat History from database
-         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
-         messages = db.runDBQuery(db.users_db, sql_query)
-         return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
     elif method == 'get':
         # Get Messages/Chat History from database
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
@@ -152,3 +147,14 @@ def getAllChildren(parent_id):
         child['IsSubscribed'] = isSubscribed(child_id); child['ExpiryDate'] = getSubscriptionExpiryDate(child_id)
         children.append(child)
     return children
+
+def chat_(sender, receiver, page):
+    print(page)
+    if(page=='home'):
+        return render_template('Chat/welcome.html', sender=sender, receiver=receiver)
+    elif(page=='chat'):
+    # Show Messages/Chat History from database
+        sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
+        messages = db.runDBQuery(db.users_db, sql_query)
+        return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
+    
