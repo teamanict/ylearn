@@ -99,6 +99,3 @@ def sendMessage_(method, sender, receiver, message):
         messages = db.runDBQuery(db.users_db, sql_query)
         return render_template('Chat/index.html', messages=messages, sender=sender, receiver=receiver)
 
-    
-
-
