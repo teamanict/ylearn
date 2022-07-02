@@ -1,6 +1,9 @@
 from flask import *
 import resources.modules.database as db
+<<<<<<< HEAD
+=======
 
+>>>>>>> 208c37ce788492dc947231401ee74e6786d45d59
 
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
@@ -46,7 +49,7 @@ def signup_(request=None):
         if account_type == "parent":
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
-            # Get thew user submitted form data
+            # Get the user submitted form data
             email = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
             # Store data in database
             db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')
