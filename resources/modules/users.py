@@ -60,15 +60,13 @@ def signup_(request=None):
             gender=request.form.get('gender')
             dob = request.form.get("dob")
             name = request.form.get('name')
-            classid = request.form.get("class")
-            username = request.form.get("username")
-            passkey = request.form.get("password")
+            profile_pic = request.form.get('profile')
 
             parentid = session.get('user')
 
             if parentid != None:
              # Add Child to Database
-                db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent", "LastPayment") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}","2000-01-01");')
+                db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent", "Profile_Pictutre", "LastPayment") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}", "{profile_pic}", "2000-01-01");')
               
              # Add child to parent's registered list
                 newChildList = getChildrenIds()

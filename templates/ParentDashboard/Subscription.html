@@ -86,7 +86,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/a/signout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -180,7 +180,7 @@
               <div class="ps-3">
                 <h6>Subscription: Expired</h6>
                 <span class="text-danger small pt-1 fw-bold">Expiry Date:</span>
-                <span class="text-muted small pt-2 ps-1">{{child.ExpiryDate}}</span>
+                <span class="text-muted small pt-2 ps-1">{{child.ExpiryDate}}</span><br>
                 <button id="{{child.Username}}" class="btn btn-warning"  onclick="makePayment(`{{child.Username}}`, `{{session['user']}}`)">Subscribe For Child</button>
               </div>
             </div>

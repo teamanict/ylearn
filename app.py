@@ -1,6 +1,6 @@
 import sqlite3, datetime
 from flask import *
-from flask_cors import CORS
+from resources.modules.paths import subPathsOfA
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
