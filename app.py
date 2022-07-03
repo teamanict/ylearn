@@ -1,11 +1,9 @@
 import sqlite3, datetime
 from flask import *
-from resources.modules.paths import subPathsOfA
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
 app.secret_key = "edutechhasasecretS"
-CORS(app)
 
 
 @app.route('/')
@@ -79,12 +77,13 @@ def changePassword():
 
 @app.route('/chat')
 def chat():
-    print(session['user'])
-    return chat_(session['user'], request.args.get('receiver'), request.args.get('page'))
+    if 'user' in session and session.get('usertype') == 'parent':
+        return chat_(session['user'], request.args.get('receiver'), request.args.get('page'))
+    else:
+        return redirect('/login?as=parent')
 
 # flask debug mode
 if __name__ == "__main__":
-    app.run(debug=True)
-    app.host = '0.0.0.0'
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 

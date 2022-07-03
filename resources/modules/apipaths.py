@@ -1,6 +1,8 @@
 from flask import *
 from resources.modules.users import *
 
+#=== Subpaths handler ===#
+#Sub paths of A
 def subPathsOfA(path):
     if path == 'pricing':
         return send_file("templates/Landing Website/pricing.html")
@@ -20,7 +22,7 @@ def subPathsOfA(path):
     else:
         return render_template('Landing Website/404.html')
 
-
+#Sub paths of logined in user
 def subPathsOfUser(path):
     #User profile
     if path == 'userprofile':
@@ -42,4 +44,5 @@ def subPathsOfUser(path):
     # 404 Page Not Found
     else:
         return render_template('/ParentDashboard/pages-error-404.html')
+#=== Subpaths handler ===#
 
