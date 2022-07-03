@@ -16,7 +16,7 @@ def login_(account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Email="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Parent info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Email']
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Email']; session['usertype'] = 'Parent'
                 return redirect(url_for('dashboard') + '?for=parent')
             else:
                 return "fail"
@@ -25,7 +25,7 @@ def login_(account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'Student'
                 return redirect(url_for('dashboard') + '?for=student')
             else:
                 return "fail"
@@ -57,16 +57,14 @@ def signup_(request=None):
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
              
             # Get the form submitted data
-            classid = request.form.get("class")
-            username = request.form.get("username")
-            passkey = request.form.get("password")
-            gender=request.form.get('gender')
             dob = request.form.get("dob")
-            name = request.form.get('name')
+            name = request.form.get('name')     
+            gender=request.form.get('gender')
+            classid = request.form.get('classid')
+            username = request.form.get('username')
             profile_pic = request.form.get('profile')
 
             parentid = session.get('user')
-
             if parentid != None:
              # Add Child to Database
                 db.runDBQuery(db.users_db, f'INSERT INTO children ("Username", "Name", "Class", "DOB", "Gender", "Parent", "Profile_Pictutre", "LastPayment") VALUES' f' ("{username}","{name}", "{classid}", "{dob}", "{gender}", "{parentid}", "{profile_pic}", "2000-01-01");')
@@ -81,7 +79,7 @@ def signup_(request=None):
              # Store new child list in sql
                 db.runDBQuery(db.users_db, f'''UPDATE parents SET Children='{newChildList}' WHERE Email="{parentid}";''')
                
-                return redirect('/a/subscription')
+                return redirect('/u/subscription')
             else: 
                 return redirect('/login?as=parent')
 
@@ -111,11 +109,6 @@ def sendMessage_(method, sender, receiver, message):
         db.runDBQuery(db.users_db, sql_query)
         return "Success"
 
-    elif method == 'show':
-        # Show Messages/Chat History from database
-         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
-         messages = db.runDBQuery(db.users_db, sql_query)
-         return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
     elif method == 'get':
         # Get Messages/Chat History from database
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
@@ -130,26 +123,38 @@ def changePassword_(old_pass, new_pass):
         return "Success"
     else:
         return "Error"
-
-def getChildrenIds():
+#=== Children Accounts Api ===#
+def getChildrenIds(parentid=None):
     # Get children registered under parent account
-    childrenIds = db.runDBQuery(db.users_db, f'''SELECT Children FROM parents WHERE Email="{session['user']}";''')[0]['Children']
+    childrenIds = db.runDBQuery(db.users_db, f'SELECT Children FROM parents WHERE Email="{parentid}";')[0]['Children']
     childrenIds = json.loads(childrenIds)
     return childrenIds
 
 def getChild(child_id):
     # Get child info from database
-    child = db.runDBQuery(db.users_db, f'''SELECT * FROM children WHERE Username="{child_id}";''')
-    return child[0]
+    child = db.runDBQuery(db.users_db, f'''SELECT * FROM children WHERE Username="{child_id}";''')[0]
+    child['IsSubscribed'] = isSubscribed(child_id); child['ExpiryDate'] = getSubscriptionExpiryDate(child_id)
+    return child
 
 def getAllChildren(parent_id):
     # Get children registered under parent account
     children = []
-    childrenIds = getChildrenIds()
+    childrenIds = getChildrenIds(parent_id)
     print(childrenIds)
     for child_id in childrenIds:
         print("Childt ID", child_id)
         child = getChild(child_id)
-        child['IsSubscribed'] = isSubscribed(child_id); child['ExpiryDate'] = getSubscriptionExpiryDate(child_id)
         children.append(child)
     return children
+#=== End Children Accounts APi ===#
+
+def chat_(sender, receiver, page):
+    print(page)
+    if(page=='home'):
+        return render_template('Chat/welcome.html', sender=sender, receiver=receiver)
+    elif(page=='chat'):
+    # Show Messages/Chat History from database
+        sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
+        messages = db.runDBQuery(db.users_db, sql_query)
+        return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
+    

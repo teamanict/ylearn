@@ -1,7 +1,5 @@
 import sqlite3, datetime
 from flask import *
-from resources.modules.contact import storeFeedback_
-from resources.modules.paths import subPathsOfA
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
@@ -17,14 +15,28 @@ def index():
 def subpath(path):
     return subPathsOfA(path)
 
+@app.route('/u/<path>')
+def userpath(path):
+    if 'user' in session:
+        return subPathsOfUser(path)
+    else:
+        return redirect(url_for('login') + '?as=parent')
+   
+
 @app.route('/dashboard')
 def dashboard():
+    account_type = request.args.get('for')
     if 'user' in session:
-        children = getAllChildren(session.get('user'))
-        return render_template("ParentDashboard/dash.html", children=children)
+        if account_type == 'parent':
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/dash.html", children=children)
+        elif account_type == 'student':
+            return render_template("StudentDashboard/dashboard.html")
+        else:
+            return "Account type not specified"
     else:
-        return redirect(url_for('login'))
-
+        return redirect('/login?as={for}')
+  
 @app.route("/signupstudent")
 def signupstudent():
     return render_template("Landing Website/pages-register.html")
@@ -53,7 +65,7 @@ def login():
 
 @app.route('/sendMessage')
 def sendMessage():
-    return sendMessage_(request.args.get('method'), request.args.get('sender'), request.args.get('receiver'), request.args.get('message'))
+    return sendMessage_(request.args.get('method'), session['user'], request.args.get('receiver'), request.args.get('message'))
 
 @app.route('/studentlogin')
 def studentLogin():
@@ -68,6 +80,6 @@ def storeFeedback():
     return storeFeedback_(request)
 # flask debug mode
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 
