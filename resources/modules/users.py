@@ -151,7 +151,7 @@ def getAllChildren(parent_id):
 def chat_(sender, receiver, page):
     print(page)
     if(page=='home'):
-        return render_template('Chat/welcome.html', sender=sender, receiver=receiver)
+        return render_template('Chat/chat.html', sender=sender, receiver=receiver)
     elif(page=='chat'):
     # Show Messages/Chat History from database
         sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
