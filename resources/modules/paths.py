@@ -16,37 +16,30 @@ def subPathsOfA(path):
     #blog.html
     elif path == 'teacher':
         return render_template('Landing Website/teacher.html')
-    # Userprofile
-    elif path == 'userprofile':
-        if 'user' in session:
-            children = getAllChildren(session.get('user'))
-            return render_template("ParentDashboard/users-profile.html", children=children)
-        else:
-            return redirect(url_for('login'))
+    # 404 Page Not Found
+    else:
+        return render_template('Landing Website/404.html')
+
+
+def subPathsOfUser(path):
+    #User profile
+    if path == 'userprofile':
+          return render_template("ParentDashboard/users-profile.html")
     # Enroll child
     elif path == 'enrollchild':
-        if 'user' in session:
-            children = getAllChildren(session.get('user'))
-            return render_template("ParentDashboard/Enroll Child.html", children=children)
-        else:
-            return redirect(url_for('login'))
+        return render_template("ParentDashboard/Enroll Child.html")
     # Contact form
     elif path == 'contactform':
-        if 'user' in session:
-            children = getAllChildren(session.get('user'))
-            return render_template("ParentDashboard/pages-contact.html", children=children)
-        else:
-            return redirect(url_for('login'))
+        return render_template("ParentDashboard/pages-contact.html")
     # Subscription
     elif path == 'subscription':
-        if 'user' in session:
-            children = getAllChildren(session.get('user'))
-            return render_template("ParentDashboard/Subscription.html", children=children)
-        else:
-            return redirect(url_for('login'))
-
+        children = getAllChildren(session.get('user'))
+        return render_template("ParentDashboard/Subscription.html", children=children)
+    # Sign out
     elif path == 'signout':
         session.clear()
-        return redirect(url_for('index'))
-    else: 
+        return redirect(url_for('index') + '?as=parent')
+    # 404 Page Not Found
+    else:
         return render_template('/ParentDashboard/pages-error-404.html')
+

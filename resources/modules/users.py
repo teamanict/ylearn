@@ -78,7 +78,7 @@ def signup_(request=None):
              # Store new child list in sql
                 db.runDBQuery(db.users_db, f'''UPDATE parents SET Children='{newChildList}' WHERE Email="{parentid}";''')
                
-                return redirect('/a/subscription')
+                return redirect('/u/subscription')
             else: 
                 return redirect('/login?as=parent')
 

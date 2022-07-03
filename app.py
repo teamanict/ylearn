@@ -17,14 +17,28 @@ def index():
 def subpath(path):
     return subPathsOfA(path)
 
+@app.route('/u/<path>')
+def userpath(path):
+    if 'user' in session:
+        return subPathsOfUser(path)
+    else:
+        return redirect(url_for('login') + '?as=parent')
+   
+
 @app.route('/dashboard')
 def dashboard():
+    account_type = request.args.get('for')
     if 'user' in session:
-        children = getAllChildren(session.get('user'))
-        return render_template("ParentDashboard/dash.html", children=children)
+        if account_type == 'parent':
+            children = getAllChildren(session.get('user'))
+            return render_template("ParentDashboard/dash.html", children=children)
+        elif account_type == 'student':
+            return render_template("StudentDashboard/dashboard.html")
+        else:
+            return "Account type not specified"
     else:
-        return redirect(url_for('login'))
-
+        return redirect('/login?as={for}')
+  
 @app.route("/signupstudent")
 def signupstudent():
     return render_template("Landing Website/pages-register.html")

@@ -20,7 +20,7 @@ def addPayment(child_id, amount):
     #Insert current date into mysql children lastpayment column
     db.runDBQuery(db.users_db,f'UPDATE children SET lastpayment = CURRENT_DATE WHERE username = "{child_id}";')
     #return f'Payment successful. </br> Thank you for your payment of UGX{amount}'
-    return flask.redirect("/a/subscription")
+    return flask.redirect("/u/subscription")
     #else: return f'Error while adding payment. </br> Please contact support immediately with this id: </br>{child_id} 2</br>'
 
 def isSubscribed(child_id):
