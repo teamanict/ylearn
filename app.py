@@ -1,5 +1,6 @@
 import sqlite3, datetime
 from flask import *
+from resources.modules.contact import storeFeedback_
 from resources.modules.paths import subPathsOfA
 from resources.modules.ylearnmodules import *
 
@@ -62,7 +63,9 @@ def studentLogin():
 def changePassword():
     return changePassword_(request.args.get('oldpass'), request.args.get('newpass'))
 
-
+@app.route('/storeFeedback', methods=['POST', 'GET'])
+def storeFeedback():
+    return storeFeedback_(request)
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True)
