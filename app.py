@@ -75,6 +75,14 @@ def studentLogin():
 def changePassword():
     return changePassword_(request.args.get('oldpass'), request.args.get('newpass'))
 
+@app.route('/chat')
+def chat():
+    if 'user' in session and session.get('usertype') == 'parent':
+        return chat_(session['user'])
+    else:
+        return redirect('/login?as=parent')
+
+
 @app.route('/storeFeedback', methods=['POST', 'GET'])
 def storeFeedback():
     return storeFeedback_(request)
