@@ -78,7 +78,7 @@ def changePassword():
 @app.route('/chat')
 def chat():
     if 'user' in session and session.get('usertype') == 'parent':
-        return chat_(session['user'], request.args.get('receiver'), request.args.get('page'))
+        return chat_(session['user'])
     else:
         return redirect('/login?as=parent')
 

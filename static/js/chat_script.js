@@ -10,11 +10,12 @@ async function displayMessages(sender, receiver) {
   }
 }
 
-async function sendMessage(form) {
+async function sendMessage() {
   form = document.getElementById('messageInput');
+  console.log(form);
 
-  var sender = form.elements['sender'].value;
-  var receiver = form.elements['receiver'].value;
+  var sender = localStorage.getItem('sender'); //form.elements['sender'].value;
+  var receiver = localStorage.getItem('receiver'); //form.elements['receiver'].value;
   var message = form.elements['message'].value;
   var data = {
     sender: sender,
@@ -122,6 +123,20 @@ $(".chat-box-toggle").click(function () {
   $(".chat-box").toggle('scale');
 })
 
-	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
+$(document).ready(function () {
+  $("#myModal").modal('show');
+});
+
+
+function chatWith(teacher_id) {
+  localStorage.setItem('receiver', teacher_id);
+
+  displayMessages(localStorage.getItem('sender'), localStorage.getItem('receiver'));
+  $("#myModal").modal('hide');
+
+  // Refresh after one second 
+  setTimeout(function () {
+    displayMessages(localStorage.getItem('sender'), localStorage.getItem('receiver'));
+  }
+    , 1000); 
+}

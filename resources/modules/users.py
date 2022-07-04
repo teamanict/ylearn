@@ -16,7 +16,7 @@ def login_(account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Email="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Parent info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Email']; session['usertype'] = 'Parent'
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Email']; session['usertype'] = 'parent'
                 return redirect(url_for('dashboard') + '?for=parent')
             else:
                 return "fail"
@@ -25,7 +25,7 @@ def login_(account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'Student'
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'student'
                 return redirect(url_for('dashboard') + '?for=student')
             else:
                 return "fail"
@@ -148,13 +148,10 @@ def getAllChildren(parent_id):
     return children
 #=== End Children Accounts APi ===#
 
-def chat_(sender, receiver, page):
-    print(page)
-    if(page=='home'):
-        return render_template('Chat/chat.html', sender=sender, receiver=receiver)
-    elif(page=='chat'):
+def chat_(sender):
+    print(sender)
     # Show Messages/Chat History from database
-        sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
-        messages = db.runDBQuery(db.users_db, sql_query)
-        return render_template('Chat/chat.html', messages=messages, sender=sender, receiver=receiver)
+     #   sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
+      #  messages = db.runDBQuery(db.users_db, sql_query)
+    return render_template('Chat/chat.html', sender=sender)
     
