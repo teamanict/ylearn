@@ -80,30 +80,32 @@
 				<div class="col-lg-7 mb-5">
 					<div class="contact-form">
 						<div id="success"></div>
-						<form name="sentMessage" id="contactForm" novalidate="novalidate">
+						<form action="/storeFeedback" method="post" name="sentMessage" novalidate="novalidate">
 							<div class="control-group">
-								<input type="text" class="form-control" id="name" placeholder="Your Name"
+								<input type="text" class="form-control" id="name" name="name" placeholder="Your Name"
 									required="required" data-validation-required-message="Please enter your name" />
 								<p class="help-block text-danger"></p>
 							</div>
 							<div class="control-group">
-								<input type="email" class="form-control" id="email" placeholder="Your Email"
-									required="required" data-validation-required-message="Please enter your email" />
+								<input type="email" class="form-control" name="email" id="email"
+									placeholder="Your Email" required="required"
+									data-validation-required-message="Please enter your email" />
 								<p class="help-block text-danger"></p>
 							</div>
 							<div class="control-group">
-								<input type="text" class="form-control" id="subject" placeholder="Subject"
-									required="required" data-validation-required-message="Please enter a subject" />
+								<input type="text" class="form-control" name="Subject" id="subject"
+									placeholder="Subject" required="required"
+									data-validation-required-message="Please enter a subject" />
 								<p class="help-block text-danger"></p>
 							</div>
 							<div class="control-group">
-								<textarea class="form-control" rows="6" id="message" placeholder="Message"
-									required="required"
+								<textarea class="form-control" name="message" rows="6" id="message"
+									placeholder="Message" required="required"
 									data-validation-required-message="Please enter your message"></textarea>
 								<p class="help-block text-danger"></p>
 							</div>
 							<div>
-								<button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">
+								<button class="btn btn-primary " type="submit">
 									Send Message
 								</button>
 							</div>
@@ -112,10 +114,7 @@
 				</div>
 				<div class="col-lg-5 mb-5">
 					<p>
-						Labore sea amet kasd diam justo amet ut vero justo. Ipsum ut et
-						kasd duo sit, ipsum sea et erat est dolore, magna ipsum et magna
-						elitr. Accusam accusam lorem magna, eos et sed eirmod dolor est
-						eirmod eirmod amet.
+						Please Share with us anything. We shall be able to receive and give you feedback.
 					</p>
 					<div class="d-flex">
 						<i class="fa fa-map-marker-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
@@ -166,9 +165,10 @@
 					<span class="text-white">YLearn</span>
 				</a>
 				<p>
-					Labore dolor amet ipsum ea, erat sit ipsum duo eos. Volup amet ea
-					dolor et magna dolor, elitr rebum duo est sed diam elitr. Stet elitr
-					stet diam duo eos rebum ipsum diam ipsum elitr.
+					We cherish the young mind and that is why our platform broadens the availability of Knowledge
+					the young minds that will be taking up the leadership slots of Tomorrow. That's why our platform
+					ensures that you child has the
+					power to make our mother a better place.
 				</p>
 				<div class="d-flex justify-content-start mt-4">
 					<a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"

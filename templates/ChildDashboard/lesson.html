@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ylearn</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons
+    <link href="/static/dashboard_assets/img/favicon.png" rel="icon">
+    <link href="/static/dashboard_assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/dashboard_assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/dashboard_assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/dashboard_assets/css/style.css" rel="stylesheet">
+
+  <!--Video Cdn-->
+  <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">YLearn</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/static/dashboard_assets/img/Spider.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Sample Child</span>
+          </a><!-- End Profile Image Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Sample Child</h6>
+              <span>Primary Three</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>ClassRoom</span>
+        </a>
+      </li><!-- End ClassRoom Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Subjects</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>English</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle"></i><span>Math</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-badges.html">
+              <i class="bi bi-circle"></i><span>Science</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-breadcrumbs.html">
+              <i class="bi bi-circle"></i><span>Social Studies</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-buttons.html">
+              <i class="bi bi-circle"></i><span>Buttons</span>
+            </a>
+          </li>
+          <li>
+            <a href="components-cards.html">
+              <i class="bi bi-circle"></i><span>Cards</span>
+            </a>
+          </li>
+      </li><!-- End Components Nav -->
+    </ul>
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Sessions</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="forms-elements.html">
+            <i class="bi bi-circle"></i><span>Mathematics Teacher</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms-layouts.html">
+            <i class="bi bi-circle"></i><span>English Teacher</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms-editors.html">
+            <i class="bi bi-circle"></i><span>Science Teacher</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms-validation.html">
+            <i class="bi bi-circle"></i><span>Social Studies Teacher</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Forms Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="users-profile.html">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-faq.html">
+        <i class="bi bi-question-circle"></i>
+        <span>Ask Question</span>
+      </a>
+    </li><!-- End F.A.Q Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-contact.html">
+        <i class="bi bi-envelope"></i>
+        <span>Activity</span>
+      </a>
+    </li><!-- End Contact Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-blank.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>Blank</span>
+      </a>
+    </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Subject</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Lesson</li>
+          <li class="breadcrumb-item active">{Subject}</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Topic : Number Bases</h5>
+            <p>
+              <span class="text-success small pt-1 fw-bold">Introduction to Bases</span>
+            </p>
+            <p>
+              Number Bases are number systems used by mathematicians to count items in different
+              situations. E.g computers they use the binary number system to make decisions and all the complicated
+              things they do.
+            </p>
+            <video style="border:3px solid black; border-radius: 10px;" id="my-video"
+              class="video-js vjs-big-play-centered" controls preload="auto" width="450" height="264"
+              poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+              <source src="//static/dashboard_assets/img/video.mp4" type="video/mp4" />
+              <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+              </p>
+            </video><br>
+            <a class="text-secondary" href="#" data-bs-toggle="dropdown">
+              <span style="text-align: right;" class="d-none d-md-block ps-2">Download Notes</span></a>
+            <script src="https://vjs.zencdn.net/7.19.2/video.min.js"></script><br>
+            <a href="/activity.html"><button style="border-radius: 10px;" class="btn-outline-light float-end text-success">Exercise</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/dashboard_assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/chart.js/chart.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/quill/quill.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/static/dashboard_assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/static/dashboard_assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/dashboard_assets/js/main.js"></script>
+
+  <script>
+    // Select elements here
+    const video = document.getElementById('video');
+    const videoControls = document.getElementById('video-controls');
+
+    const videoWorks = !!document.createElement('video').canPlayType;
+    if (videoWorks) {
+      videoControls.classList.remove('hidden');
+    }
+    const playButton = document.getElementById('play');
+    function togglePlay() {
+      if (video.paused || video.ended) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+    // Add eventlisteners here
+    playButton.addEventListener('click', togglePlay);
+  </script>
+
+</body>
+
+</html>

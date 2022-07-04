@@ -288,13 +288,16 @@
                 <h1 class="text-white m-0">Contact Us</h1>
               </div>
               <div class="card-body rounded-bottom bg-primary p-5">
-                <form a>
+                <form action="/storeFeedback" method="post">
                   <div class="form-group">
-                    <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                    <input type="text" class="form-control border-0 p-4" name="name" placeholder="Your Name" required="required" />
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control border-0 p-4" placeholder="Your Email"
+                    <input name="email" type="email" class="form-control border-0 p-4" placeholder="Your Email"
                       required="required" />
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control border-0 p-4" name="Subject" placeholder="Your Subject" required="required" />
                   </div>
                   <div class="form-group">
                     <textarea name="message" id="message" cols="30" rows="10" required placeholder="Message"></textarea>
@@ -351,7 +354,7 @@
               </div>
             </div>
             <h4>Nakabwe Mary</h4>
-            <i>Language Teacher</i>
+            <i>Social Studies Teacher</i>
           </div>
           <div class="col-md-6 col-lg-3 text-center team mb-5">
             <div class="position-relative overflow-hidden mb-4" style="">
@@ -366,7 +369,7 @@
               </div>
             </div>
             <h4>Mollie Ross</h4>
-            <i>Dance Teacher</i>
+            <i>Language Teacher</i>
           </div>
           <div class="col-md-6 col-lg-3 text-center team mb-5">
             <div class="position-relative overflow-hidden mb-4" >

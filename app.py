@@ -31,7 +31,7 @@ def dashboard():
             children = getAllChildren(session.get('user'))
             return render_template("ParentDashboard/dash.html", children=children)
         elif account_type == 'student':
-            return render_template("StudentDashboard/dashboard.html")
+            return render_template("ChildDashboard/childdash.html", child=getChild(session.get('user')))
         else:
             return "Account type not specified"
     else:
@@ -82,6 +82,9 @@ def chat():
     else:
         return redirect('/login?as=parent')
 
+@app.route('/storeFeedback', methods=['POST', 'GET'])
+def storeFeedback():
+    return storeFeedback_(request)
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
