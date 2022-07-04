@@ -26,9 +26,9 @@ def login_(account_type=None, username=None, passkey=None):
             if len(user) == 1:
                 # Store Student info in session cookies
                 session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'Student'
-                return redirect(url_for('dashboard') + '?for=student')
+                return redirect('/dashboard?for=student')
             else:
-                return "fail"
+                return redirect('/login?as=student')
 
         #Account type not specified
          else:

@@ -31,7 +31,7 @@ def dashboard():
             children = getAllChildren(session.get('user'))
             return render_template("ParentDashboard/dash.html", children=children)
         elif account_type == 'student':
-            return render_template("StudentDashboard/dashboard.html")
+            return render_template("ChildDashboard/childdash.html", child=getChild(session.get('user')))
         else:
             return "Account type not specified"
     else:
