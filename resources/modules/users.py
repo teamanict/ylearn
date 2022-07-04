@@ -25,10 +25,10 @@ def login_(account_type=None, username=None, passkey=None):
             user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
             if len(user) == 1:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'student'
-                return redirect(url_for('dashboard') + '?for=student')
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'Student'
+                return redirect('/dashboard?for=student')
             else:
-                return "fail"
+                return redirect('/login?as=student')
 
         #Account type not specified
          else:
