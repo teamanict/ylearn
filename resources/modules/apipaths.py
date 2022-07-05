@@ -30,7 +30,7 @@ def subPathsOfUser(path):
         if session['usertype'] == 'parent':
             return render_template('ParentDashboard/users-profile.html')
         elif session['usertype'] == 'student':
-            return render_template('ChildDashboard/users-profile.html')
+            return render_template('ChildDashboard/users-profile.html', child = getChild(session.get('user')))
 
     # Enroll child
     elif path == 'enrollchild':
