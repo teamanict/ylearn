@@ -3,10 +3,14 @@ import resources.modules.database as db
 from resources.modules.verify import *
 from flask_bcrypt import Bcrypt
 
-def login_(account_type=None, username=None, passkey=None):
-    #Return login forms
-    if request.method == "GET":
-        return render_template("/landing website/pages-login.html")
+def login_(account_type=None, username=None, passkey=None, userfromdash=None):
+    if (request.method == "GET"):
+        # Login in from parents dashboard
+        if account_type == "studentfromdash":
+            return studentLogin_(username=userfromdash)
+        else:
+            # Return login forms
+            return render_template("/landing website/pages-login.html")
 
     #Authenticate user
     elif request.method == "POST":
@@ -24,10 +28,15 @@ def login_(account_type=None, username=None, passkey=None):
                 return "fail"
         #Student Account
          elif account_type == "student":
-            user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}" AND Pass="{passkey}";')
-            if len(user) == 1:
+            # Get parent id of student
+            parent_id = db.runDBQuery(db.users_db, f'SELECT Parent FROM children WHERE Username="{username}";')[0]['Parent']
+            # Get children registered under parent account
+            childrenUnderParent = db.runDBQuery(db.users_db, f'SELECT Children FROM parents WHERE ="{parent_id}" AND Pass="{passkey}";')
+            if username in childrenUnderParent:
                 # Store Student info in session cookies
-                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'Student'
+                user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}";')
+                # Store Student info in session cookies
+                session['name'] = user[0]['Name']; session['user'] = user[0]['Username']; session['usertype'] = 'student'
                 return redirect('/dashboard?for=student')
             else:
                 return redirect('/login?as=student')
@@ -90,16 +99,16 @@ def signup_(request=None):
             return "Account type not specified"
 
 # Student login from Parent's Dashboard
-def studentLogin_(request):
+def studentLogin_(username=None):
     # Get children registered under parent account
-    childrenUnderParent = getAllChildren()
+    childrenUnderParent = getChildrenIds(session.get('user'))
      
     # Find if child is registered under parent
-    if request.args.get('studentID') in childrenUnderParent:
+    if username in childrenUnderParent:
         # Store Student info in session cookies
-        session['user'] = request.args.get('studentId')
+        session['user'] = username; session['usertype'] = 'student'
         session['Name'] = db.runDBQuery(db.users_db, f'''SELECT Name FROM children WHERE Username="{session['user']}";''')[0]['Name']
-        return redirect(url_for('dashboard') + '?for=student')
+        return redirect('dashboard?for=student')
     else:
         return "Error while logging in your child. Try agin in a while."
 
