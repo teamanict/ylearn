@@ -1,0 +1,37 @@
+<form id="exercise1">
+    <input type="text" id="qn1-qn" value="John">
+    <input type="text" id="qn1-opts" value="John">
+    <input type="text" id="qn1-ans" value="John">
+</form>
+<form id="exercise2">
+    <input type="text" id="qn1-qn" value="John">
+    <input type="text" id="qn1-opts" value="John">
+    <input type="text" id="qn1-ans" value="John">
+</form>
+<button onclick="generateJson()" id="qn1-submit">Submit</button>
+<script>
+
+var exercise = [
+            [/*Qn1, Qn2 qn3*/],
+            [/* OPTIONS */], 
+            [/*ans1, ans2*/]
+        ]
+
+// Generate exercise array from the forms
+function generateJson() {
+    var forms = document.getElementsByTagName("form");
+    for (var i = 0; i < forms.length; i++) {
+        var options = []
+        var form = forms[i];
+        var qn = form.elements[0].value;
+        var opts = form.elements[1].value;
+        var ans = form.elements[2].value;
+        options.push(opts.split(","));
+        exercise[0].push(qn);
+        exercise[1].push(options[0]);
+        exercise[2].push(ans);
+    }
+    return(exercise);
+}
+
+</script>

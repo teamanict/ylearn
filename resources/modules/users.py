@@ -1,7 +1,6 @@
 from flask import *
 import resources.modules.database as db
 from resources.modules.verify import *
-from flask_bcrypt import Bcrypt
 
 def login_(account_type=None, username=None, passkey=None, userfromdash=None):
     if (request.method == "GET"):
