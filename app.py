@@ -97,6 +97,14 @@ def study():
     subject = request.args.get('subject'); classid=request.args.get('classid');
     return study_(subject, classid)
 
+@app.route('/bookshopapi')
+def bookshopapi():
+    if action == 'get':
+        return getInventoryData()
+    elif action == 'add':
+        return storeInventory_(request)
+
+
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)

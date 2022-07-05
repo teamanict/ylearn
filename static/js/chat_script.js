@@ -1,7 +1,9 @@
 async function displayMessages(sender, receiver) {
   var messages = await fetch(`/sendMessage?sender=${sender}&receiver=${receiver}&method=get`)
-  messages = await messages.json()
+  messages = await messages.json();
+  )
   for (message of messages) {
+    console.log(message.sender);
     if (message.sender == sender) {
       generate_message(message.message, 'self');
     } else if (message.sender == receiver) {
