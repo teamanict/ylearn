@@ -30,7 +30,7 @@ def subPathsOfUser(path):
         if session['usertype'] == 'parent':
             return render_template('ParentDashboard/users-profile.html')
         elif session['usertype'] == 'student':
-            return render_template('ChildDashboard/users-profile.html')
+            return render_template('ChildDashboard/users-profile.html', child=getChild(session.get('user')))
 
     # Enroll child
     elif path == 'enrollchild':
@@ -52,13 +52,15 @@ def subPathsOfUser(path):
 #=== Subpaths handler ===#
 
 
-def study_(subject, class_id):
+def study_(subject, classid):
+    print(subject)
+    dbpath = '/Lessons/{subject}.db3'
     if subject == 'Math':
-        render_template('ChildDashboard/mathematics.html')
+        return render_template('ChildDashboard/lesson.html')
     elif subject == 'Eng':
-        render_template('ChildDashboard/english.html')
+        return render_template('ChildDashboard/english.html')
     elif subject == 'Sst':
-        render_template('ChildDashboard/SocialStudies.html')
+        return render_template('ChildDashboard/SocialStudies.html')
     elif subject == 'Sci':
-        render_template('ChildDashboard/science.html')
+        return render_template('ChildDashboard/science.html')
 

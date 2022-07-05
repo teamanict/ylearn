@@ -5,6 +5,11 @@ from resources.modules.ylearnmodules import *
 app = Flask(__name__)
 app.secret_key = "edutechhasasecretS"
 
+# admin/exercise_FORM
+@app.route('/exerciseform')
+def exercise_FORM():
+    return render_template('admin/exercise_form.html')
+
 
 @app.route('/')
 def index():
@@ -86,6 +91,12 @@ def chat():
 @app.route('/storeFeedback', methods=['POST', 'GET'])
 def storeFeedback():
     return storeFeedback_(request)
+
+@app.route('/study')
+def study():
+    subject = request.args.get('subject'); classid=request.args.get('classid');
+    return study_(subject, classid)
+
 # flask debug mode
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
