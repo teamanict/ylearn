@@ -53,15 +53,20 @@ def subPathsOfUser(path):
 
 
 def study_(subject, classid):
-    print(subject)
-    dbpath = '/Lessons/{subject}.db3'
+    subject = request.args.get('subject')
+    classid = request.args.get('class')
+
     if subject == 'Math':
-        return render_template('ChildDashboard/lesson.html')
+        dbpath = '/lessons/math.db3'
     elif subject == 'Eng':
-        dppath = '/lessons/english.db3'
-        return render_template('ChildDashboard/lesson.html', lessons = getLessonData(subject, dppath, classid))
+        dbpath = '/lessons/english.db3'
     elif subject == 'Sst':
-        return render_template('ChildDashboard/SocialStudies.html')
+        dbpath = '/lessons/sst.db3'
     elif subject == 'Sci':
-        return render_template('ChildDashboard/science.html')
+        dbpath = '/lessons/science.db3'
+    
+    lessons = getLessonData(subject, dbpath, classid)
+    return render_template('ChildDashboard/lesson.html', lessons = lessons, subject=subject, child = getChild(session.get('user')))
+
+
 

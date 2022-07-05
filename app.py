@@ -94,15 +94,12 @@ def storeFeedback():
 
 @app.route('/study')
 def study():
-    subject = request.args.get('subject'); classid=request.args.get('classid');
+    subject = request.args.get('subject'); classid=request.args.get('class');
     return study_(subject, classid)
 
-@app.route('/bookshopapi')
+@app.route('/bookshopapi', methods=['POST', 'GET'])
 def bookshopapi():
-    if action == 'get':
-        return getInventoryData()
-    elif action == 'add':
-        return storeInventory_(request)
+      return storeInventory_(request)
 
 
 # flask debug mode

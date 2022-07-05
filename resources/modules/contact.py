@@ -28,7 +28,7 @@ def storeInventory_(request):
     itemdetails = request.form.get('itemdetails')
     itemimage = request.form.get('itemimage')
     db.runDBQuery(
-        db.users_db, f'INSERT INTO Inventory ("ItemName", "ItemPrice", "ItemQauntity", "ItemDetails", "ItemImage") VALUES' f' ("{itemname}", "{itemprice}", "{itemquantity}", "{itemdetails}", "{itemimage}");')
+        '/Sales.db3', f'INSERT INTO Inventory ("ItemName", "ItemPrice", "ItemQauntity", "ItemDetails", "ItemImage") VALUES' f' ("{itemname}", "{itemprice}", "{itemquantity}", "{itemdetails}", "{itemimage}");')
 
     return render_template('/ParentDashboard/success.html')
 
