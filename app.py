@@ -92,8 +92,7 @@ def chat():
 def storeFeedback():
     return storeFeedback_(request)
 
-@app.route
-('/study')
+@app.route('/study')
 def study():
     subject = request.args.get('subject'); classid=request.args.get('class');
     return study_(subject, classid)
