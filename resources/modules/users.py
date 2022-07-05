@@ -1,19 +1,21 @@
 from flask import *
 import resources.modules.database as db
 from resources.modules.verify import *
+from flask_bcrypt import Bcrypt
 
 def login_(account_type=None, username=None, passkey=None):
     #Return login forms
     if request.method == "GET":
         return render_template("/landing website/pages-login.html")
 
-    #Authicate user
+    #Authenticate user
     elif request.method == "POST":
 
         #Parent Account
          if account_type == "parent":
             '''SQL LOGIN WITH USERNAME AND PASSWORD THEN FETCH ROWS FROM DATABASE'''
             user = db.runDBQuery(db.users_db, f'SELECT * FROM parents WHERE Email="{username}" AND Pass="{passkey}";')
+            print(user)
             if len(user) == 1:
                 # Store Parent info in session cookies
                 session['name'] = user[0]['Name']; session['user'] = user[0]['Email']; session['usertype'] = 'parent'
@@ -47,7 +49,7 @@ def signup_(request=None):
             #SQL SIGNUP WITH USERNAME AND PASSWORD THEN STORE USER IN DATABASE'''
 
             # Get the user submitted form data
-            email = request.form.get("email"); fullname = request.form.get("name"); passkey = request.form.get("password")
+            email = request.form.get("email"); fullname = request.form.get("name"); passkey =request.form.get("password")
             # Store data in database
             db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')
             return redirect(url_for('login') + '?for=parent')

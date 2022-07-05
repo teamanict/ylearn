@@ -19,3 +19,4 @@ def runDBQuery(dbpath, query):
 
 #Paths to databases
 users_db = 'users/db.db3'
+lesson_db = 'Lesson.db'

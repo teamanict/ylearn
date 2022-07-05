@@ -1,8 +1,11 @@
 import sqlite3, datetime
+import bcrypt
 from flask import *
+from flask_bcrypt import Bcrypt
 from resources.modules.ylearnmodules import *
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.secret_key = "edutechhasasecretS"
 
 
