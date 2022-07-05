@@ -84,10 +84,8 @@ def signup_(request=None):
              # Add child to parent's registered list
                 newChildList = getChildrenIds()
                 newChildList.append(username)
-                print(newChildList)
                 newChildList = json.dumps(newChildList)
-                
-
+                print(newChildList)
              # Store new child list in sql
                 db.runDBQuery(db.users_db, f'''UPDATE parents SET Children='{newChildList}' WHERE Email="{parentid}";''')
                
