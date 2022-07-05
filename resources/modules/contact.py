@@ -15,8 +15,8 @@ def storeFeedback_(request):
 
 def getLessonData(subject, dbpath, classid):
     # Get lesson data from database
-    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM lessons WHERE Subject="{subject}" AND ClassID="{classid}";')
-    return lessonData
+    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM P{classid};')
+    print(lessonData)
 
 
 # Store data from form into inventory table
