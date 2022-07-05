@@ -26,16 +26,16 @@ def userpath(path):
 @app.route('/dashboard')
 def dashboard():
     account_type = request.args.get('for')
-    if 'user' in session:
-        if account_type == 'parent':
-            children = getAllChildren(session.get('user'))
-            return render_template("ParentDashboard/dash.html", children=children)
-        elif account_type == 'student':
-            return render_template("ChildDashboard/childdash.html", child=getChild(session.get('user')))
-        else:
-            return "Account type not specified"
-    else:
-        return redirect('/login?as={for}')
+    print(session)
+    if 'user' in session and account_type == 'parent' and session['usertype'] == 'parent':
+        children = getAllChildren(session.get('user'))
+        return render_template("ParentDashboard/dash.html", children=children)
+    elif 'user' in session and account_type == 'student' and session['usertype'] == 'student':
+        child = getChild(session.get('user'))
+        print(child)
+        return render_template("ChildDashboard/childdash.html", child=child)
+    else: 
+        return redirect(f'/login?as={account_type}')
   
 @app.route("/signupstudent")
 def signupstudent():
@@ -60,8 +60,8 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    account_type = request.args.get('as'); username = request.form.get("username"); passkey  =  request.form.get("password")
-    return login_(account_type=account_type, username=username, passkey=passkey)
+    account_type = request.args.get('as'); userfromdash=request.args.get('username'); username = request.form.get("username"); passkey  =  request.form.get("password")
+    return login_(account_type=account_type, username=username, userfromdash=userfromdash, passkey=passkey)
 
 @app.route('/sendMessage')
 def sendMessage():
