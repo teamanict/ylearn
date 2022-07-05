@@ -1,0 +1,9 @@
+CREATE TABLE P4 (
+    Id         INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    Title      VARCHAR NOT NULL,
+    Topic      VARCHAR NOT NULL,
+    Notes      VARCHAR NOT NULL,
+    Url        VARCHAR NOT NULL,
+    Exercises  JSON NOT NULL,
+    Other_Vids JSON NOT NULL
+);

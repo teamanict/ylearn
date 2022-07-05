@@ -15,8 +15,8 @@ def storeFeedback_(request):
 
 def getLessonData(subject, dbpath, classid):
     # Get lesson data from database
-    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM lessons WHERE Subject="{subject}" AND ClassID="{classid}";')
-    return lessonData
+    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM P{classid};')
+    print(lessonData)
 
 
 # Store data from form into inventory table
@@ -33,9 +33,9 @@ def storeInventory_(request):
     return render_template('/ParentDashboard/success.html')
 
 # Get data from inventory table
-def getInventoryData(dbpath):
+def getInventoryData():
     # Get inventory from database
-    inventoryData = db.runDBQuery(dbpath, f'SELECT * FROM Inventory;')
+    inventoryData = db.runDBQuery('databank/Sales.db3', f'SELECT * FROM Inventory;')
     return inventoryData
 
 
@@ -54,4 +54,4 @@ def storeBookShopSales_(request):
 
 # Get unique teacher users
 def getTeacherUsers(dbpath):
-    return 1
+    return db.runDBQuery(dbpath, f'''SELECT DISTINCT sender FROM chats WHERE receiver="session['user'']";''')

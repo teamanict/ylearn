@@ -3,4 +3,4 @@ from resources.modules.verify import *
 from resources.modules.apipaths import *
 from resources.modules.contact import *
 
-#Cedricko
+#Unfinished code. Needs time to be finished.

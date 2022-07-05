@@ -1,5 +1,5 @@
 from flask import *
-from resources.modules.users import *
+from resources.modules.ylearnmodules import *
 
 #=== Subpaths handler ===#
 #Sub paths of A
@@ -58,7 +58,8 @@ def study_(subject, classid):
     if subject == 'Math':
         return render_template('ChildDashboard/lesson.html')
     elif subject == 'Eng':
-        return render_template('ChildDashboard/english.html')
+        dppath = '/lessons/english.db3'
+        return render_template('ChildDashboard/lesson.html', lessons = getLessonData(subject, dppath, classid))
     elif subject == 'Sst':
         return render_template('ChildDashboard/SocialStudies.html')
     elif subject == 'Sci':
