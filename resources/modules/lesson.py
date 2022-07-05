@@ -10,5 +10,4 @@ def addLesson():
     Video = request.form.get('Video')
 
     if Class == '7':
-        
-        lesson = db.lesson_db(f'')
+          db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')

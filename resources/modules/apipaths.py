@@ -46,3 +46,14 @@ def subPathsOfUser(path):
         return render_template('/ParentDashboard/pages-error-404.html')
 #=== Subpaths handler ===#
 
+
+def childDashboard(subject, class_id):
+    if subject == 'Math':
+        render_template('ChildDashboard/mathematics.html')
+    elif subject == 'Eng':
+        render_template('ChildDashboard/english.html')
+    elif subject == 'Sst':
+        render_template('ChildDashboard/SocialStudies.html')
+    elif subject == 'Sci':
+        render_template('ChildDashboard/science.html')
+
