@@ -297,7 +297,8 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" onclick="generateJson()">Submit</button>
+                      <button class="btn btn-primary w-100" onclick="generateJson()">Submit</button><br><br>
+                      <button class="btn btn-primary w-100" onclick="deleteForms()">Clear Form</button>
                     </div>
                   </div>
                   <div class="card">
@@ -329,6 +330,16 @@
                         }
                         document.getElementById('value').innerHTML=JSON.stringify(exercise);
                     }
+
+                    // delete ALL FORM  VALUES
+                    function deleteForms() {
+                        var forms = document.getElementsByTagName("form");
+                        for (var i = 0; i < forms.length; i++) {
+                            var form = forms[i];
+                            form.reset();
+                        }
+                    }
+
                     </script>
 
                 </div>

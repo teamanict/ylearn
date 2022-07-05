@@ -52,13 +52,15 @@ def subPathsOfUser(path):
 #=== Subpaths handler ===#
 
 
-def study_(subject, class_id):
+def study_(subject, classid):
+    print(subject)
+    dbpath = '/Lessons/{subject}.db3'
     if subject == 'Math':
-        render_template('ChildDashboard/mathematics.html')
+        return render_template('ChildDashboard/lesson.html')
     elif subject == 'Eng':
-        render_template('ChildDashboard/english.html')
+        return render_template('ChildDashboard/english.html')
     elif subject == 'Sst':
-        render_template('ChildDashboard/SocialStudies.html')
+        return render_template('ChildDashboard/SocialStudies.html')
     elif subject == 'Sci':
-        render_template('ChildDashboard/science.html')
+        return render_template('ChildDashboard/science.html')
 
