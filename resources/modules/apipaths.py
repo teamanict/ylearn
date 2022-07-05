@@ -24,9 +24,14 @@ def subPathsOfA(path):
 
 #Sub paths of logined in user
 def subPathsOfUser(path):
+
     #User profile
     if path == 'userprofile':
-          return render_template("ParentDashboard/users-profile.html")
+        if session['usertype'] == 'parent':
+            return render_template('ParentDashboard/users-profile.html')
+        elif session['usertype'] == 'student':
+            return render_template('ChildDashboard/users-profile.html')
+
     # Enroll child
     elif path == 'enrollchild':
         return render_template("ParentDashboard/Enroll Child.html")
@@ -47,7 +52,7 @@ def subPathsOfUser(path):
 #=== Subpaths handler ===#
 
 
-def childDashboard(subject, class_id):
+def study_(subject, class_id):
     if subject == 'Math':
         render_template('ChildDashboard/mathematics.html')
     elif subject == 'Eng':

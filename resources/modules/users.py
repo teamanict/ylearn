@@ -30,7 +30,9 @@ def login_(account_type=None, username=None, passkey=None, userfromdash=None):
             # Get parent id of student
             parent_id = db.runDBQuery(db.users_db, f'SELECT Parent FROM children WHERE Username="{username}";')[0]['Parent']
             # Get children registered under parent account
-            childrenUnderParent = db.runDBQuery(db.users_db, f'SELECT Children FROM parents WHERE ="{parent_id}" AND Pass="{passkey}";')
+
+            childrenUnderParent = db.runDBQuery(db.users_db, f'SELECT Children FROM parents WHERE Email="{parent_id}" AND Pass="{passkey}";')[0]['Children']
+            print(childrenUnderParent)
             if username in childrenUnderParent:
                 # Store Student info in session cookies
                 user = db.runDBQuery(db.users_db, f'SELECT * FROM children WHERE Username="{username}";')
