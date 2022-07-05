@@ -299,29 +299,28 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">Lesson</li>
-          <li class="breadcrumb-item active">{Subject}</li>
+          <li class="breadcrumb-item active">{{subject}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
-
+    {% for lesson in lessons %}
+    
       <div class="col-lg-7">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Topic : Number Bases</h5>
+            <h5 class="card-title">{{lesson.Topic}}</h5>
             <p>
-              <span class="text-success small pt-1 fw-bold">Introduction to Bases</span>
+              <span class="text-success small pt-1 fw-bold">{{lesson.Title}}</span>
             </p>
             <p>
-              Number Bases are number systems used by mathematicians to count items in different
-              situations. E.g computers they use the binary number system to make decisions and all the complicated
-              things they do.
+              {{lesson.Description}}
             </p>
             <video style="border:3px solid black; border-radius: 10px;" id="my-video"
               class="video-js vjs-big-play-centered" controls preload="auto" width="450" height="264"
               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-              <source src="https://doc-00-bc-docs.googleusercontent.com/docs/securesc/g8e3p19csm2fgavhs8a9gnt8hjeu14rv/drgvdnomfokmsgkl2ldbjprl7s48qml3/1657051350000/13907693631630707942/11760039389997276339/14F0CI7ovPx0E-j_pjgy6LbsO8C26NFD0?e=download&authuser=0" type="video/mp4" />
+              <source src="{{lesson.Url}}" type="video/mp4" />
               <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -333,9 +332,8 @@
             <a href="/activity.html"><button style="border-radius: 10px;" class="btn-outline-light float-end text-success">Exercise</button></a>
           </div>
         </div>
-      </div>
-    </section>
-
+      </div
+    {% endfor %}
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

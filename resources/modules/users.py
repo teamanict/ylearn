@@ -166,4 +166,11 @@ def chat_(sender):
      #   sql_query = f'SELECT * FROM chats WHERE (sender="{sender}" AND receiver="{receiver}") OR (sender="{receiver}" AND receiver="{sender}");'
       #  messages = db.runDBQuery(db.users_db, sql_query)
     return render_template('Chat/chat.html', sender=sender)
+
+
+
+def getLessonData(subject, dbpath, classid):
+    # Get lesson data from database
+    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM P{classid};')
+    return lessonData
     

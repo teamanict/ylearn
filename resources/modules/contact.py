@@ -13,12 +13,6 @@ def storeFeedback_(request):
 
     return render_template('/ParentDashboard/success.html')
 
-def getLessonData(subject, dbpath, classid):
-    # Get lesson data from database
-    lessonData = db.runDBQuery(dbpath, f'SELECT * FROM P{classid};')
-    print(lessonData)
-
-
 # Store data from form into inventory table
 def storeInventory_(request):
     # Get Data from all contact forms
@@ -28,7 +22,7 @@ def storeInventory_(request):
     itemdetails = request.form.get('itemdetails')
     itemimage = request.form.get('itemimage')
     db.runDBQuery(
-        db.users_db, f'INSERT INTO Inventory ("ItemName", "ItemPrice", "ItemQauntity", "ItemDetails", "ItemImage") VALUES' f' ("{itemname}", "{itemprice}", "{itemquantity}", "{itemdetails}", "{itemimage}");')
+        '/Sales.db3', f'INSERT INTO Inventory ("ItemName", "ItemPrice", "ItemQauntity", "ItemDetails", "ItemImage") VALUES' f' ("{itemname}", "{itemprice}", "{itemquantity}", "{itemdetails}", "{itemimage}");')
 
     return render_template('/ParentDashboard/success.html')
 

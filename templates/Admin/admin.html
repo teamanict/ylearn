@@ -15,7 +15,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/static/AdminAssets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -85,7 +87,7 @@
             </li>
 
             <li>
-           
+
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
@@ -106,24 +108,24 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      
+
       <li class="nav-item">
         <a class="nav-link " href="index.html">
           <i class="bi bi-graph-up"></i>
           <span> Analytics </span>
         </a>
-        
+
         <a href="bookshopdash.html">
       <li class="nav-item">
         <a class="nav-link collapsed" href="bookshopdash.html">
-        </i><span>   <i class=" bi-book"></i> Bookshop Admin </span></i>
+          </i><span> <i class=" bi-book"></i> Bookshop Admin </span></i>
         </a>
-      </a>
-      <a href="messages.html">
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="messages.html">
-          </i><span>   <i class="bi bi-chat-dots-fill"></i> Messages </span></i>
-          </a>
+        </a>
+        <a href="messages.html">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="messages.html">
+          </i><span> <i class="bi bi-chat-dots-fill"></i> Messages </span></i>
+        </a>
         </a>
 
 
@@ -132,7 +134,7 @@
           <i class="bi bi-layout-text-window-reverse"></i><span> Lesson Upload </span>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        </li>
+      </li>
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -156,7 +158,7 @@
         <div class="col-lg-8">
           <div class="row">
 
- 
+
 
             <!-- Revenue Card -->
             <div class="col-xxl-4 col-md-6">
@@ -233,85 +235,16 @@
             <div class="col-12">
               <div class="card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
+                <!-- Full screen iframe -->
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
-
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <a href="https://analytics.google.com"><button>GO TO ANALYTICS</button></a>
+                  </div>
                 </div>
-
               </div>
             </div><!-- End Reports -->
 
-         
+
 
             <!-- Top Selling -->
             <div class="col-12">
@@ -330,63 +263,66 @@
                   </ul>
                 </div>
 
-              
 
-          <!-- Budget Report -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+                <!-- Budget Report -->
+                <div class="card">
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
 
-   
-            </div>
-          </div><!-- End Budget Report -->
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul>
+                  </div>
 
-          <!-- Website Traffic -->
-          <div class="card">
-            
 
-            <div class="card-body pb-0">
-              <iframe src="https://analytics.google.com/analytics/web/?pli=1&authuser=1#/p321818064/reports/reportinghub?params=_u..nav%3Dmaui" title="Statistics"></iframe>
+                </div>
+              </div><!-- End Budget Report -->
 
-            </div>
-          </div><!-- End Website Traffic -->
+              <!-- Website Traffic -->
+              <div class="card">
 
-          <!-- News & Updates Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+                <div class="card-body pb-0">
+                  <iframe
+                    src="https://analytics.google.com/analytics/web/?pli=1&authuser=1#/p321818064/reports/reportinghub?params=_u..nav%3Dmaui"
+                    title="Statistics"></iframe>
 
-          
+                </div>
+              </div><!-- End Website Traffic -->
 
-      </div>
+              <!-- News & Updates Traffic -->
+              <div class="card">
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+
+
+              </div>
     </section>
 
   </main><!-- End #main -->
 
-    </div>
+  </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="/static/AdminAssets/vendor/apexcharts/apexcharts.min.js"></script>
