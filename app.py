@@ -101,9 +101,8 @@ def study():
 def bookshopapi():
       return storeInventory_(request)
 
-@app.route('exercise')
+@app.route('/exercise')
 def exercise():
-    
     return render_template('ChildDashboard/activity.html')
 
 
