@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons
-    <link href="/static/childAssets/img/favicon.png" rel="icon">
-    <link href="/static/childAssets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+  <link href="/static/childAssets/img/favicon.png" rel="icon">
+  <link href="/static/childAssets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -30,8 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/static/childAssets/css/style.css" rel="stylesheet">
-
-  <!--Video Cdn-->
+  <!--Video js-->
   <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
   {% include 'injected.html' %}
 
@@ -39,6 +38,7 @@
 </head>
 
 <body>
+  
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -52,98 +52,17 @@
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-
-          </ul><!-- End Notification Dropdown Items -->
-
-        </li><!-- End Notification Nav -->
-
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="/static/childAssets/img/Spider.png" alt="Profile" class="rounded-circle">
+            <img src="{{child.Profile_Picture}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{child.Name}}</span>
           </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{child.Name}}</h6>
-              <span>{{child.Class}}</span>
+              <h6>{{session['Name']}}</h6>
+              <span>Primary {{session['Class']}}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -169,7 +88,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/signout">
+              <a class="dropdown-item d-flex align-items-center" href="/u/signout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -189,103 +108,24 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/dashboard?for=student">
           <i class="bi bi-grid"></i>
           <span>ClassRoom</span>
         </a>
       </li><!-- End ClassRoom Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Subjects</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>English</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Math</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Science</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Social Studies</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-buttons.html">
-              <i class="bi bi-circle"></i><span>Buttons</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-cards.html">
-              <i class="bi bi-circle"></i><span>Cards</span>
-            </a>
-          </li>
-      </li><!-- End Components Nav -->
-    </ul>
     <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-journal-text"></i><span>Sessions</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="forms-elements.html">
-            <i class="bi bi-circle"></i><span>Mathematics Teacher</span>
-          </a>
-        </li>
-        <li>
-          <a href="forms-layouts.html">
-            <i class="bi bi-circle"></i><span>English Teacher</span>
-          </a>
-        </li>
-        <li>
-          <a href="forms-editors.html">
-            <i class="bi bi-circle"></i><span>Science Teacher</span>
-          </a>
-        </li>
-        <li>
-          <a href="forms-validation.html">
-            <i class="bi bi-circle"></i><span>Social Studies Teacher</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Forms Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="users-profile.html">
+      <a class="nav-link collapsed" href="/u/userprofile">
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
     </li><!-- End Profile Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-faq.html">
+      <a class="nav-link collapsed" href="/chat">
         <i class="bi bi-question-circle"></i>
         <span>Ask Question</span>
       </a>
     </li><!-- End F.A.Q Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-contact.html">
-        <i class="bi bi-envelope"></i>
-        <span>Activity</span>
-      </a>
-    </li><!-- End Contact Page Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-blank.html">
-        <i class="bi bi-file-earmark"></i>
-        <span>Blank</span>
-      </a>
-    </li><!-- End Blank Page Nav -->
 
     </ul>
 
@@ -329,10 +169,10 @@
             <a class="text-secondary" href="#" data-bs-toggle="dropdown">
               <span style="text-align: right;" class="d-none d-md-block ps-2">Download Notes</span></a>
             <script src="https://vjs.zencdn.net/7.19.2/video.min.js"></script><br>
-            <a href="/activity.html"><button style="border-radius: 10px;" class="btn-outline-light float-end text-success">Exercise</button></a>
+            <a href="/u"><button style="border-radius: 10px;" class="btn-outline-light float-end text-success">Exercise</button></a>
           </div>
         </div>
-      </div
+      </div>
     {% endfor %}
   </main><!-- End #main -->
 
