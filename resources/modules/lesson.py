@@ -1,13 +1,22 @@
-import resources.modules.database as db
-from flask import *
+from resources.modules.ylearnmodules import *
 
-def addLesson():
+def study_(subject, classid):
+    subject = request.args.get('subject')
+    classid = int(request.args.get('class'))
 
-    Topic = request.form.get('Topic')
-    Subject = request.form.get('Subject')
-    Class = request.form.get('Class')
-    Description = request.form.get('description')
-    Video = request.form.get('Video')
+    if classid <= 4:
+        classid = '4'
+    elif classid <= 7:
+        classid = '5'
 
-    if Class == '7':
-          db.runDBQuery(db.users_db, f'INSERT INTO parents ("Email", "Name", "Children", "Pass") VALUES ("{email}","{fullname}", "[]", "{passkey}");')
+    if subject == 'Math':
+        dbpath = '/lessons/math.db3'
+    elif subject == 'Eng':
+        dbpath = '/lessons/english.db3'
+    elif subject == 'Sst':
+        dbpath = '/lessons/sst.db3'
+    elif subject == 'Sci':
+        dbpath = '/lessons/science.db3'
+    
+    lessons = getLessonData(subject, dbpath, classid)
+    return render_template('ChildDashboard/lesson.html', lessons = lessons, subject=subject, child = getChild(session.get('user')))

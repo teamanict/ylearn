@@ -41,7 +41,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/dashboard?for=student" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">YLearn</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -52,7 +52,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{child.Profile_Pictutre}}" alt="Profile" class="rounded-circle">
+            <img src="{{child.Profile_Picture}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{child.Name}}</span>
           </a><!-- End Profile Image Icon -->
 
@@ -105,7 +105,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/dashboard?for=student">
           <i class="bi bi-grid"></i>
           <span>ClassRoom</span>
         </a>
@@ -148,7 +148,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{child.Profile_Pictutre}}" alt="Profile" class="rounded-circle">
+              <img src="{{child.Profile_Picture}}" alt="Profile" class="rounded-circle">
               <h2>{{child.Name}}</h2>
               <h3>Primary {{child.Class}}</h3>
             </div>

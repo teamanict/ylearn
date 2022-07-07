@@ -29,5 +29,5 @@ INSERT INTO parents (
     Gender           BOOLEAN     NOT NULL,
     Parent           VARCHAR     NOT NULL
                                  REFERENCES parents (Username) ON UPDATE NO ACTION,
-    Profile_Pictutre VARCHAR
+    Profile_Picture VARCHAR
 );

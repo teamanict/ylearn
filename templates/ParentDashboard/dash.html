@@ -158,12 +158,12 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <img src="{{child['Profile_Pictutre']}}" width="100px" alt="Image is not Supported">
+                      <img src="{{child['Profile_Picture']}}" width="100px" alt="Image is not Supported">
                     </div>
                     <div class="ps-3">
                       <h6>Average: 90%</h6>
                       <span class="text-success small pt-1 fw-bold">Comment:</span> <span class="text-muted small pt-2 ps-1">Good</span>
-                      <a href="/login?as=studentfromdash&username={{child.Username}}"><button class="btn-pending">Login</button></a>
+                      <a href="/login?as=studentfromdash&username={{child.Username}}"><button class="btn btn-outline-success">Login</button></a>
                     </div>
                   </div>
                 </div>
@@ -173,9 +173,10 @@
             <!-- End child card -->
           {% endfor %}
       
+          {% for child in children %}
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Sample Child 1</h5>
+                <h5 class="card-title">{{child.Name}}</h5>
                 <p>End of Term</p>
                 <!-- Small tables -->
                 <table class="table table-sm">
@@ -213,58 +214,20 @@
   
               </div>
             </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Sample Child 2</h5>
-                <p>End of Term</p>
-                <!-- Small tables -->
-                <table class="table table-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col-sm">#</th>
-                      <th scope="col-sm">Subject</th>
-                      <th scope="col-sm">Marks</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mathematics</td>
-                      <td>78%</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Science</td>
-                      <td>89%</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>English</td>
-                      <td>92%</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Social Studies</td>
-                      <td>84%</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <!-- End small tables -->
-  
-              </div>
-            </div>
+            {% endfor %}
             <!--Child Average Performance-->
+            {% for child in children %}
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Sample Child 1</h5>
+                  <h5 class="card-title">{{child.Name}}</h5>
                   <h6>This Graph shows the Average Performance of Sample Child 1 </h6>
     
                   <!-- Bar Chart -->
-                  <canvas id="barChart" style="max-height: 400px;"></canvas>
+                  <canvas id="{{child.Username}}" style="max-height: 400px;"></canvas>
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
-                      new Chart(document.querySelector('#barChart'), {
+                      new Chart(document.querySelectorAll('#{{child.Username}}'), {
                         type: 'bar',
                         data: {
                           labels: ['B.O.T', 'M.I.T', 'E.O.T'],
@@ -298,54 +261,7 @@
     
                 </div>
               </div>
-            </div>
-             <!--Child Average Performance-->
-             <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Sample Child 2</h5>
-                  <h6>This Graph shows the Average Performance of Sample Child 2</h6>
-    
-                  <!-- Bar Chart -->
-                  <canvas id="barChart2" style="max-height: 400px;"></canvas>
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new Chart(document.querySelector('#barChart2'), {
-                        type: 'bar',
-                        data: {
-                          labels: ['B.O.T', 'M.I.T', 'E.O.T'],
-                          datasets: [{
-                            label: 'Average Performance',
-                            data: [78, 96, 80,],
-                            backgroundColor: [
-                              'rgba(255, 99, 132, 0.2)',
-                              'rgba(255, 159, 64, 0.2)',
-                              'rgba(255, 205, 86, 0.2)'
-                            ],
-                            borderColor: [
-                              'rgb(255, 99, 132)',
-                              'rgb(255, 99, 132)',
-                              'rgb(255, 99, 132)'
-                            ],
-                            borderWidth: 1
-                          }]
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true
-                            }
-                          }
-                        }
-                      });
-                    });
-                  </script>
-                  <!-- End Bar CHart -->
-    
-                </div>
-              </div>
-            </div>
-    
+            </div>{% endfor %}
             <!-- Reports -->
             <div class="col-12">
               <div class="card">
@@ -358,13 +274,12 @@
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sample Child 1',
-                          data: [92, 89, 87, 98, 88, 94, 76, 89, 91, 97, 93, 87],
-                        }, {
-                          name: 'Sample Child 2',
-                          data: [90, 80, 75, 92, 89, 52, 78, 84, 82, 78, 93, 92]
-                        }],
+                        series: [ //{% for child in children %}
+                        {
+                          name: '{{child.Name}}',
+                          data: [92, 89, 87, 98, 88, 94, 76, 89, 91, 97, 93, 87], 
+                        },//{% endfor %} 
+                      ],
                         chart: {
                           height: 350,
                           type: 'area',

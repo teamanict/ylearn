@@ -82,10 +82,10 @@ def changePassword():
 
 @app.route('/chat')
 def chat():
-    if 'user' in session and session.get('usertype') == 'parent':
+    if 'user' in session and session.get('usertype') == 'student':
         return chat_(session['user'])
     else:
-        return redirect('/login?as=parent')
+        return redirect('/login?as=student')
 
 
 @app.route('/storeFeedback', methods=['POST', 'GET'])
@@ -100,6 +100,10 @@ def study():
 @app.route('/bookshopapi', methods=['POST', 'GET'])
 def bookshopapi():
       return storeInventory_(request)
+
+@app.route('/exercise')
+def exercise():
+    return render_template('ChildDashboard/activity.html')
 
 
 # flask debug mode

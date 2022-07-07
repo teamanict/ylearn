@@ -53,7 +53,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{child.Profile_Pictutre}}" alt="Profile" class="rounded-circle">
+            <img src="{{child.Profile_Picture}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{child.Name}}</span>
           </a><!-- End Profile Image Icon -->
 
@@ -151,7 +151,7 @@
             <div class="card-body"><br><br>
               <h2 class="text-lg">
                   <a href="#">
-                    <img src="{{child.Profile_Pictutre}}" height="50px" width="normal" alt="Profile" class="rounded-circle">
+                    <img src="{{child.Profile_Picture}}" height="50px" width="normal" alt="Profile" class="rounded-circle">
                   </a><!-- End Profile Image Icon -->
                 Hi {{child.Name}}
               </h2>
@@ -172,7 +172,7 @@
                       </div>
                       <h6>Number Bases</h6>
                       <span class="text-success small pt-1 fw-bold">Introduction To Bases</span><br><br>
-                      <a href="lesson.html"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
+                      <a href="/study?class={{child.Class}}&subject=Math"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
                     </div>
 
                   </div>
@@ -198,7 +198,7 @@
                       </div>
                       <h6>Verbs</h6>
                       <span class="text-success small pt-1 fw-bold">Introduction To Verbs</span><br><br>
-                      <a href="/lesson.html"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
+                      <a href="/study?class={{child.Class}}&subject=Eng"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
                     </div>
                   </div>
                   <div style="padding: none; width: 20%;" class="col">
@@ -222,7 +222,7 @@
                         </div>
                         <h6>Location</h6>
                         <span class="text-success small pt-1 fw-bold">My District</span><br><br><br>
-                        <a href="/lesson.html"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
+                        <a href="/study?class={{child.Class}}&subject=Sst"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
                       </div>
                     </div>
                     <div style="padding: none; width: 20%;" style="overflow: hidden;" class="col">
@@ -246,7 +246,7 @@
                         </div>
                         <h6>Personal Hygiene</h6>
                         <span class="text-success small pt-1 fw-bold">My Body</span><br><br><br>
-                        <a href="/lesson.html"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
+                        <a href="/study?class={{child.Class}}&subject=Sci"><button class="btn btn-outline-primary w-100" type="submit">Start Lesson</button></a>
                       </div>
                     </div>
                     <div style="padding: none; width: 20%;" style="overflow: hidden;" class="col">
@@ -266,7 +266,7 @@
                       <div class="d-inline-block align-items-center">
                         <h6>Personal Hygiene</h6>
                         <span class="text-success small pt-1 fw-bold">Exercise on Body Parts</span>
-                        <a href="/activity.html"><button class="btn btn-outline-primary w-100" type="submit">Start Exercise</button></a>
+                        <a href="/activity?id="><button class="btn btn-outline-primary w-100" type="submit">Start Exercise</button></a>
                     </div>
                 </div>
               </div>
